@@ -21,9 +21,6 @@ class AndroidAppDependencyPlugin : Plugin<Project> {
                 // MVI 패턴
                 addMviDependencies(target)
                 
-                // Hilt
-                addHiltDependencies(target)
-                
                 // Navigation
                 addNavigationDependencies(target)
                 
@@ -52,11 +49,6 @@ class AndroidAppDependencyPlugin : Plugin<Project> {
         add("implementation", project.libs.findLibrary("androidx-lifecycle-runtime-compose").get())
     }
     
-    private fun org.gradle.api.artifacts.dsl.DependencyHandler.addHiltDependencies(project: Project) {
-        add("implementation", project.libs.findLibrary("hilt-android").get())
-        add("kapt", project.libs.findLibrary("hilt-compiler").get())
-    }
-    
     private fun org.gradle.api.artifacts.dsl.DependencyHandler.addNavigationDependencies(project: Project) {
         add("implementation", project.libs.findLibrary("androidx-navigation-compose").get())
     }
@@ -81,10 +73,6 @@ class DataLayerDependencyPlugin : Plugin<Project> {
             dependencies {
                 // Core Android
                 add("implementation", libs.findLibrary("androidx-core-ktx").get())
-                
-                // Hilt
-                add("implementation", libs.findLibrary("hilt-android").get())
-                add("kapt", libs.findLibrary("hilt-compiler").get())
                 
                 // Coroutines
                 add("implementation", libs.findLibrary("kotlinx-coroutines-core").get())
@@ -138,10 +126,6 @@ class PresentationLayerDependencyPlugin : Plugin<Project> {
                 // MVI 패턴
                 add("implementation", libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
                 add("implementation", libs.findLibrary("androidx-lifecycle-runtime-compose").get())
-                
-                // Hilt
-                add("implementation", libs.findLibrary("hilt-android").get())
-                add("kapt", libs.findLibrary("hilt-compiler").get())
                 
                 // Testing
                 add("testImplementation", libs.findLibrary("junit").get())

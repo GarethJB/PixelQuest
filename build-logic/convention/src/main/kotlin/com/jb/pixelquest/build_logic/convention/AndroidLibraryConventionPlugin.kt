@@ -1,7 +1,9 @@
 package com.jb.pixelquest.build_logic.convention
 
+import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
@@ -11,7 +13,14 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
                 apply("kotlin-kapt")
-                apply("dagger.hilt.android.plugin")
+            }
+
+            extensions.configure<LibraryExtension> {
+                compileSdk = libs.versionInt("compileSdk")
+                defaultConfig {
+                    minSdk = libs.versionInt("minSdk")
+                    targetSdk = libs.versionInt("targetSdk")
+                }
             }
 
             dependencies {
@@ -30,10 +39,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 // MVI 패턴
                 add("implementation", libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
                 add("implementation", libs.findLibrary("androidx-lifecycle-runtime-compose").get())
-                
-                // Hilt
-                add("implementation", libs.findLibrary("hilt-android").get())
-                add("kapt", libs.findLibrary("hilt-compiler").get())
                 
                 // Testing
                 add("testImplementation", libs.findLibrary("junit").get())

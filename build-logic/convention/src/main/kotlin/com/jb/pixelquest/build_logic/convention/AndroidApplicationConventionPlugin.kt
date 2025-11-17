@@ -1,7 +1,9 @@
 package com.jb.pixelquest.build_logic.convention
 
+import com.android.build.api.dsl.ApplicationExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
@@ -11,7 +13,16 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("kotlin-kapt")
-                apply("dagger.hilt.android.plugin")
+            }
+
+            extensions.configure<ApplicationExtension> {
+                compileSdk = libs.versionInt("compileSdk")
+                defaultConfig {
+                    minSdk = libs.versionInt("minSdk")
+                    targetSdk = libs.versionInt("targetSdk")
+                    versionCode = libs.versionInt("versionCode")
+                    versionName = libs.findVersion("versionName").get().requiredVersion
+                }
             }
 
             dependencies {
@@ -30,10 +41,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 // MVI 패턴
                 add("implementation", libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
                 add("implementation", libs.findLibrary("androidx-lifecycle-runtime-compose").get())
-                
-                // Hilt
-                add("implementation", libs.findLibrary("hilt-android").get())
-                add("kapt", libs.findLibrary("hilt-compiler").get())
                 
                 // Navigation
                 add("implementation", libs.findLibrary("androidx-navigation-compose").get())
