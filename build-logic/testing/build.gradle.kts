@@ -1,13 +1,34 @@
 plugins {
-    id("java-library")
-    alias(libs.plugins.jetbrains.kotlin.jvm)
+    `kotlin-dsl`
 }
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    google()
+    mavenCentral()
+    gradlePluginPortal()
 }
-kotlin {
-    compilerOptions {
-        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+
+dependencies {
+    implementation(project(":convention"))
+}
+
+gradlePlugin {
+    plugins {
+        register("test-configurations-convention") {
+            id = "test-configurations-convention"
+            implementationClass = "com.jb.pixelquest.build_logic.testing.TestConfigurationsConventionPlugin"
+        }
+        register("unit-test-convention") {
+            id = "unit-test-convention"
+            implementationClass = "com.jb.pixelquest.build_logic.testing.UnitTestConventionPlugin"
+        }
+        register("android-test-convention") {
+            id = "android-test-convention"
+            implementationClass = "com.jb.pixelquest.build_logic.testing.AndroidTestConventionPlugin"
+        }
+        register("test-fixtures-convention") {
+            id = "test-fixtures-convention"
+            implementationClass = "com.jb.pixelquest.build_logic.testing.TestFixturesConventionPlugin"
+        }
     }
 }
