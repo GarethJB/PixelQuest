@@ -13,10 +13,6 @@ class ComposeConventionPlugin : Plugin<Project> {
                 buildFeatures {
                     compose = true
                 }
-                
-                composeOptions {
-                    kotlinCompilerExtensionVersion = libs.findVersion("kotlinCompilerExtension").get().toString()
-                }
             }
 
             dependencies {
