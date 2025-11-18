@@ -13,3 +13,4 @@ internal val Project.libs
     get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 
+

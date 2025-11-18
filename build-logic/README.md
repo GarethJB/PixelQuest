@@ -148,3 +148,4 @@ testing (테스트 설정)
 2. `testing/build.gradle.kts`의 `gradlePlugin` 블록에 등록
 
 
+
