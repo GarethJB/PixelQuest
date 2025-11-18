@@ -21,6 +21,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                     minSdk = libs.versionInt("minSdk")
                     targetSdk = libs.versionInt("targetSdk")
                 }
+                compileOptions {
+                    sourceCompatibility = org.gradle.api.JavaVersion.VERSION_11
+                    targetCompatibility = org.gradle.api.JavaVersion.VERSION_11
+                }
             }
 
             dependencies {
