@@ -1,10 +1,16 @@
 plugins {
-    id("java-library")
-    id("kotlin-library-convention")
+    id("com.android.library")
+    id("android-library-convention")
     id("kotlin-options-convention")
+    id("kotlin-kapt")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+android {
+    namespace = "com.jb.pixelquest.core.di"
+}
+
+dependencies {
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 }

@@ -29,6 +29,10 @@ android {
     }
 }
 
+hilt {
+    enableAggregatingTask = false
+}
+
 dependencies {
     // Material Components (기존 테마에서 사용 중)
     implementation(libs.material)

@@ -13,6 +13,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("kotlin-kapt")
+                apply("dagger.hilt.android.plugin")
             }
 
             extensions.configure<ApplicationExtension> {
@@ -44,6 +45,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 
                 // Navigation
                 add("implementation", libs.findLibrary("androidx-navigation-compose").get())
+                
+                // Hilt
+                add("implementation", libs.findLibrary("hilt-android").get())
+                add("kapt", libs.findLibrary("hilt-compiler").get())
                 
                 // Testing
                 add("testImplementation", libs.findLibrary("junit").get())
