@@ -37,4 +37,7 @@ dependencies {
     // Material Components (기존 테마에서 사용 중)
     implementation(libs.material)
     implementation(libs.androidx.appcompat)
+    
+    // Presentation Resources
+    implementation(project(":presentation:resources"))
 }
