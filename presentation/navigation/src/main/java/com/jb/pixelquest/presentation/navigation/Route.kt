@@ -5,10 +5,10 @@ package com.jb.pixelquest.presentation.navigation
  */
 sealed class Route(val route: String) {
     // Bottom Navigation 화면들
-    object Home : Route("home")
-    object Album : Route("album")
-    object Ranking : Route("ranking")
-    object Settings : Route("settings")
+    object Studio : Route("studio")
+    object Quest : Route("quest")
+    object Gallery : Route("gallery")
+    object MyPage : Route("mypage")
     
     companion object {
         // Deep Link 기본 URL

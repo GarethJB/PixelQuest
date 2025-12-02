@@ -1,8 +1,15 @@
 package com.jb.pixelquest.presentation.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -13,10 +20,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.jb.pixelquest.presentation.navigation.Route.Album
-import com.jb.pixelquest.presentation.navigation.Route.Home
-import com.jb.pixelquest.presentation.navigation.Route.Ranking
-import com.jb.pixelquest.presentation.navigation.Route.Settings
+import com.jb.pixelquest.presentation.navigation.Route.Studio
+import com.jb.pixelquest.presentation.navigation.Route.Quest
+import com.jb.pixelquest.presentation.navigation.Route.Gallery
+import com.jb.pixelquest.presentation.navigation.Route.MyPage
 import com.jb.pixelquest.presentation.resources.R
 
 /**
@@ -39,10 +46,10 @@ fun BottomNavigationBar(
     val currentDestination = navBackStackEntry?.destination
     
     val bottomNavItems = listOf(
-        BottomNavItem(Home, R.string.nav_home, Icons.Default.Home),
-        BottomNavItem(Album, R.string.nav_album, Icons.Default.Home),
-        BottomNavItem(Ranking, R.string.nav_ranking, Icons.Default.Home),
-        BottomNavItem(Settings, R.string.nav_settings, Icons.Default.Settings)
+        BottomNavItem(Studio, R.string.nav_studio, Icons.Default.Create),
+        BottomNavItem(Quest, R.string.nav_quest, Icons.Default.Check),
+        BottomNavItem(Gallery, R.string.nav_gallery, Icons.Default.Favorite),
+        BottomNavItem(MyPage, R.string.nav_mypage, Icons.Default.Face)
     )
     
     NavigationBar {

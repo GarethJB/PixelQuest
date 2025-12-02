@@ -6,7 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
-import com.jb.pixelquest.feature.home.HomeRoute
+import com.jb.pixelquest.feature.studio.StudioRoute
+import com.jb.pixelquest.feature.quest.QuestRoute
+import com.jb.pixelquest.feature.gallery.GalleryRoute
+import com.jb.pixelquest.feature.mypage.MyPageRoute
 
 /**
  * 앱의 네비게이션 그래프를 설정하는 Composable
@@ -15,7 +18,7 @@ import com.jb.pixelquest.feature.home.HomeRoute
 fun NavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = Route.Home.route
+    startDestination: String = Route.Studio.route
 ) {
     NavHost(
         navController = navController,
@@ -23,47 +26,47 @@ fun NavGraph(
         modifier = modifier
     ) {
         composable(
-            route = Route.Home.route,
+            route = Route.Studio.route,
             deepLinks = listOf(
                 navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.Home.route)
+                    uriPattern = Route.getDeepLinkPattern(Route.Studio.route)
                 }
             )
         ) {
-            HomeRoute()
+            StudioRoute()
         }
         
         composable(
-            route = Route.Album.route,
+            route = Route.Quest.route,
             deepLinks = listOf(
                 navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.Album.route)
+                    uriPattern = Route.getDeepLinkPattern(Route.Quest.route)
                 }
             )
         ) {
-//            AlbumScreen()
+            QuestRoute()
         }
         
         composable(
-            route = Route.Ranking.route,
+            route = Route.Gallery.route,
             deepLinks = listOf(
                 navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.Ranking.route)
+                    uriPattern = Route.getDeepLinkPattern(Route.Gallery.route)
                 }
             )
         ) {
-//            RankingScreen()
+            GalleryRoute()
         }
         
         composable(
-            route = Route.Settings.route,
+            route = Route.MyPage.route,
             deepLinks = listOf(
                 navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.Settings.route)
+                    uriPattern = Route.getDeepLinkPattern(Route.MyPage.route)
                 }
             )
         ) {
-//            SettingsScreen()
+            MyPageRoute()
         }
     }
 }

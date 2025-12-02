@@ -2,27 +2,26 @@
     <string name="app_name">PixelQuest</string>
     
     <!-- Bottom Navigation -->
-    <string name="nav_home">홈</string>
-    <string name="nav_album">앨범</string>
-    <string name="nav_ranking">랭킹</string>
-    <string name="nav_settings">설정</string>
+    <string name="nav_studio">Studio</string>
+    <string name="nav_quest">Quest</string>
+    <string name="nav_gallery">Gallery</string>
+    <string name="nav_mypage">MyPage</string>
     
-    <!-- Home Screen -->
-    <string name="home_title">홈</string>
-    <string name="home_screen">홈 화면</string>
-    <string name="home_refresh_highlights">추천 업데이트</string>
-
-    <!-- Album Screen -->
-    <string name="album_title">앨범</string>
-    <string name="album_screen">앨범 화면</string>
+    <!-- Studio Screen -->
+    <string name="studio_title">Studio</string>
+    <string name="studio_screen">Studio 화면</string>
     
-    <!-- Ranking Screen -->
-    <string name="ranking_title">랭킹</string>
-    <string name="ranking_screen">랭킹 화면</string>
+    <!-- Quest Screen -->
+    <string name="quest_title">Quest</string>
+    <string name="quest_screen">Quest 화면</string>
     
-    <!-- Settings Screen -->
-    <string name="settings_title">설정</string>
-    <string name="settings_screen">설정 화면</string>
+    <!-- Gallery Screen -->
+    <string name="gallery_title">Gallery</string>
+    <string name="gallery_screen">Gallery 화면</string>
+    
+    <!-- MyPage Screen -->
+    <string name="mypage_title">MyPage</string>
+    <string name="mypage_screen">MyPage 화면</string>
     
     <!-- Common -->
     <string name="loading">로딩 중...</string>

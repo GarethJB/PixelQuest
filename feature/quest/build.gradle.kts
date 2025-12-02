@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jb.pixelquest.presentation.navigation"
+    namespace = "com.jb.pixelquest.feature.quest"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -27,17 +27,16 @@ android {
 }
 
 dependencies {
-    // Feature Modules
-    implementation(project(":feature:studio"))
-    implementation(project(":feature:quest"))
-    implementation(project(":feature:gallery"))
-    implementation(project(":feature:mypage"))
+    implementation(project(":core:common"))
 
-    // Presentation Resources
+    implementation(project(":domain:model"))
+    implementation(project(":domain:repository"))
+    implementation(project(":domain:usecase"))
+
     implementation(project(":presentation:resources"))
-    
-    // Navigation Compose (currentBackStackEntryAsState 포함)
-    implementation(libs.androidx.navigation.compose)
-    // Navigation Runtime KTX
-    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(project(":presentation:component"))
+    implementation(project(":presentation:theme"))
+
+    implementation(libs.kotlinx.coroutines.core)
 }
+
