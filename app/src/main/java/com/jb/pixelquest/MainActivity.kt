@@ -1,22 +1,43 @@
 package com.jb.pixelquest
 
 import android.os.Bundle
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import com.jb.pixelquest.presentation.navigation.BottomNavigationBar
+import com.jb.pixelquest.presentation.navigation.NavGraph
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val message = TextView(this).apply {
-            text = getString(R.string.app_name)
-            textSize = 20f
-            setPadding(32, 32, 32, 32)
+        
+        setContent {
+            MaterialTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    val navController = rememberNavController()
+                    
+                    Column(
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        NavGraph(
+                            navController = navController,
+                            modifier = Modifier.weight(1f)
+                        )
+                        BottomNavigationBar(navController = navController)
+                    }
+                }
+            }
         }
-
-        setContentView(message)
     }
 }
 
