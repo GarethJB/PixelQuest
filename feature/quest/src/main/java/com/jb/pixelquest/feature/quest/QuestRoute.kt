@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.presentation.resources.R
 
 @Composable
@@ -19,7 +20,11 @@ fun QuestRoute() {
 
 @Composable
 fun QuestScreen() {
-    Scaffold { paddingValues ->
+    Scaffold(
+        topBar = {
+            ScreenHeader(titleResId = R.string.quest_title)
+        }
+    ) { paddingValues ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -33,4 +38,5 @@ fun QuestScreen() {
         }
     }
 }
+
 
