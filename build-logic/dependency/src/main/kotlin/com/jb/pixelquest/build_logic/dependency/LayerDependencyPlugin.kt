@@ -143,6 +143,9 @@ class PresentationLayerDependencyPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("orbit-viewmodel").get())
                 add("implementation", libs.findLibrary("orbit-compose").get())
                 
+                // Coil (이미지 로딩)
+                add("implementation", libs.findLibrary("coil-compose").get())
+                
                 // Hilt
                 add("implementation", libs.findLibrary("hilt-android").get())
                 add("kapt", libs.findLibrary("hilt-compiler").get())
