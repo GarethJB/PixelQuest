@@ -10,6 +10,27 @@
     <!-- Studio Screen -->
     <string name="studio_title">Studio</string>
     <string name="studio_screen">Studio 화면</string>
+    <string name="new_canvas">새 캔버스</string>
+    <string name="recent_works">최근 작업</string>
+    <string name="templates">템플릿</string>
+    <string name="palettes">팔레트</string>
+    <string name="brushes">브러시</string>
+    <string name="create_new_canvas">새 캔버스 만들기</string>
+    <string name="canvas_size">캔버스 크기</string>
+    <string name="background_color">배경색</string>
+    <string name="select_template">템플릿 선택</string>
+    <string name="no_recent_works">최근 작업이 없습니다</string>
+    <string name="delete">삭제</string>
+    <string name="share">공유</string>
+    
+    <!-- Editor Screen -->
+    <string name="editor_title">에디터</string>
+    <string name="grid">그리드</string>
+    <string name="clear">지우기</string>
+    <string name="undo">실행 취소</string>
+    <string name="redo">다시 실행</string>
+    <string name="save">저장</string>
+    <string name="color_palette">색상 팔레트</string>
     
     <!-- Quest Screen -->
     <string name="quest_title">Quest</string>

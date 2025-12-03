@@ -3,14 +3,18 @@ package com.jb.pixelquest.build_logic.convention
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class KotlinOptionsConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             tasks.withType<KotlinCompile> {
-                kotlinOptions {
-                    jvmTarget = "11"
+                compilerOptions {
+                    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+                    // KAPT 호환성을 위해 언어 버전을 1.9로 설정
+                    languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9)
+                    apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_9)
                 }
             }
         }

@@ -148,7 +148,7 @@ class PresentationLayerDependencyPlugin : Plugin<Project> {
                 
                 // Hilt
                 add("implementation", libs.findLibrary("hilt-android").get())
-                add("kapt", libs.findLibrary("hilt-compiler").get())
+                add("ksp", libs.findLibrary("hilt-compiler").get())
                 
                 // Testing
                 add("testImplementation", libs.findLibrary("junit").get())

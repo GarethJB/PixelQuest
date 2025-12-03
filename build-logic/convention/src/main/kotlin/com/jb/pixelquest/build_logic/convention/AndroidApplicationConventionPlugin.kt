@@ -12,7 +12,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
-                apply("kotlin-kapt")
+                apply("com.google.devtools.ksp")
                 apply("dagger.hilt.android.plugin")
             }
 
@@ -48,7 +48,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 
                 // Hilt
                 add("implementation", libs.findLibrary("hilt-android").get())
-                add("kapt", libs.findLibrary("hilt-compiler").get())
+                add("ksp", libs.findLibrary("hilt-compiler").get())
                 
                 // Testing
                 add("testImplementation", libs.findLibrary("junit").get())

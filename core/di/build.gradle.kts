@@ -2,7 +2,7 @@ plugins {
     id("com.android.library")
     id("android-library-convention")
     id("kotlin-options-convention")
-    id("kotlin-kapt")
+    alias(libs.plugins.kotlin.ksp)
 }
 
 android {
@@ -12,5 +12,5 @@ android {
 dependencies {
     // Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 }

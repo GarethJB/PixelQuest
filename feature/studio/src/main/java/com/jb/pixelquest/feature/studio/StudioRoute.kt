@@ -1,42 +1,27 @@
 package com.jb.pixelquest.feature.studio
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import com.jb.pixelquest.presentation.component.ScreenHeader
-import com.jb.pixelquest.presentation.resources.R
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jb.pixelquest.feature.studio.ui.screen.StudioScreen
+import com.jb.pixelquest.feature.studio.viewmodel.StudioViewModel
 
+/**
+ * Studio Route
+ * State Hoisting: 상태는 ViewModel에서 관리하고, Screen에 전달
+ */
 @Composable
-fun StudioRoute() {
-    StudioScreen()
-}
+fun StudioRoute(
+    viewModel: StudioViewModel = viewModel()
+) {
+    val uiState by viewModel.container.stateFlow.collectAsStateWithLifecycle()
 
-@Composable
-fun StudioScreen() {
-    Scaffold(
-        topBar = {
-            ScreenHeader(titleResId = R.string.studio_title)
-        }
-    ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = stringResource(id = R.string.studio_screen),
-                modifier = Modifier.padding(16.dp)
-            )
-        }
-    }
+    StudioScreen(
+        uiState = uiState,
+        onAction = viewModel::handleAction,
+        onNewCanvasAction = viewModel::handleNewCanvasAction
+    )
 }
 
 

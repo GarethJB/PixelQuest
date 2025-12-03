@@ -15,6 +15,7 @@ data class StudioUiState(
     val brushes: List<Brush> = emptyList(),
     val selectedCategory: AssetCategory? = null,
     val showNewCanvasDialog: Boolean = false,
+    val newCanvasState: NewCanvasState = NewCanvasState(),
     val error: String? = null
 )
 
