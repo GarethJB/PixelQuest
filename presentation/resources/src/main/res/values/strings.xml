@@ -85,6 +85,39 @@
     <!-- Gallery Screen -->
     <string name="gallery_title">Gallery</string>
     <string name="gallery_screen">Gallery 화면</string>
+    <string name="trending">인기</string>
+    <string name="latest">최신</string>
+    <string name="category">카테고리</string>
+    <string name="search">검색</string>
+    <string name="search_hint">작품 검색...</string>
+    <string name="no_artworks">작품이 없습니다</string>
+    <string name="artwork_title">제목</string>
+    <string name="artwork_author">작성자</string>
+    <string name="artwork_category">카테고리</string>
+    <string name="artwork_tags">태그</string>
+    <string name="artwork_likes">좋아요</string>
+    <string name="artwork_views">조회수</string>
+    <string name="artwork_comments">댓글</string>
+    <string name="artwork_created_at">작성일</string>
+    <string name="artwork_canvas_size">캔버스 크기</string>
+    <string name="like">좋아요</string>
+    <string name="bookmark">북마크</string>
+    <string name="edit">편집</string>
+    <string name="duplicate">복제</string>
+    <string name="liked">좋아요를 눌렀습니다</string>
+    <string name="unliked">좋아요를 취소했습니다</string>
+    <string name="bookmarked">북마크에 추가했습니다</string>
+    <string name="unbookmarked">북마크에서 제거했습니다</string>
+    <string name="category_retro">레트로</string>
+    <string name="category_fantasy">판타지</string>
+    <string name="category_cyberpunk">사이버펑크</string>
+    <string name="category_animal">동물</string>
+    <string name="category_character">캐릭터</string>
+    <string name="category_landscape">풍경</string>
+    <string name="category_object">오브젝트</string>
+    <string name="category_icon">아이콘</string>
+    <string name="category_pattern">패턴</string>
+    <string name="category_abstract">추상</string>
     
     <!-- MyPage Screen -->
     <string name="mypage_title">MyPage</string>
