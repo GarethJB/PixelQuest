@@ -1,42 +1,40 @@
 package com.jb.pixelquest.feature.quest
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import com.jb.pixelquest.presentation.component.ScreenHeader
-import com.jb.pixelquest.presentation.resources.R
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jb.pixelquest.feature.quest.model.QuestAction
+import com.jb.pixelquest.feature.quest.ui.screen.QuestProgressScreen
+import com.jb.pixelquest.feature.quest.ui.screen.QuestScreen
+import com.jb.pixelquest.feature.quest.viewmodel.QuestProgressViewModel
+import com.jb.pixelquest.feature.quest.viewmodel.QuestViewModel
 
+/**
+ * Quest Route
+ * State Hoisting: 상태는 ViewModel에서 관리하고, Screen에 전달
+ */
 @Composable
-fun QuestRoute() {
-    QuestScreen()
+fun QuestRoute(
+    viewModel: QuestViewModel = viewModel()
+) {
+    val uiState by viewModel.container.stateFlow.collectAsStateWithLifecycle()
+
+    QuestScreen(
+        uiState = uiState,
+        onAction = viewModel::handleAction
+    )
 }
 
+/**
+ * Quest Progress Route
+ * 진행 상황 화면
+ */
 @Composable
-fun QuestScreen() {
-    Scaffold(
-        topBar = {
-            ScreenHeader(titleResId = R.string.quest_title)
-        }
-    ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = stringResource(id = R.string.quest_screen),
-                modifier = Modifier.padding(16.dp)
-            )
-        }
-    }
+fun QuestProgressRoute(
+    viewModel: QuestProgressViewModel = viewModel()
+) {
+    val progressState by viewModel.container.stateFlow.collectAsStateWithLifecycle()
+
+    QuestProgressScreen(progressState = progressState)
 }
-
-

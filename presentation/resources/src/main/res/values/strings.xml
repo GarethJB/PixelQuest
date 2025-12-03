@@ -35,6 +35,52 @@
     <!-- Quest Screen -->
     <string name="quest_title">Quest</string>
     <string name="quest_screen">Quest 화면</string>
+    <string name="daily_quests">일일 챌린지</string>
+    <string name="weekly_quests">주간 챌린지</string>
+    <string name="active_quests">진행 중</string>
+    <string name="completed_quests">완료</string>
+    <string name="start_quest">퀘스트 시작</string>
+    <string name="complete_quest">퀘스트 완료</string>
+    <string name="quest_requirements">요구사항</string>
+    <string name="quest_rewards">보상</string>
+    <string name="quest_theme">테마</string>
+    <string name="quest_difficulty">난이도</string>
+    <string name="quest_participants">참여자</string>
+    <string name="no_quests_available">사용 가능한 퀘스트가 없습니다</string>
+    <string name="quest_in_progress">진행 중인 퀘스트</string>
+    <string name="quest_completed">완료된 퀘스트</string>
+    <string name="quest_available">참여 가능</string>
+    <string name="quest_locked">잠김</string>
+    <string name="difficulty_easy">쉬움</string>
+    <string name="difficulty_medium">보통</string>
+    <string name="difficulty_hard">어려움</string>
+    <string name="reward_palette">팔레트</string>
+    <string name="reward_brush">브러시</string>
+    <string name="reward_badge">뱃지</string>
+    <string name="reward_item">아이템</string>
+    <string name="claim_reward">보상 수령</string>
+    <string name="reward_claimed">보상을 수령했습니다</string>
+    
+    <!-- Quest Progress Screen -->
+    <string name="quest_progress_title">나의 진행 상황</string>
+    <string name="total_quests_completed">완료한 퀘스트</string>
+    <string name="daily_quests_completed">일일 퀘스트</string>
+    <string name="weekly_quests_completed">주간 퀘스트</string>
+    <string name="total_rewards_earned">획득한 보상</string>
+    <string name="current_level">레벨</string>
+    <string name="experience_points">경험치</string>
+    <string name="streak_days">연속 참여</string>
+    <string name="statistics">통계</string>
+    <string name="achievements">업적</string>
+    <string name="recent_activity">최근 활동</string>
+    <string name="earned_rewards">획득한 보상</string>
+    <string name="total_artworks">총 작품 수</string>
+    <string name="total_time_spent">총 제작 시간</string>
+    <string name="favorite_theme">선호 테마</string>
+    <string name="most_used_palette">자주 사용한 팔레트</string>
+    <string name="no_achievements">획득한 업적이 없습니다</string>
+    <string name="no_activity">활동 내역이 없습니다</string>
+    <string name="no_rewards">획득한 보상이 없습니다</string>
     
     <!-- Gallery Screen -->
     <string name="gallery_title">Gallery</string>
