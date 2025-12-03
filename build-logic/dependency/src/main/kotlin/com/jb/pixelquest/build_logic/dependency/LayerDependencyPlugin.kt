@@ -45,8 +45,14 @@ class AndroidAppDependencyPlugin : Plugin<Project> {
     }
     
     private fun org.gradle.api.artifacts.dsl.DependencyHandler.addMviDependencies(project: Project) {
+        // Lifecycle
         add("implementation", project.libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
         add("implementation", project.libs.findLibrary("androidx-lifecycle-runtime-compose").get())
+        
+        // Orbit MVI
+        add("implementation", project.libs.findLibrary("orbit-core").get())
+        add("implementation", project.libs.findLibrary("orbit-viewmodel").get())
+        add("implementation", project.libs.findLibrary("orbit-compose").get())
     }
     
     private fun org.gradle.api.artifacts.dsl.DependencyHandler.addNavigationDependencies(project: Project) {
@@ -111,6 +117,11 @@ class DomainLayerDependencyPlugin : Plugin<Project> {
 class PresentationLayerDependencyPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            // Hilt 플러그인 적용 (feature 모듈에서만 사용)
+            if (target.path.contains(":feature:")) {
+                pluginManager.apply("dagger.hilt.android.plugin")
+            }
+            
             dependencies {
                 // Core Android
                 add("implementation", libs.findLibrary("androidx-core-ktx").get())
@@ -126,6 +137,15 @@ class PresentationLayerDependencyPlugin : Plugin<Project> {
                 // MVI 패턴
                 add("implementation", libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
                 add("implementation", libs.findLibrary("androidx-lifecycle-runtime-compose").get())
+                
+                // Orbit MVI
+                add("implementation", libs.findLibrary("orbit-core").get())
+                add("implementation", libs.findLibrary("orbit-viewmodel").get())
+                add("implementation", libs.findLibrary("orbit-compose").get())
+                
+                // Hilt
+                add("implementation", libs.findLibrary("hilt-android").get())
+                add("kapt", libs.findLibrary("hilt-compiler").get())
                 
                 // Testing
                 add("testImplementation", libs.findLibrary("junit").get())
