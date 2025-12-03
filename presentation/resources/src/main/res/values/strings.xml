@@ -122,6 +122,41 @@
     <!-- MyPage Screen -->
     <string name="mypage_title">MyPage</string>
     <string name="mypage_screen">MyPage 화면</string>
+    <string name="my_artworks">나의 작품</string>
+    <string name="inventory">인벤토리</string>
+    <string name="sort">정렬</string>
+    <string name="filter">필터</string>
+    <string name="sort_latest">최신순</string>
+    <string name="sort_oldest">오래된순</string>
+    <string name="sort_most_liked">좋아요순</string>
+    <string name="sort_most_viewed">조회수순</string>
+    <string name="filter_published">공개된 작품</string>
+    <string name="filter_draft">초안</string>
+    <string name="filter_quest_related">퀘스트 관련</string>
+    <string name="delete_artwork">작품 삭제</string>
+    <string name="delete_artwork_confirmation">정말 이 작품을 삭제하시겠습니까?</string>
+    <string name="artwork_deleted">작품이 삭제되었습니다</string>
+    <string name="publish_artwork">작품 공개</string>
+    <string name="unpublish_artwork">작품 비공개</string>
+    <string name="artwork_published">작품이 공개되었습니다</string>
+    <string name="artwork_unpublished">작품이 비공개로 전환되었습니다</string>
+    <string name="edit_artwork">편집</string>
+    <string name="inventory_palette">팔레트</string>
+    <string name="inventory_brush">브러시</string>
+    <string name="inventory_badge">뱃지</string>
+    <string name="inventory_profile_decoration">프로필 장식</string>
+    <string name="equip">장착</string>
+    <string name="unequip">해제</string>
+    <string name="item_equipped">아이템이 장착되었습니다</string>
+    <string name="item_unequipped">아이템이 해제되었습니다</string>
+    <string name="obtained_from">획득 경로</string>
+    <string name="obtained_date">획득일</string>
+    <string name="rarity_common">일반</string>
+    <string name="rarity_rare">희귀</string>
+    <string name="rarity_epic">영웅</string>
+    <string name="rarity_legendary">전설</string>
+    <string name="no_items">아이템이 없습니다</string>
+    <string name="new_item">새 아이템</string>
     
     <!-- Common -->
     <string name="loading">로딩 중...</string>
