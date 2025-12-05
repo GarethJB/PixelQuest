@@ -12,8 +12,8 @@ import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
 /**
- * Gallery 화면 ViewModel
- * Orbit MVI 패턴 사용
+ * Gallery ?�면 ViewModel
+ * Orbit MVI ?�턴 ?�용
  */
 @HiltViewModel
 class GalleryViewModel @Inject constructor(
@@ -29,23 +29,23 @@ class GalleryViewModel @Inject constructor(
     override val container = container<GalleryUiState, GallerySideEffect>(
         GalleryUiState()
     ) {
-        // 초기 데이터 로드
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
     /**
-     * 초기 데이터 로드
+     * 초기 ?�이??로드
      */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCase를 통한 데이터 로드
+        // TODO: UseCase�??�한 ?�이??로드
         // val trendingArtworks = getTrendingArtworksUseCase()
         // val latestArtworks = getLatestArtworksUseCase()
 
-        // 임시 데이터 (개발용)
+        // ?�시 ?�이??(개발??
         val mockTrendingArtworks = emptyList<Artwork>()
         val mockLatestArtworks = emptyList<Artwork>()
 
@@ -59,7 +59,7 @@ class GalleryViewModel @Inject constructor(
     }
 
     /**
-     * 액션 처리
+     * ?�션 처리
      */
     fun handleAction(action: GalleryAction) = intent {
         when (action) {
@@ -68,16 +68,16 @@ class GalleryViewModel @Inject constructor(
                     state.copy(selectedTab = action.tab)
                 }
                 
-                // 탭별 데이터 로드
+                // ??�� ?�이??로드
                 when (action.tab) {
                     GalleryTab.TRENDING -> {
-                        // TODO: 인기 작품 로드
+                        // TODO: ?�기 ?�품 로드
                     }
                     GalleryTab.LATEST -> {
-                        // TODO: 최신 작품 로드
+                        // TODO: 최신 ?�품 로드
                     }
                     GalleryTab.CATEGORY -> {
-                        // 카테고리 선택 필요
+                        // 카테고리 ?�택 ?�요
                     }
                 }
             }
@@ -108,11 +108,11 @@ class GalleryViewModel @Inject constructor(
                     )
                 }
                 
-                // TODO: 카테고리별 작품 로드
+                // TODO: 카테고리�??�품 로드
                 // val categoryArtworks = getCategoryArtworksUseCase(action.category)
                 reduce {
                     state.copy(
-                        categoryArtworks = emptyList() // TODO: 실제 데이터로 교체
+                        categoryArtworks = emptyList() // TODO: ?�제 ?�이?�로 교체
                     )
                 }
             }
@@ -131,14 +131,14 @@ class GalleryViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
-                // TODO: UseCase를 통한 새로고침
+                // TODO: UseCase�??�한 ?�로고침
                 when (state.selectedTab) {
                     GalleryTab.TRENDING -> {
                         // val artworks = getTrendingArtworksUseCase()
                         reduce {
                             state.copy(
                                 isLoading = false,
-                                trendingArtworks = emptyList() // TODO: 실제 데이터로 교체
+                                trendingArtworks = emptyList() // TODO: ?�제 ?�이?�로 교체
                             )
                         }
                     }
@@ -147,7 +147,7 @@ class GalleryViewModel @Inject constructor(
                         reduce {
                             state.copy(
                                 isLoading = false,
-                                latestArtworks = emptyList() // TODO: 실제 데이터로 교체
+                                latestArtworks = emptyList() // TODO: ?�제 ?�이?�로 교체
                             )
                         }
                     }
@@ -157,7 +157,7 @@ class GalleryViewModel @Inject constructor(
                             reduce {
                                 state.copy(
                                     isLoading = false,
-                                    categoryArtworks = emptyList() // TODO: 실제 데이터로 교체
+                                    categoryArtworks = emptyList() // TODO: ?�제 ?�이?�로 교체
                                 )
                             }
                         }
@@ -166,7 +166,7 @@ class GalleryViewModel @Inject constructor(
             }
 
             is GalleryAction.LoadMoreArtworks -> {
-                // TODO: 페이지네이션 구현
+                // TODO: ?�이지?�이??구현
             }
 
             is GalleryAction.UpdateSearchQuery -> {
@@ -181,12 +181,12 @@ class GalleryViewModel @Inject constructor(
                         state.copy(isLoading = true, isSearchActive = true)
                     }
 
-                    // TODO: UseCase를 통한 검색
+                    // TODO: UseCase�??�한 검??
                     // val results = searchArtworksUseCase(state.searchQuery)
                     reduce {
                         state.copy(
                             isLoading = false,
-                            searchResults = emptyList() // TODO: 실제 데이터로 교체
+                            searchResults = emptyList() // TODO: ?�제 ?�이?�로 교체
                         )
                     }
                 }
@@ -214,7 +214,7 @@ class GalleryViewModel @Inject constructor(
             is GalleryAction.ToggleLike -> {
                 val artwork = findArtworkById(action.artworkId)
                 if (artwork != null) {
-                    // TODO: UseCase를 통한 좋아요 토글
+                    // TODO: UseCase�??�한 좋아???��?
                     // toggleLikeUseCase(action.artworkId)
                     
                     val updatedArtwork = artwork.copy(
@@ -222,7 +222,7 @@ class GalleryViewModel @Inject constructor(
                         likes = if (artwork.isLiked) artwork.likes - 1 else artwork.likes + 1
                     )
 
-                    // 상태 업데이트
+                    // ?�태 ?�데?�트
                     reduce {
                         state.copy(
                             trendingArtworks = updateArtwork(state.trendingArtworks, updatedArtwork),
@@ -239,7 +239,7 @@ class GalleryViewModel @Inject constructor(
 
                     postSideEffect(
                         GallerySideEffect.ShowSnackbar(
-                            if (updatedArtwork.isLiked) "좋아요를 눌렀습니다" else "좋아요를 취소했습니다"
+                            if (updatedArtwork.isLiked) " 좋아?��? ?��??�니??" else "좋아?��? 취소?�습?�다"
                         )
                     )
                 }
@@ -248,12 +248,12 @@ class GalleryViewModel @Inject constructor(
             is GalleryAction.ToggleBookmark -> {
                 val artwork = findArtworkById(action.artworkId)
                 if (artwork != null) {
-                    // TODO: UseCase를 통한 북마크 토글
+                    // TODO: UseCase�??�한 북마???��?
                     // toggleBookmarkUseCase(action.artworkId)
                     
                     val updatedArtwork = artwork.copy(isBookmarked = !artwork.isBookmarked)
 
-                    // 상태 업데이트
+                    // ?�태 ?�데?�트
                     reduce {
                         state.copy(
                             trendingArtworks = updateArtwork(state.trendingArtworks, updatedArtwork),
@@ -270,7 +270,7 @@ class GalleryViewModel @Inject constructor(
 
                     postSideEffect(
                         GallerySideEffect.ShowSnackbar(
-                            if (updatedArtwork.isBookmarked) "북마크에 추가했습니다" else "북마크에서 제거했습니다"
+                            if (updatedArtwork.isBookmarked) "북마?�에 추�??�습?�다" else "북마?�에???�거?�습?�다"
                         )
                     )
                 }
@@ -299,7 +299,7 @@ class GalleryViewModel @Inject constructor(
     }
 
     /**
-     * 작품 ID로 작품 찾기
+     * ?�품 ID�??�품 찾기
      */
     private fun findArtworkById(artworkId: String): Artwork? {
         val state = container.stateFlow.value
@@ -311,7 +311,7 @@ class GalleryViewModel @Inject constructor(
     }
 
     /**
-     * 작품 목록에서 작품 업데이트
+     * ?�품 목록?�서 ?�품 ?�데?�트
      */
     private fun updateArtwork(
         artworks: List<Artwork>,

@@ -1,7 +1,7 @@
 package com.jb.pixelquest.feature.mypage.model
 
 /**
- * 인벤토리 상태
+ * ?�벤?�리 ?�태
  */
 data class InventoryState(
     val isLoading: Boolean = false,
@@ -16,7 +16,7 @@ data class InventoryState(
 )
 
 /**
- * 인벤토리 아이템
+ * ?�벤?�리 ?�이??
  */
 data class InventoryItem(
     val id: String,
@@ -27,31 +27,31 @@ data class InventoryItem(
     val thumbnailUrl: String?,
     val rarity: ItemRarity,
     val obtainedDate: Long,
-    val obtainedFrom: String?, // "퀘스트 완료", "상점 구매" 등
-    val isEquipped: Boolean = false, // 장착 여부
-    val isNew: Boolean = false, // 새로 획득한 아이템
-    val metadata: Map<String, Any>? = null // 타입별 추가 정보
+    val obtainedFrom: String?, // "?�스???�료", "?�점 구매" ??
+    val isEquipped: Boolean = false, // ?�착 ?��?
+    val isNew: Boolean = false, // ?�로 ?�득???�이??
+    val metadata: Map<String, Any>? = null // ?�?�별 추�? ?�보
 )
 
 /**
- * 인벤토리 카테고리
+ * ?�벤?�리 카테고리
  */
 enum class InventoryCategory {
-    PALETTE, // 팔레트
-    BRUSH, // 브러시
-    BADGE, // 뱃지
-    PROFILE_DECORATION // 프로필 장식
+    PALETTE, // ?�레??
+    BRUSH, // 브러??
+    BADGE, // 뱃�?
+    PROFILE_DECORATION // ?�로???�식
 }
 
 /**
- * 인벤토리 아이템 타입
+ * ?�벤?�리 ?�이???�??
  */
 enum class InventoryItemType {
     PALETTE, BRUSH, BADGE, PROFILE_FRAME, PROFILE_BACKGROUND, PROFILE_ICON
 }
 
 /**
- * 아이템 희귀도
+ * ?�이???��???
  */
 enum class ItemRarity {
     COMMON, RARE, EPIC, LEGENDARY

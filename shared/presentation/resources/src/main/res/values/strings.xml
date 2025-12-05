@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Screen Titles -->
+    <string name="home_title">Home</string>
+    <string name="studio_title">Studio</string>
+    <string name="gallery_title">Gallery</string>
+    <string name="quest_title">Quest</string>
+    <string name="quest_progress_title">Quest Progress</string>
+    <string name="mypage_title">My Page</string>
+
+    <!-- Common Actions -->
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="like">Like</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="share">Share</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="clear">Clear</string>
+
+    <!-- Gallery -->
+    <string name="trending">Trending</string>
+    <string name="latest">Latest</string>
+    <string name="category">Category</string>
+    <string name="no_artworks">No artworks found</string>
+    <string name="artwork_likes">Likes</string>
+    <string name="artwork_views">Views</string>
+    <string name="artwork_comments">Comments</string>
+    <string name="artwork_tags">Tags</string>
+    <string name="artwork_canvas_size">Canvas Size</string>
+    <string name="current_level">Level</string>
+
+    <!-- Gallery Categories -->
+    <string name="category_retro">Retro</string>
+    <string name="category_fantasy">Fantasy</string>
+    <string name="category_cyberpunk">Cyberpunk</string>
+    <string name="category_animal">Animal</string>
+    <string name="category_character">Character</string>
+    <string name="category_landscape">Landscape</string>
+    <string name="category_object">Object</string>
+    <string name="category_icon">Icon</string>
+    <string name="category_pattern">Pattern</string>
+    <string name="category_abstract">Abstract</string>
+
+    <!-- Studio -->
+    <string name="create_new_canvas">Create New Canvas</string>
+    <string name="canvas_size">Canvas Size</string>
+    <string name="background_color">Background Color</string>
+    <string name="grid">Grid</string>
+    <string name="no_recent_works">No recent works</string>
+    <string name="recent_works">Recent Works</string>
+    <string name="templates">Templates</string>
+    <string name="palettes">Palettes</string>
+    <string name="brushes">Brushes</string>
+    <string name="color_palette">Color Palette</string>
+
+    <!-- Quest -->
+    <string name="daily_quests">Daily Quests</string>
+    <string name="weekly_quests">Weekly Quests</string>
+    <string name="active_quests">Active Quests</string>
+    <string name="completed_quests">Completed Quests</string>
+    <string name="no_quests_available">No quests available</string>
+    <string name="quest_theme">Theme</string>
+    <string name="quest_requirements">Requirements</string>
+    <string name="quest_rewards">Rewards</string>
+    <string name="quest_participants">Participants</string>
+    <string name="quest_available">Available</string>
+    <string name="quest_in_progress">In Progress</string>
+    <string name="quest_completed">Completed</string>
+    <string name="quest_locked">Locked</string>
+    <string name="start_quest">Start Quest</string>
+    <string name="achievements">Achievements</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="earned_rewards">Earned Rewards</string>
+    <string name="experience_points">XP</string>
+    <string name="total_quests_completed">Total Quests Completed</string>
+    <string name="daily_quests_completed">Daily Quests Completed</string>
+    <string name="weekly_quests_completed">Weekly Quests Completed</string>
+    <string name="total_rewards_earned">Total Rewards Earned</string>
+    <string name="streak_days">Streak Days</string>
+    <string name="statistics">Statistics</string>
+    <string name="total_artworks">Total Artworks</string>
+    <string name="total_time_spent">Total Time Spent</string>
+    <string name="favorite_theme">Favorite Theme</string>
+    <string name="most_used_palette">Most Used Palette</string>
+    <string name="no_achievements">No achievements yet</string>
+    <string name="no_activity">No recent activity</string>
+    <string name="no_rewards">No rewards earned yet</string>
+
+    <!-- Quest Difficulty -->
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+
+    <!-- Quest Reward Types -->
+    <string name="reward_palette">Palette</string>
+    <string name="reward_brush">Brush</string>
+    <string name="reward_badge">Badge</string>
+    <string name="reward_item">Item</string>
+
+    <!-- MyPage -->
+    <string name="my_artworks">My Artworks</string>
+    <string name="inventory">Inventory</string>
+    <string name="no_items">No items found</string>
+    <string name="obtained_from">Obtained From</string>
+    <string name="equip">Equip</string>
+    <string name="unequip">Unequip</string>
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="edit_artwork">Edit Artwork</string>
+    <string name="publish_artwork">Publish Artwork</string>
+    <string name="unpublish_artwork">Unpublish Artwork</string>
+
+    <!-- MyPage - Sort Options -->
+    <string name="sort_latest">Latest</string>
+    <string name="sort_oldest">Oldest</string>
+    <string name="sort_most_liked">Most Liked</string>
+    <string name="sort_most_viewed">Most Viewed</string>
+
+    <!-- MyPage - Filter Options -->
+    <string name="filter_published">Published</string>
+    <string name="filter_draft">Draft</string>
+    <string name="filter_quest_related">Quest Related</string>
+
+    <!-- MyPage - Inventory Categories -->
+    <string name="inventory_palette">Palette</string>
+    <string name="inventory_brush">Brush</string>
+    <string name="inventory_badge">Badge</string>
+    <string name="inventory_profile_decoration">Profile Decoration</string>
+</resources>
+

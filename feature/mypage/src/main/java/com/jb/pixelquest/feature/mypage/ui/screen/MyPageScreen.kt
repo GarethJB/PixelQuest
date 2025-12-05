@@ -14,11 +14,11 @@ import com.jb.pixelquest.feature.mypage.ui.component.MyPageTabRow
 import com.jb.pixelquest.feature.mypage.ui.screen.InventoryScreen
 import com.jb.pixelquest.feature.mypage.ui.screen.MyArtworksScreen
 import com.jb.pixelquest.presentation.component.ScreenHeader
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * MyPage 메인 화면
- * State Hoisting 패턴: 상태는 상위에서 관리하고, 액션만 전달받음
+ * MyPage 메인 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun MyPageScreen(
@@ -37,7 +37,7 @@ fun MyPageScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // 탭 행
+            // ????
             MyPageTabRow(
                 selectedTab = uiState.selectedTab,
                 onTabSelected = { tab ->
@@ -45,7 +45,7 @@ fun MyPageScreen(
                 }
             )
 
-            // 탭별 콘텐츠
+            // ??�� 콘텐�?
             when (uiState.selectedTab) {
                 MyPageTab.MY_ARTWORKS -> {
                     MyArtworksScreen(

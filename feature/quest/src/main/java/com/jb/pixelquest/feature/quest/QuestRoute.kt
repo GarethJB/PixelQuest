@@ -12,7 +12,7 @@ import com.jb.pixelquest.feature.quest.viewmodel.QuestViewModel
 
 /**
  * Quest Route
- * State Hoisting: 상태는 ViewModel에서 관리하고, Screen에 전달
+ * State Hoisting: ?�태??ViewModel?�서 관리하�? Screen???�달
  */
 @Composable
 fun QuestRoute(
@@ -28,7 +28,7 @@ fun QuestRoute(
 
 /**
  * Quest Progress Route
- * 진행 상황 화면
+ * 진행 ?�황 ?�면
  */
 @Composable
 fun QuestProgressRoute(

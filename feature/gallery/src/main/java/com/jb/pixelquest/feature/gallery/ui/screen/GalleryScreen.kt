@@ -3,22 +3,20 @@ package com.jb.pixelquest.feature.gallery.ui.screen
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Modifier
 import com.jb.pixelquest.feature.gallery.model.GalleryAction
 import com.jb.pixelquest.feature.gallery.model.GalleryTab
 import com.jb.pixelquest.feature.gallery.model.GalleryUiState
 import com.jb.pixelquest.feature.gallery.ui.component.ArtworkGrid
 import com.jb.pixelquest.feature.gallery.ui.component.CategoryFilterChips
 import com.jb.pixelquest.feature.gallery.ui.component.GalleryTabRow
-import com.jb.pixelquest.feature.gallery.ui.screen.ArtworkDetailScreen
 import com.jb.pixelquest.presentation.component.ScreenHeader
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * Gallery 메인 화면
- * State Hoisting 패턴: 상태는 상위에서 관리하고, 액션만 전달받음
+ * Gallery 메인 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun GalleryScreen(
@@ -36,7 +34,7 @@ fun GalleryScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // 탭 행
+            // ????
             GalleryTabRow(
                 selectedTab = uiState.selectedTab,
                 onTabSelected = { tab ->
@@ -44,7 +42,7 @@ fun GalleryScreen(
                 }
             )
 
-            // 카테고리 필터 (카테고리 탭일 때만 표시)
+            // 카테고리 ?�터 (카테고리 ??�� ?�만 ?�시)
             if (uiState.selectedTab == GalleryTab.CATEGORY) {
                 CategoryFilterChips(
                     selectedCategory = uiState.selectedCategory,
@@ -57,7 +55,7 @@ fun GalleryScreen(
                 )
             }
 
-            // 작품 그리드
+            // ?�품 그리??
             Box(modifier = Modifier.fillMaxSize()) {
                 val artworks = when (uiState.selectedTab) {
                     GalleryTab.TRENDING -> uiState.trendingArtworks
@@ -78,7 +76,7 @@ fun GalleryScreen(
                     }
                 )
 
-                // 로딩 인디케이터
+                // 로딩 ?�디케?�터
                 if (uiState.isLoading) {
                     CircularProgressIndicator(
                         modifier = Modifier.align(Center)
@@ -88,7 +86,7 @@ fun GalleryScreen(
         }
     }
 
-    // 작품 상세 다이얼로그
+    // ?�품 ?�세 ?�이?�로�?
     if (uiState.showArtworkDetail && uiState.selectedArtwork != null) {
         ArtworkDetailScreen(
             artwork = uiState.selectedArtwork,

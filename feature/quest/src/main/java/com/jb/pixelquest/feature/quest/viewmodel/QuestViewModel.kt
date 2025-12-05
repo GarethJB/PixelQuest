@@ -8,8 +8,8 @@ import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
 /**
- * Quest 화면 ViewModel
- * Orbit MVI 패턴 사용
+ * Quest ?�면 ViewModel
+ * Orbit MVI ?�턴 ?�용
  */
 @HiltViewModel
 class QuestViewModel @Inject constructor(
@@ -23,25 +23,25 @@ class QuestViewModel @Inject constructor(
     override val container = container<QuestUiState, QuestSideEffect>(
         QuestUiState()
     ) {
-        // 초기 데이터 로드
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
     /**
-     * 초기 데이터 로드
+     * 초기 ?�이??로드
      */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCase를 통한 데이터 로드
+        // TODO: UseCase�??�한 ?�이??로드
         // val dailyQuests = getDailyQuestsUseCase()
         // val weeklyQuests = getWeeklyQuestsUseCase()
         // val activeQuests = getActiveQuestsUseCase()
         // val completedQuests = getCompletedQuestsUseCase()
 
-        // 임시 데이터 (개발용)
+        // ?�시 ?�이??(개발??
         val mockDailyQuests = emptyList<ChallengeQuest>()
         val mockWeeklyQuests = emptyList<ChallengeQuest>()
         val mockActiveQuests = emptyList<ChallengeQuest>()
@@ -59,7 +59,7 @@ class QuestViewModel @Inject constructor(
     }
 
     /**
-     * 액션 처리
+     * ?�션 처리
      */
     fun handleAction(action: QuestAction) = intent {
         when (action) {
@@ -90,10 +90,10 @@ class QuestViewModel @Inject constructor(
             is QuestAction.StartQuest -> {
                 val quest = findQuestById(action.questId)
                 if (quest != null && quest.status == QuestStatus.AVAILABLE) {
-                    // TODO: UseCase를 통한 퀘스트 시작
+                    // TODO: UseCase�??�한 ?�스???�작
                     // startQuestUseCase(action.questId)
 
-                    // Studio 에디터로 이동
+                    // Studio ?�디?�로 ?�동
                     postSideEffect(
                         QuestSideEffect.NavigateToStudio(
                             questId = quest.id,
@@ -102,7 +102,7 @@ class QuestViewModel @Inject constructor(
                         )
                     )
 
-                    // 상태 업데이트
+                    // ?�태 ?�데?�트
                     reduce {
                         state.copy(
                             activeQuests = state.activeQuests + quest.copy(status = QuestStatus.IN_PROGRESS),
@@ -117,10 +117,10 @@ class QuestViewModel @Inject constructor(
             is QuestAction.CompleteQuest -> {
                 val quest = findQuestById(action.questId)
                 if (quest != null && quest.status == QuestStatus.IN_PROGRESS) {
-                    // TODO: UseCase를 통한 퀘스트 완료
+                    // TODO: UseCase�??�한 ?�스???�료
                     // completeQuestUseCase(action.questId, action.artworkId)
 
-                    // 상태 업데이트
+                    // ?�태 ?�데?�트
                     reduce {
                         state.copy(
                             activeQuests = state.activeQuests.filter { it.id != action.questId },
@@ -131,7 +131,7 @@ class QuestViewModel @Inject constructor(
                         )
                     }
 
-                    postSideEffect(QuestSideEffect.ShowSnackbar("퀘스트를 완료했습니다!"))
+                    postSideEffect(QuestSideEffect.ShowSnackbar("?�스?��? ?�료?�습?�다!"))
                 }
             }
 
@@ -140,24 +140,24 @@ class QuestViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
-                // TODO: UseCase를 통한 새로고침
+                // TODO: UseCase�??�한 ?�로고침
                 // val dailyQuests = getDailyQuestsUseCase()
                 // val weeklyQuests = getWeeklyQuestsUseCase()
 
                 reduce {
                     state.copy(
                         isLoading = false,
-                        dailyQuests = emptyList(), // TODO: 실제 데이터로 교체
-                        weeklyQuests = emptyList() // TODO: 실제 데이터로 교체
+                        dailyQuests = emptyList(), // TODO: ?�제 ?�이?�로 교체
+                        weeklyQuests = emptyList() // TODO: ?�제 ?�이?�로 교체
                     )
                 }
             }
 
             is QuestAction.ClaimReward -> {
-                // TODO: UseCase를 통한 보상 수령
+                // TODO: UseCase�??�한 보상 ?�령
                 // claimRewardUseCase(action.rewardId)
 
-                postSideEffect(QuestSideEffect.ShowSnackbar("보상을 수령했습니다!"))
+                postSideEffect(QuestSideEffect.ShowSnackbar("보상???�령?�습?�다!"))
             }
 
             is QuestAction.ShowError -> {
@@ -174,17 +174,17 @@ class QuestViewModel @Inject constructor(
             }
 
             is QuestAction.LoadProgress -> {
-                // QuestProgressViewModel에서 처리
+                // QuestProgressViewModel?�서 처리
             }
 
             is QuestAction.RefreshProgress -> {
-                // QuestProgressViewModel에서 처리
+                // QuestProgressViewModel?�서 처리
             }
         }
     }
 
     /**
-     * 퀘스트 ID로 퀘스트 찾기
+     * ?�스??ID�??�스??찾기
      */
     private fun findQuestById(questId: String): ChallengeQuest? {
         val state = container.stateFlow.value
@@ -195,7 +195,7 @@ class QuestViewModel @Inject constructor(
     }
 
     /**
-     * 퀘스트 상태 업데이트
+     * ?�스???�태 ?�데?�트
      */
     private fun updateQuestStatus(
         quests: List<ChallengeQuest>,

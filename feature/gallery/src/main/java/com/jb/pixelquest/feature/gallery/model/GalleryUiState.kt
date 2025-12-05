@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
 /**
- * Gallery 화면의 UI 상태
- * State Hoisting 패턴을 위해 모든 상태를 상위로 끌어올림
+ * Gallery ?�면??UI ?�태
+ * State Hoisting ?�턴???�해 모든 ?�태�??�위�??�어?�림
  */
 data class GalleryUiState(
     val isLoading: Boolean = false,
@@ -23,7 +23,7 @@ data class GalleryUiState(
 )
 
 /**
- * 작품
+ * ?�품
  */
 data class Artwork(
     val id: String,
@@ -43,13 +43,13 @@ data class Artwork(
     val isBookmarked: Boolean = false,
     val canvasSize: IntSize,
     val palette: List<Color>? = null,
-    val questId: String? = null, // 퀘스트 작품인 경우
-    val isCollaborative: Boolean = false, // 협업 작품 여부
-    val contributors: List<User> = emptyList() // 협업 작품 참여자
+    val questId: String? = null, // ?�스???�품??경우
+    val isCollaborative: Boolean = false, // ?�업 ?�품 ?��?
+    val contributors: List<User> = emptyList() // ?�업 ?�품 참여??
 )
 
 /**
- * 사용자
+ * ?�용??
  */
 data class User(
     val id: String,
@@ -60,27 +60,27 @@ data class User(
 )
 
 /**
- * Gallery 탭
+ * Gallery ??
  */
 enum class GalleryTab {
-    TRENDING, // 인기 작품
-    LATEST, // 최신 작품
-    CATEGORY // 카테고리별
+    TRENDING, // ?�기 ?�품
+    LATEST, // 최신 ?�품
+    CATEGORY // 카테고리�?
 }
 
 /**
- * 작품 카테고리
+ * ?�품 카테고리
  */
 enum class ArtworkCategory {
-    RETRO, // 레트로
-    FANTASY, // 판타지
-    CYBERPUNK, // 사이버펑크
-    ANIMAL, // 동물
-    CHARACTER, // 캐릭터
-    LANDSCAPE, // 풍경
-    OBJECT, // 오브젝트
-    ICON, // 아이콘
-    PATTERN, // 패턴
+    RETRO, // ?�트�?
+    FANTASY, // ?��?지
+    CYBERPUNK, // ?�이버펑??
+    ANIMAL, // ?�물
+    CHARACTER, // 캐릭??
+    LANDSCAPE, // ?�경
+    OBJECT, // ?�브?�트
+    ICON, // ?�이�?
+    PATTERN, // ?�턴
     ABSTRACT // 추상
 }
 

@@ -17,11 +17,11 @@ import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.quest.model.ChallengeQuest
 import com.jb.pixelquest.feature.quest.model.QuestDifficulty
 import com.jb.pixelquest.feature.quest.model.QuestStatus
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 챌린지 퀘스트 카드
- * State Hoisting: 클릭 이벤트만 상위로 전달
+ * 챌린지 ?�스??카드
+ * State Hoisting: ?�릭 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun ChallengeQuestCard(
@@ -42,13 +42,13 @@ fun ChallengeQuestCard(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // 헤더: 썸네일, 제목, 상태
+            // ?�더: ?�네?? ?�목, ?�태
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // 썸네일
+                // ?�네??
                 if (quest.thumbnailPath != null) {
                     AsyncImage(
                         model = quest.thumbnailPath,
@@ -66,7 +66,7 @@ fun ChallengeQuestCard(
                     )
                 }
 
-                // 제목 및 상태
+                // ?�목 �??�태
                 Column(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -84,17 +84,17 @@ fun ChallengeQuestCard(
                     )
                 }
 
-                // 상태 배지
+                // ?�태 배�?
                 QuestStatusBadge(status = quest.status)
             }
 
-            // 테마 및 난이도
+            // ?�마 �??�이??
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // 테마
+                // ?�마
                 Surface(
                     color = MaterialTheme.colorScheme.primaryContainer,
                     shape = RoundedCornerShape(8.dp)
@@ -107,15 +107,15 @@ fun ChallengeQuestCard(
                     )
                 }
 
-                // 난이도
+                // ?�이??
                 DifficultyBadge(difficulty = quest.difficulty)
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                // 참여자 수
+                // 참여????
                 if (quest.participantCount > 0) {
                     Text(
-                        text = "${quest.participantCount}명 참여",
+                        text = "${quest.participantCount}�?참여",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

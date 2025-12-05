@@ -13,11 +13,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.Palette
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 색상 팔레트 컴포넌트
- * State Hoisting: 색상 선택 이벤트만 상위로 전달
+ * ?�상 ?�레??컴포?�트
+ * State Hoisting: ?�상 ?�택 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun ColorPalette(
@@ -35,7 +35,7 @@ fun ColorPalette(
             style = MaterialTheme.typography.titleSmall
         )
 
-        // 기본 색상 팔레트
+        // 기본 ?�상 ?�레??
         val defaultColors = listOf(
             Color.Black,
             Color.White,
@@ -68,7 +68,7 @@ fun ColorPalette(
             }
         }
 
-        // 선택된 팔레트의 색상들
+        // ?�택???�레?�의 ?�상??
         selectedPalette?.let { palette ->
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),

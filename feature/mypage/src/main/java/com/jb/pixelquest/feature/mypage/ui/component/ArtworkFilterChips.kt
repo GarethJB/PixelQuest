@@ -10,11 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.mypage.model.ArtworkFilterOption
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 작품 필터 칩
- * State Hoisting: 선택 이벤트만 상위로 전달
+ * ?�품 ?�터 �?
+ * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun ArtworkFilterChips(
@@ -27,7 +27,7 @@ fun ArtworkFilterChips(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        // 전체 필터 (선택 해제)
+        // ?�체 ?�터 (?�택 ?�제)
         item {
             FilterChip(
                 selected = selectedFilter == null,

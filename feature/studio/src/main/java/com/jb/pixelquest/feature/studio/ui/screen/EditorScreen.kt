@@ -9,11 +9,11 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.*
 import com.jb.pixelquest.feature.studio.ui.component.*
 import com.jb.pixelquest.presentation.component.ScreenHeader
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 에디터 화면
- * State Hoisting 패턴: 상태는 상위에서 관리하고, 액션만 전달받음
+ * ?�디???�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun EditorScreen(
@@ -40,7 +40,7 @@ fun EditorScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // 캔버스 영역
+            // 캔버???�역
             PixelCanvas(
                 canvasSize = uiState.canvasSize,
                 pixels = uiState.pixels,
@@ -62,7 +62,7 @@ fun EditorScreen(
                     .weight(1f)
             )
 
-            // 색상 팔레트
+            // ?�상 ?�레??
             ColorPalette(
                 selectedColor = uiState.selectedColor,
                 selectedPalette = uiState.selectedPalette,

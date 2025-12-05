@@ -11,8 +11,8 @@ import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
 /**
- * 인벤토리 ViewModel
- * Orbit MVI 패턴 사용
+ * ?�벤?�리 ViewModel
+ * Orbit MVI ?�턴 ?�용
  */
 @HiltViewModel
 class InventoryViewModel @Inject constructor(
@@ -25,25 +25,25 @@ class InventoryViewModel @Inject constructor(
     override val container = container<InventoryState, Nothing>(
         InventoryState()
     ) {
-        // 초기 데이터 로드
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
     /**
-     * 초기 데이터 로드
+     * 초기 ?�이??로드
      */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCase를 통한 데이터 로드
+        // TODO: UseCase�??�한 ?�이??로드
         // val palettes = getInventoryItemsUseCase(InventoryCategory.PALETTE)
         // val brushes = getInventoryItemsUseCase(InventoryCategory.BRUSH)
         // val badges = getInventoryItemsUseCase(InventoryCategory.BADGE)
         // val decorations = getInventoryItemsUseCase(InventoryCategory.PROFILE_DECORATION)
 
-        // 임시 데이터 (개발용)
+        // ?�시 ?�이??(개발??
         val mockPalettes = emptyList<InventoryItem>()
         val mockBrushes = emptyList<InventoryItem>()
         val mockBadges = emptyList<InventoryItem>()
@@ -61,7 +61,7 @@ class InventoryViewModel @Inject constructor(
     }
 
     /**
-     * 액션 처리
+     * ?�션 처리
      */
     fun handleAction(action: MyPageAction) = intent {
         when (action) {
@@ -92,10 +92,10 @@ class InventoryViewModel @Inject constructor(
             is MyPageAction.EquipItem -> {
                 val item = findItemById(action.itemId)
                 if (item != null && !item.isEquipped) {
-                    // TODO: UseCase를 통한 아이템 장착
+                    // TODO: UseCase�??�한 ?�이???�착
                     // equipItemUseCase(action.itemId)
 
-                    // 같은 타입의 다른 아이템 해제
+                    // 같�? ?�?�의 ?�른 ?�이???�제
                     val updatedItems = getItemsByCategory(item.type).map { i ->
                         if (i.id == action.itemId) {
                             i.copy(isEquipped = true)
@@ -119,7 +119,7 @@ class InventoryViewModel @Inject constructor(
             is MyPageAction.UnequipItem -> {
                 val item = findItemById(action.itemId)
                 if (item != null && item.isEquipped) {
-                    // TODO: UseCase를 통한 아이템 해제
+                    // TODO: UseCase�??�한 ?�이???�제
                     // unequipItemUseCase(action.itemId)
 
                     val updatedItems = getItemsByCategory(item.type).map { i ->
@@ -141,13 +141,13 @@ class InventoryViewModel @Inject constructor(
             }
 
             else -> {
-                // 다른 액션은 무시
+                // ?�른 ?�션?� 무시
             }
         }
     }
 
     /**
-     * 아이템 ID로 아이템 찾기
+     * ?�이??ID�??�이??찾기
      */
     private fun findItemById(itemId: String): InventoryItem? {
         val state = container.stateFlow.value
@@ -159,7 +159,7 @@ class InventoryViewModel @Inject constructor(
     }
 
     /**
-     * 카테고리별 아이템 가져오기
+     * 카테고리�??�이??가?�오�?
      */
     private fun getItemsByCategory(type: InventoryItemType): List<InventoryItem> {
         val state = container.stateFlow.value
@@ -174,7 +174,7 @@ class InventoryViewModel @Inject constructor(
     }
 
     /**
-     * 카테고리별 아이템 업데이트
+     * 카테고리�??�이???�데?�트
      */
     private fun updateItemsByCategory(
         type: InventoryItemType,

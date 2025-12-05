@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
 /**
- * Studio 화면의 UI 상태
- * State Hoisting 패턴을 위해 모든 상태를 상위로 끌어올림
+ * Studio ?�면??UI ?�태
+ * State Hoisting ?�턴???�해 모든 ?�태�??�위�??�어?�림
  */
 data class StudioUiState(
     val isLoading: Boolean = false,
@@ -20,7 +20,7 @@ data class StudioUiState(
 )
 
 /**
- * 최근 작업 항목
+ * 최근 ?�업 ??��
  */
 data class RecentWork(
     val id: String,
@@ -32,7 +32,7 @@ data class RecentWork(
 )
 
 /**
- * 템플릿
+ * ?�플�?
  */
 data class Template(
     val id: String,
@@ -44,7 +44,7 @@ data class Template(
 )
 
 /**
- * 템플릿 카테고리
+ * ?�플�?카테고리
  */
 enum class TemplateCategory {
     CHARACTER,
@@ -55,7 +55,7 @@ enum class TemplateCategory {
 }
 
 /**
- * 팔레트
+ * ?�레??
  */
 data class Palette(
     val id: String,
@@ -65,7 +65,7 @@ data class Palette(
 )
 
 /**
- * 브러시
+ * 브러??
  */
 data class Brush(
     val id: String,
@@ -76,7 +76,7 @@ data class Brush(
 )
 
 /**
- * 브러시 모양
+ * 브러??모양
  */
 enum class BrushShape {
     CIRCLE,
@@ -85,7 +85,7 @@ enum class BrushShape {
 }
 
 /**
- * 에셋 카테고리
+ * ?�셋 카테고리
  */
 enum class AssetCategory {
     TEMPLATE,

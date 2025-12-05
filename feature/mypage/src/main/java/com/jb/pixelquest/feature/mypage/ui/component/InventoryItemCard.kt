@@ -15,11 +15,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.mypage.model.InventoryItem
 import com.jb.pixelquest.feature.mypage.model.ItemRarity
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 인벤토리 아이템 카드
- * State Hoisting: 클릭 이벤트만 상위로 전달
+ * ?�벤?�리 ?�이??카드
+ * State Hoisting: ?�릭 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun InventoryItemCard(
@@ -41,7 +41,7 @@ fun InventoryItemCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // 아이콘
+            // ?�이�?
             Box {
                 Surface(
                     color = MaterialTheme.colorScheme.surfaceVariant,
@@ -68,7 +68,7 @@ fun InventoryItemCard(
                     }
                 }
 
-                // 장착 배지
+                // ?�착 배�?
                 if (item.isEquipped) {
                     Surface(
                         color = MaterialTheme.colorScheme.primary,
@@ -82,7 +82,7 @@ fun InventoryItemCard(
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = "✓",
+                                text = "??",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onPrimary
                             )
@@ -90,7 +90,7 @@ fun InventoryItemCard(
                     }
                 }
 
-                // 새 아이템 배지
+                // ???�이??배�?
                 if (item.isNew) {
                     Surface(
                         color = MaterialTheme.colorScheme.error,
@@ -113,7 +113,7 @@ fun InventoryItemCard(
                 }
             }
 
-            // 이름
+            // ?�름
             Text(
                 text = item.name,
                 style = MaterialTheme.typography.labelMedium,
@@ -122,7 +122,7 @@ fun InventoryItemCard(
                 overflow = TextOverflow.Ellipsis
             )
 
-            // 희귀도
+            // ?��???
             Surface(
                 color = getRarityColor(item.rarity).copy(alpha = 0.2f),
                 shape = RoundedCornerShape(8.dp)
@@ -151,10 +151,10 @@ internal fun getRarityColor(rarity: ItemRarity): androidx.compose.ui.graphics.Co
 @Composable
 internal fun getRarityText(rarity: ItemRarity): String {
     return when (rarity) {
-        ItemRarity.COMMON -> stringResource(id = R.string.rarity_common)
-        ItemRarity.RARE -> stringResource(id = R.string.rarity_rare)
-        ItemRarity.EPIC -> stringResource(id = R.string.rarity_epic)
-        ItemRarity.LEGENDARY -> stringResource(id = R.string.rarity_legendary)
+        ItemRarity.COMMON -> ""
+        ItemRarity.RARE -> ""
+        ItemRarity.EPIC -> ""
+        ItemRarity.LEGENDARY -> ""
     }
 }
 

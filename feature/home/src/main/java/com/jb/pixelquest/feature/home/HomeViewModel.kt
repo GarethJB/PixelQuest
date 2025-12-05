@@ -11,23 +11,23 @@ class HomeViewModel : ViewModel() {
 
     private val placeholderHighlights = listOf(
         HomeHighlight(
-            title = "오늘의 퀘스트",
-            description = "도시 곳곳에 흩어진 픽셀을 수집해보세요."
+            title = "?�늘???�스??,
+            description = "?�시 곳곳???�어�??��????�집?�보?�요."
         ),
         HomeHighlight(
-            title = "주간 랭킹",
-            description = "이번 주 챌린지에서 상위 10%에 도전하세요."
+            title = "주간 ??��",
+            description = "?�번 �?챌린지?�서 ?�위 10%???�전?�세??"
         ),
         HomeHighlight(
-            title = "새로운 앨범",
-            description = "겨울 시즌 테마 앨범이 추가되었습니다."
+            title = "?�로???�범",
+            description = "겨울 ?�즌 ?�마 ?�범??추�??�었?�니??"
         )
     )
 
     private val _uiState = MutableStateFlow(
         HomeUiState(
             welcomeTitle = "PixelQuest",
-            welcomeMessage = "픽셀로 기록하는 나만의 여행",
+            welcomeMessage = "?��?�?기록?�는 ?�만???�행",
             highlights = placeholderHighlights
         )
     )

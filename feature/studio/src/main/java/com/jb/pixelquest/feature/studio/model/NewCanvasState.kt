@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
 /**
- * 새 캔버스 생성 다이얼로그의 상태
- * State Hoisting 패턴을 위해 상태를 상위로 끌어올림
+ * ??캔버???�성 ?�이?�로그의 ?�태
+ * State Hoisting ?�턴???�해 ?�태�??�위�??�어?�림
  */
 data class NewCanvasState(
     val selectedSize: CanvasSize = CanvasSize.SIZE_32X32,
@@ -18,7 +18,7 @@ data class NewCanvasState(
 )
 
 /**
- * 캔버스 크기 프리셋
+ * 캔버???�기 ?�리??
  */
 enum class CanvasSize(val size: IntSize, val displayName: String) {
     SIZE_16X16(IntSize(16, 16), "16x16"),

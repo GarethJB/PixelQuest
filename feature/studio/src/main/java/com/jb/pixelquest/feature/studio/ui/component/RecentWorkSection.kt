@@ -9,11 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.RecentWork
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 최근 작업 섹션
- * State Hoisting: 이벤트만 상위로 전달
+ * 최근 ?�업 ?�션
+ * State Hoisting: ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun RecentWorkSection(

@@ -16,11 +16,11 @@ import com.jb.pixelquest.feature.mypage.model.MyPageUiState
 import com.jb.pixelquest.feature.mypage.ui.component.ArtworkFilterChips
 import com.jb.pixelquest.feature.mypage.ui.component.ArtworkSortMenu
 import com.jb.pixelquest.feature.mypage.ui.component.MyArtworkGrid
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 나의 작품 화면
- * State Hoisting 패턴: 상태는 상위에서 관리하고, 액션만 전달받음
+ * ?�의 ?�품 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun MyArtworksScreen(
@@ -33,7 +33,7 @@ fun MyArtworksScreen(
     Column(
         modifier = modifier.fillMaxSize()
     ) {
-        // 정렬 및 필터 헤더
+        // ?�렬 �??�터 ?�더
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -64,7 +64,7 @@ fun MyArtworksScreen(
             }
         }
 
-        // 필터 칩
+        // ?�터 �?
         ArtworkFilterChips(
             selectedFilter = uiState.filterOption,
             onFilterSelected = { filter ->
@@ -72,7 +72,7 @@ fun MyArtworksScreen(
             }
         )
 
-        // 작품 그리드
+        // ?�품 그리??
         Box(modifier = Modifier.fillMaxSize()) {
             MyArtworkGrid(
                 artworks = uiState.myArtworks,
@@ -80,7 +80,7 @@ fun MyArtworksScreen(
                     onAction(MyPageAction.SelectArtwork(artwork))
                 },
                 onEditClick = { artworkId ->
-                    // TODO: Studio로 이동
+                    // TODO: Studio�??�동
                 },
                 onDeleteClick = { artworkId ->
                     onAction(MyPageAction.DeleteArtwork(artworkId))
@@ -90,7 +90,7 @@ fun MyArtworksScreen(
                 }
             )
 
-            // 로딩 인디케이터
+            // 로딩 ?�디케?�터
             if (uiState.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)

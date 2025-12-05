@@ -4,11 +4,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.jb.pixelquest.feature.mypage.model.ArtworkSortOption
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 작품 정렬 메뉴
- * State Hoisting: 선택 이벤트만 상위로 전달
+ * ?�품 ?�렬 메뉴
+ * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun ArtworkSortMenu(

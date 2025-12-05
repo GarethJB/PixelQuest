@@ -14,11 +14,11 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.quest.model.*
 import com.jb.pixelquest.feature.quest.ui.component.RewardList
 import com.jb.pixelquest.presentation.component.ScreenHeader
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * Quest 진행 상황 화면
- * State Hoisting 패턴: 상태는 상위에서 관리하고, 액션만 전달받음
+ * Quest 진행 ?�황 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun QuestProgressScreen(
@@ -47,17 +47,17 @@ fun QuestProgressScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(16.dp)
             ) {
-                // 진행 상황 요약
+                // 진행 ?�황 ?�약
                 item {
                     ProgressOverviewCard(progress = progressState.userProgress)
                 }
 
-                // 통계
+                // ?�계
                 item {
                     StatisticsCard(statistics = progressState.statistics)
                 }
 
-                // 업적
+                // ?�적
                 if (progressState.achievements.isNotEmpty()) {
                     item {
                         Text(
@@ -78,7 +78,7 @@ fun QuestProgressScreen(
                     }
                 }
 
-                // 최근 활동
+                // 최근 ?�동
                 if (progressState.recentActivity.isNotEmpty()) {
                     item {
                         Text(
@@ -99,7 +99,7 @@ fun QuestProgressScreen(
                     }
                 }
 
-                // 획득한 보상
+                // ?�득??보상
                 if (progressState.earnedRewards.isNotEmpty()) {
                     item {
                         Text(
@@ -143,7 +143,7 @@ private fun ProgressOverviewCard(
                 fontWeight = FontWeight.Bold
             )
 
-            // 레벨 및 경험치
+            // ?�벨 �?경험�?
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -167,7 +167,7 @@ private fun ProgressOverviewCard(
                 )
             }
 
-            // 통계 그리드
+            // ?�계 그리??
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -200,7 +200,7 @@ private fun ProgressOverviewCard(
             }
             StatItem(
                 label = stringResource(id = R.string.streak_days),
-                value = "${progress.streakDays}일",
+                value = "${progress.streakDays}??",
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -273,7 +273,7 @@ private fun StatisticsCard(
             if (statistics.totalTimeSpent > 0) {
                 StatRow(
                     label = stringResource(id = R.string.total_time_spent),
-                    value = "${statistics.totalTimeSpent}분"
+                    value = "${statistics.totalTimeSpent}�?"
                 )
             }
 
@@ -341,7 +341,7 @@ private fun AchievementCard(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // 아이콘
+            // ?�이�?
             Surface(
                 color = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(8.dp),
@@ -352,7 +352,7 @@ private fun AchievementCard(
                     contentAlignment = Alignment.Center
                 ) {
                     if (achievement.iconPath.isNotEmpty()) {
-                        // TODO: AsyncImage로 교체
+                        // TODO: AsyncImage�?교체
                         Text(
                             text = achievement.name.take(1),
                             style = MaterialTheme.typography.titleMedium
@@ -361,7 +361,7 @@ private fun AchievementCard(
                 }
             }
 
-            // 정보
+            // ?�보
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -466,7 +466,7 @@ private fun EmptyStateCard(
 }
 
 private fun formatTimestamp(timestamp: Long): String {
-    // TODO: 날짜 포맷팅 로직 구현
-    return "방금 전"
+    // TODO: ?�짜 ?�맷??로직 구현
+    return "방금 ??"
 }
 

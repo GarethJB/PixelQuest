@@ -14,11 +14,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.*
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 새 캔버스 생성 다이얼로그
- * State Hoisting: 상태는 상위에서 관리하고, 액션만 전달받음
+ * ??캔버???�성 ?�이?�로�?
+ * State Hoisting: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun NewCanvasDialog(
@@ -38,7 +38,7 @@ fun NewCanvasDialog(
                     .fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // 캔버스 크기 선택
+                // 캔버???�기 ?�택
                 CanvasSizeSelector(
                     selectedSize = state.selectedSize,
                     customWidth = state.customWidth,
@@ -54,7 +54,7 @@ fun NewCanvasDialog(
                     }
                 )
 
-                // 배경색 선택
+                // 배경???�택
                 BackgroundColorSelector(
                     selectedColor = state.backgroundColor,
                     onColorSelected = { color ->
@@ -62,7 +62,7 @@ fun NewCanvasDialog(
                     }
                 )
 
-                // 템플릿 선택 (선택사항)
+                // ?�플�??�택 (?�택?�항)
                 if (state.selectedTemplate != null) {
                     Text(
                         text = "Selected: ${state.selectedTemplate.name}",
@@ -103,7 +103,7 @@ private fun CanvasSizeSelector(
             style = MaterialTheme.typography.titleSmall
         )
 
-        // 프리셋 크기 선택
+        // ?�리???�기 ?�택
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth()
@@ -119,7 +119,7 @@ private fun CanvasSizeSelector(
             }
         }
 
-        // 커스텀 크기 입력
+        // 커스?� ?�기 ?�력
         if (selectedSize == CanvasSize.CUSTOM) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)

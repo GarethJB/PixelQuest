@@ -14,13 +14,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.studio.model.RecentWork
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * 최근 작업 아이템 컴포넌트
- * State Hoisting: 클릭/삭제 이벤트만 상위로 전달
+ * 최근 ?�업 ?�이??컴포?�트
+ * State Hoisting: ?�릭/??�� ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun RecentWorkItem(
@@ -42,7 +42,7 @@ fun RecentWorkItem(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // 썸네일
+            // ?�네??
             AsyncImage(
                 model = work.thumbnailPath,
                 contentDescription = work.name,
@@ -52,7 +52,7 @@ fun RecentWorkItem(
                 contentScale = ContentScale.Crop
             )
 
-            // 정보
+            // ?�보
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -75,7 +75,7 @@ fun RecentWorkItem(
                 )
             }
 
-            // 삭제 버튼
+            // ??�� 버튼
             IconButton(onClick = onDeleteClick) {
                 Icon(
                     imageVector = Icons.Default.Delete,

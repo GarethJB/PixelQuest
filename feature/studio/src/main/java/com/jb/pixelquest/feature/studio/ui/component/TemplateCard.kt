@@ -13,8 +13,8 @@ import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.studio.model.Template
 
 /**
- * 템플릿 카드 컴포넌트
- * State Hoisting: 클릭 이벤트만 상위로 전달
+ * ?�플�?카드 컴포?�트
+ * State Hoisting: ?�릭 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun TemplateCard(
@@ -31,7 +31,7 @@ fun TemplateCard(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            // 썸네일
+            // ?�네??
             AsyncImage(
                 model = template.thumbnailPath,
                 contentDescription = template.name,
@@ -41,7 +41,7 @@ fun TemplateCard(
                 contentScale = ContentScale.Crop
             )
 
-            // 정보
+            // ?�보
             Column(
                 modifier = Modifier
                     .fillMaxWidth()

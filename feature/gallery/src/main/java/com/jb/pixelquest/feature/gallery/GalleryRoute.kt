@@ -10,7 +10,7 @@ import com.jb.pixelquest.feature.gallery.viewmodel.GalleryViewModel
 
 /**
  * Gallery Route
- * State Hoisting: 상태는 ViewModel에서 관리하고, Screen에 전달
+ * State Hoisting: ?�태??ViewModel?�서 관리하�? Screen???�달
  */
 @Composable
 fun GalleryRoute(

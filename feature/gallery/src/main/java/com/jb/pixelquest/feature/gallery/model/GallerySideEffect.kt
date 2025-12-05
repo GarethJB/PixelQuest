@@ -1,27 +1,27 @@
 package com.jb.pixelquest.feature.gallery.model
 
 /**
- * Gallery 화면의 사이드 이펙트
- * 네비게이션, 에러 표시 등 UI 이벤트
+ * Gallery ?�면???�이???�펙??
+ * ?�비게이?? ?�러 ?�시 ??UI ?�벤??
  */
 sealed interface GallerySideEffect {
     /**
-     * 사용자 프로필로 이동
+     * ?�용???�로?�로 ?�동
      */
     data class NavigateToUserProfile(val userId: String) : GallerySideEffect
     
     /**
-     * Studio 에디터로 이동 (작품 편집/복제)
+     * Studio ?�디?�로 ?�동 (?�품 ?�집/복제)
      */
     data class NavigateToStudio(val artworkId: String? = null) : GallerySideEffect
     
     /**
-     * 스낵바 표시
+     * ?�낵�??�시
      */
     data class ShowSnackbar(val message: String) : GallerySideEffect
     
     /**
-     * 작품 공유
+     * ?�품 공유
      */
     data class ShareArtwork(val artwork: Artwork) : GallerySideEffect
 }

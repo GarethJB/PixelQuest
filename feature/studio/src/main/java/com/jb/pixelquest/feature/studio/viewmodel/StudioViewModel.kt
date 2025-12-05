@@ -17,8 +17,8 @@ import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
 /**
- * Studio 화면 ViewModel
- * Orbit MVI 패턴 사용
+ * Studio ?�면 ViewModel
+ * Orbit MVI ?�턴 ?�용
  */
 @HiltViewModel
 class StudioViewModel @Inject constructor(
@@ -33,25 +33,25 @@ class StudioViewModel @Inject constructor(
     override val container = container<StudioUiState, StudioSideEffect>(
         StudioUiState()
     ) {
-        // 초기 데이터 로드
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
     /**
-     * 초기 데이터 로드
+     * 초기 ?�이??로드
      */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCase를 통한 데이터 로드
+        // TODO: UseCase�??�한 ?�이??로드
         // val recentWorks = getRecentWorksUseCase()
         // val templates = getTemplatesUseCase()
         // val palettes = getPalettesUseCase()
         // val brushes = getBrushesUseCase()
 
-        // 임시 데이터 (개발용)
+        // ?�시 ?�이??(개발??
         val mockRecentWorks = emptyList<RecentWork>()
         val mockTemplates = emptyList<Template>()
         val mockPalettes = emptyList<Palette>()
@@ -69,12 +69,12 @@ class StudioViewModel @Inject constructor(
     }
 
     /**
-     * 액션 처리
+     * ?�션 처리
      */
     fun handleAction(action: StudioAction) = intent {
         when (action) {
             is StudioAction.SelectRecentWork -> {
-                // 에디터로 이동 (기존 캔버스 로드)
+                // ?�디?�로 ?�동 (기존 캔버??로드)
                 postSideEffect(
                     StudioSideEffect.NavigateToEditor(
                         canvasId = action.work.id,
@@ -86,7 +86,7 @@ class StudioViewModel @Inject constructor(
             }
 
             is StudioAction.DeleteRecentWork -> {
-                // TODO: UseCase를 통한 삭제
+                // TODO: UseCase�??�한 ??��
                 // deleteRecentWorkUseCase(action.workId)
                 
                 reduce {
@@ -94,11 +94,11 @@ class StudioViewModel @Inject constructor(
                         recentWorks = state.recentWorks.filter { it.id != action.workId }
                     )
                 }
-                postSideEffect(StudioSideEffect.ShowSnackbar("작업이 삭제되었습니다"))
+                postSideEffect(StudioSideEffect.ShowSnackbar("?�업????��?�었?�니??"))
             }
 
             is StudioAction.SelectTemplate -> {
-                // 템플릿 선택 시 에디터로 이동
+                // ?�플�??�택 ???�디?�로 ?�동
                 postSideEffect(
                     StudioSideEffect.NavigateToEditor(
                         canvasId = null,
@@ -132,13 +132,13 @@ class StudioViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
-                // TODO: UseCase를 통한 최근 작업 새로고침
+                // TODO: UseCase�??�한 최근 ?�업 ?�로고침
                 // val recentWorks = getRecentWorksUseCase()
 
                 reduce {
                     state.copy(
                         isLoading = false,
-                        recentWorks = emptyList() // TODO: 실제 데이터로 교체
+                        recentWorks = emptyList() // TODO: ?�제 ?�이?�로 교체
                     )
                 }
             }
@@ -159,8 +159,8 @@ class StudioViewModel @Inject constructor(
     }
 
     /**
-     * 새 캔버스 액션 처리
-     * NewCanvasState를 StudioViewModel에서 통합 관리
+     * ??캔버???�션 처리
+     * NewCanvasState�?StudioViewModel?�서 ?�합 관�?
      */
     fun handleNewCanvasAction(action: NewCanvasAction) = intent {
         when (action) {
@@ -237,7 +237,7 @@ class StudioViewModel @Inject constructor(
             }
 
             is NewCanvasAction.CreateCanvas -> {
-                // 캔버스 크기 계산
+                // 캔버???�기 계산
                 val canvasSize = when (state.newCanvasState.selectedSize) {
                     CanvasSize.CUSTOM -> {
                         val width = state.newCanvasState.customWidth.toIntOrNull() ?: 32
@@ -250,14 +250,14 @@ class StudioViewModel @Inject constructor(
                     else -> state.newCanvasState.selectedSize.size
                 }
 
-                // TODO: UseCase를 통한 캔버스 생성
+                // TODO: UseCase�??�한 캔버???�성
                 // val canvas = createCanvasUseCase(
                 //     size = canvasSize,
                 //     backgroundColor = state.newCanvasState.backgroundColor,
                 //     template = state.newCanvasState.selectedTemplate
                 // )
 
-                // 에디터로 이동 (네비게이션 파라미터로 상태 전달)
+                // ?�디?�로 ?�동 (?�비게이???�라미터�??�태 ?�달)
                 postSideEffect(
                     StudioSideEffect.NavigateToEditor(
                         canvasId = null,
@@ -267,7 +267,7 @@ class StudioViewModel @Inject constructor(
                     )
                 )
 
-                // 다이얼로그 닫기 및 상태 초기화
+                // ?�이?�로�??�기 �??�태 초기??
                 reduce {
                     state.copy(
                         showNewCanvasDialog = false,
@@ -277,7 +277,7 @@ class StudioViewModel @Inject constructor(
             }
 
             is NewCanvasAction.Cancel -> {
-                // 다이얼로그 닫기 및 상태 초기화
+                // ?�이?�로�??�기 �??�태 초기??
                 reduce {
                     state.copy(
                         showNewCanvasDialog = false,

@@ -1,7 +1,7 @@
 package com.jb.pixelquest.feature.quest.model
 
 /**
- * Quest 진행 상황 상태
+ * Quest 진행 ?�황 ?�태
  */
 data class QuestProgressState(
     val isLoading: Boolean = false,
@@ -14,7 +14,7 @@ data class QuestProgressState(
 )
 
 /**
- * 사용자 퀘스트 진행 상황
+ * ?�용???�스??진행 ?�황
  */
 data class UserQuestProgress(
     val totalQuestsCompleted: Int = 0,
@@ -24,23 +24,23 @@ data class UserQuestProgress(
     val currentLevel: Int = 1,
     val experiencePoints: Int = 0,
     val nextLevelExp: Int = 100,
-    val streakDays: Int = 0 // 연속 참여 일수
+    val streakDays: Int = 0 // ?�속 참여 ?�수
 )
 
 /**
- * 퀘스트 통계
+ * ?�스???�계
  */
 data class QuestStatistics(
     val totalArtworksCreated: Int = 0,
-    val totalTimeSpent: Long = 0, // 분 단위
+    val totalTimeSpent: Long = 0, // �??�위
     val favoriteTheme: String? = null,
     val mostUsedPalette: String? = null,
-    val averageCompletionTime: Long = 0, // 분 단위
-    val bestStreak: Int = 0 // 최고 연속 일수
+    val averageCompletionTime: Long = 0, // �??�위
+    val bestStreak: Int = 0 // 최고 ?�속 ?�수
 )
 
 /**
- * 업적
+ * ?�적
  */
 data class Achievement(
     val id: String,
@@ -55,7 +55,7 @@ data class Achievement(
 )
 
 /**
- * 활동 내역
+ * ?�동 ?�역
  */
 data class Activity(
     val id: String,
@@ -63,11 +63,11 @@ data class Activity(
     val title: String,
     val description: String,
     val timestamp: Long,
-    val relatedId: String? // 관련 퀘스트 ID
+    val relatedId: String? // 관???�스??ID
 )
 
 /**
- * 활동 타입
+ * ?�동 ?�??
  */
 enum class ActivityType {
     QUEST_COMPLETED, REWARD_EARNED, BADGE_EARNED, LEVEL_UP

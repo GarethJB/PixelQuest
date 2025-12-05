@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
 /**
- * Studio 화면의 사용자 액션
- * State Hoisting 패턴을 위해 액션을 명시적으로 정의
+ * Studio ?�면???�용???�션
+ * State Hoisting ?�턴???�해 ?�션??명시?�으�??�의
  */
 sealed interface StudioAction {
     data class SelectRecentWork(val work: RecentWork) : StudioAction
@@ -20,7 +20,7 @@ sealed interface StudioAction {
 }
 
 /**
- * 에디터 화면의 사용자 액션
+ * ?�디???�면???�용???�션
  */
 sealed interface EditorAction {
     data class PixelChanged(val x: Int, val y: Int, val color: Color) : EditorAction
@@ -39,7 +39,7 @@ sealed interface EditorAction {
 }
 
 /**
- * 새 캔버스 다이얼로그의 사용자 액션
+ * ??캔버???�이?�로그의 ?�용???�션
  */
 sealed interface NewCanvasAction {
     data class SelectSize(val size: CanvasSize) : NewCanvasAction

@@ -13,11 +13,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.Palette
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 팔레트 리스트 컴포넌트
- * State Hoisting: 선택 이벤트만 상위로 전달
+ * ?�레??리스??컴포?�트
+ * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun PaletteList(
@@ -73,7 +73,7 @@ private fun PaletteCard(
                 style = MaterialTheme.typography.titleSmall
             )
             
-            // 색상 미리보기
+            // ?�상 미리보기
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {

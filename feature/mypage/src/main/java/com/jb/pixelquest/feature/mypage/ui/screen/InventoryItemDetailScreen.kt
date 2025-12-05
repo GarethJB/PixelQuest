@@ -16,11 +16,11 @@ import com.jb.pixelquest.feature.mypage.model.InventoryItem
 import com.jb.pixelquest.feature.mypage.model.ItemRarity
 import com.jb.pixelquest.feature.mypage.ui.component.getRarityColor
 import com.jb.pixelquest.feature.mypage.ui.component.getRarityText
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 인벤토리 아이템 상세 화면
- * State Hoisting: 상태와 액션만 전달받음
+ * ?�벤?�리 ?�이???�세 ?�면
+ * State Hoisting: ?�태?� ?�션�??�달받음
  */
 @Composable
 fun InventoryItemDetailScreen(
@@ -44,7 +44,7 @@ fun InventoryItemDetailScreen(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // 아이콘
+                // ?�이�?
                 Box(
                     modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.Center
@@ -75,13 +75,13 @@ fun InventoryItemDetailScreen(
                     }
                 }
 
-                // 설명
+                // ?�명
                 Text(
                     text = item.description,
                     style = MaterialTheme.typography.bodyMedium
                 )
 
-                // 희귀도
+                // ?��???
                 Surface(
                     color = getRarityColor(item.rarity).copy(alpha = 0.2f),
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
@@ -95,7 +95,7 @@ fun InventoryItemDetailScreen(
                     )
                 }
 
-                // 획득 경로
+                // ?�득 경로
                 if (item.obtainedFrom != null) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(4.dp)

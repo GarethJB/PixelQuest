@@ -5,8 +5,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
 /**
- * 에디터 화면의 UI 상태
- * State Hoisting 패턴을 위해 모든 상태를 상위로 끌어올림
+ * ?�디???�면??UI ?�태
+ * State Hoisting ?�턴???�해 모든 ?�태�??�위�??�어?�림
  */
 data class EditorUiState(
     val canvasSize: IntSize,

@@ -30,11 +30,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.gallery.model.Artwork
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 작품 상세 화면
- * State Hoisting: 상태와 액션만 전달받음
+ * ?�품 ?�세 ?�면
+ * State Hoisting: ?�태?�??�션�??�달받음
  */
 @Composable
 fun ArtworkDetailScreen(
@@ -60,7 +60,7 @@ fun ArtworkDetailScreen(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // 작품 이미지
+                // ?�품 ?��?지
                 AsyncImage(
                     model = artwork.imageUrl,
                     contentDescription = artwork.title,
@@ -70,7 +70,7 @@ fun ArtworkDetailScreen(
                     contentScale = ContentScale.Fit
                 )
 
-                // 작성자 정보
+                // ?�성???�보
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -102,7 +102,7 @@ fun ArtworkDetailScreen(
                     }
                 }
 
-                // 설명
+                // ?�명
                 if (!artwork.description.isNullOrBlank()) {
                     Text(
                         text = artwork.description,
@@ -110,7 +110,7 @@ fun ArtworkDetailScreen(
                     )
                 }
 
-                // 통계
+                // ?�계
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -132,7 +132,7 @@ fun ArtworkDetailScreen(
                     )
                 }
 
-                // 카테고리 및 태그
+                // 카테고리 �??�그
                 if (artwork.tags.isNotEmpty()) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -162,7 +162,7 @@ fun ArtworkDetailScreen(
                     }
                 }
 
-                // 캔버스 크기
+                // 캔버???�기
                 Text(
                     text = "${stringResource(id = R.string.artwork_canvas_size)}: ${artwork.canvasSize.width}x${artwork.canvasSize.height}",
                     style = MaterialTheme.typography.bodySmall,

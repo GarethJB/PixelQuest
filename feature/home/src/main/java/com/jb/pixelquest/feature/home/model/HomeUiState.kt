@@ -1,7 +1,7 @@
 package com.jb.pixelquest.feature.home.model
 
 /**
- * 홈 화면의 UI 상태 정보
+ * ???�면??UI ?�태 ?�보
  */
 data class HomeUiState(
     val welcomeTitle: String,

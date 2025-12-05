@@ -13,8 +13,8 @@ import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
 /**
- * MyPage 화면 ViewModel
- * Orbit MVI 패턴 사용
+ * MyPage ?�면 ViewModel
+ * Orbit MVI ?�턴 ?�용
  */
 @HiltViewModel
 class MyPageViewModel @Inject constructor(
@@ -27,22 +27,22 @@ class MyPageViewModel @Inject constructor(
     override val container = container<MyPageUiState, MyPageSideEffect>(
         MyPageUiState()
     ) {
-        // 초기 데이터 로드
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
     /**
-     * 초기 데이터 로드
+     * 초기 ?�이??로드
      */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCase를 통한 데이터 로드
+        // TODO: UseCase�??�한 ?�이??로드
         // val artworks = getMyArtworksUseCase()
 
-        // 임시 데이터 (개발용)
+        // ?�시 ?�이??(개발??
         val mockArtworks = emptyList<Artwork>()
 
         reduce {
@@ -56,7 +56,7 @@ class MyPageViewModel @Inject constructor(
     }
 
     /**
-     * 액션 처리
+     * ?�션 처리
      */
     fun handleAction(action: MyPageAction) = intent {
         when (action) {
@@ -87,7 +87,7 @@ class MyPageViewModel @Inject constructor(
             is MyPageAction.DeleteArtwork -> {
                 val artwork = findArtworkById(action.artworkId)
                 if (artwork != null) {
-                    // TODO: UseCase를 통한 작품 삭제
+                    // TODO: UseCase�??�한 ?�품 ??��
                     // deleteArtworkUseCase(action.artworkId)
 
                     reduce {
@@ -100,14 +100,14 @@ class MyPageViewModel @Inject constructor(
                         )
                     }
 
-                    postSideEffect(MyPageSideEffect.ShowSnackbar("작품이 삭제되었습니다"))
+                    postSideEffect(MyPageSideEffect.ShowSnackbar("?�품????��?�었?�니??"))
                 }
             }
 
             is MyPageAction.ToggleArtworkVisibility -> {
                 val artwork = findArtworkById(action.artworkId)
                 if (artwork != null) {
-                    // TODO: UseCase를 통한 공개/비공개 전환
+                    // TODO: UseCase�??�한 공개/비공�??�환
                     // toggleArtworkVisibilityUseCase(action.artworkId)
 
                     val updatedArtwork = artwork.copy(isPublished = !artwork.isPublished)
@@ -135,7 +135,7 @@ class MyPageViewModel @Inject constructor(
 
                     postSideEffect(
                         MyPageSideEffect.ShowSnackbar(
-                            if (updatedArtwork.isPublished) "작품이 공개되었습니다" else "작품이 비공개로 전환되었습니다"
+                            if (updatedArtwork.isPublished) "?�품??공개?�었?�니??" else "?�품??비공개로 ?�환?�었?�니??"
                         )
                     )
                 }
@@ -145,7 +145,7 @@ class MyPageViewModel @Inject constructor(
                 reduce {
                     state.copy(sortOption = action.option)
                 }
-                // 정렬된 작품 목록 업데이트
+                // ?�렬???�품 목록 ?�데?�트
                 applySortAndFilter()
             }
 
@@ -153,7 +153,7 @@ class MyPageViewModel @Inject constructor(
                 reduce {
                     state.copy(filterOption = action.option)
                 }
-                // 필터링된 작품 목록 업데이트
+                // ?�터링된 ?�품 목록 ?�데?�트
                 applySortAndFilter()
             }
 
@@ -162,13 +162,13 @@ class MyPageViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
-                // TODO: UseCase를 통한 새로고침
+                // TODO: UseCase�??�한 ?�로고침
                 // val artworks = getMyArtworksUseCase()
 
                 reduce {
                     state.copy(
                         isLoading = false,
-                        myArtworks = emptyList() // TODO: 실제 데이터로 교체
+                        myArtworks = emptyList() // TODO: ?�제 ?�이?�로 교체
                     )
                 }
                 applySortAndFilter()
@@ -187,19 +187,19 @@ class MyPageViewModel @Inject constructor(
                 }
             }
 
-            // 인벤토리 관련 액션은 InventoryViewModel에서 처리
+            // ?�벤?�리 관???�션?� InventoryViewModel?�서 처리
             is MyPageAction.SelectCategory,
             is MyPageAction.SelectItem,
             is MyPageAction.HideItemDetail,
             is MyPageAction.EquipItem,
             is MyPageAction.UnequipItem -> {
-                // InventoryViewModel에서 처리
+                // InventoryViewModel?�서 처리
             }
         }
     }
 
     /**
-     * 작품 ID로 작품 찾기
+     * ?�품 ID�??�품 찾기
      */
     private fun findArtworkById(artworkId: String): Artwork? {
         val state = container.stateFlow.value
@@ -210,7 +210,7 @@ class MyPageViewModel @Inject constructor(
     }
 
     /**
-     * 작품 목록에서 작품 업데이트
+     * ?�품 목록?�서 ?�품 ?�데?�트
      */
     private fun updateArtwork(
         artworks: List<Artwork>,
@@ -226,13 +226,13 @@ class MyPageViewModel @Inject constructor(
     }
 
     /**
-     * 정렬 및 필터 적용
+     * ?�렬 �??�터 ?�용
      */
     private fun applySortAndFilter() = intent {
         val state = container.stateFlow.value
         var filtered = state.myArtworks
 
-        // 필터 적용
+        // ?�터 ?�용
         when (state.filterOption) {
             ArtworkFilterOption.PUBLISHED -> {
                 filtered = filtered.filter { it.isPublished }
@@ -244,11 +244,11 @@ class MyPageViewModel @Inject constructor(
                 filtered = filtered.filter { it.questId != null }
             }
             null -> {
-                // 필터 없음
+                // ?�터 ?�음
             }
         }
 
-        // 정렬 적용
+        // ?�렬 ?�용
         val sorted = when (state.sortOption) {
             ArtworkSortOption.LATEST -> filtered.sortedByDescending { it.createdAt }
             ArtworkSortOption.OLDEST -> filtered.sortedBy { it.createdAt }

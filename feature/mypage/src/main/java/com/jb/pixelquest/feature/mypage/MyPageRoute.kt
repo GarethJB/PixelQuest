@@ -11,7 +11,7 @@ import com.jb.pixelquest.feature.mypage.viewmodel.MyPageViewModel
 
 /**
  * MyPage Route
- * State Hoisting: 상태는 ViewModel에서 관리하고, Screen에 전달
+ * State Hoisting: ?�태??ViewModel?�서 관리하�? Screen???�달
  */
 @Composable
 fun MyPageRoute(
@@ -21,7 +21,7 @@ fun MyPageRoute(
     val uiState by myPageViewModel.container.stateFlow.collectAsStateWithLifecycle()
     val inventoryState by inventoryViewModel.container.stateFlow.collectAsStateWithLifecycle()
 
-    // 액션을 적절한 ViewModel로 라우팅
+    // ?�션???�절??ViewModel�??�우??
     fun handleAction(action: MyPageAction) {
         when (action) {
             is MyPageAction.SelectCategory,

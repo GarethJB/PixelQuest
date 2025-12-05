@@ -25,3 +25,8 @@ android {
         }
     }
 }
+
+dependencies {
+    implementation(project(":presentation:theme"))
+    implementation(project(":shared:presentation:resources"))
+}

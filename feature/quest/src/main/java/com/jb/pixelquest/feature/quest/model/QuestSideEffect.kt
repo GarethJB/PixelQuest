@@ -1,12 +1,12 @@
 package com.jb.pixelquest.feature.quest.model
 
 /**
- * Quest 화면의 사이드 이펙트
- * 네비게이션, 에러 표시 등 UI 이벤트
+ * Quest ?�면???�이???�펙??
+ * ?�비게이?? ?�러 ?�시 ??UI ?�벤??
  */
 sealed interface QuestSideEffect {
     /**
-     * Studio 에디터로 이동 (퀘스트 시작)
+     * Studio ?�디?�로 ?�동 (?�스???�작)
      */
     data class NavigateToStudio(
         val questId: String,
@@ -15,7 +15,7 @@ sealed interface QuestSideEffect {
     ) : QuestSideEffect
     
     /**
-     * 스낵바 표시
+     * ?�낵�??�시
      */
     data class ShowSnackbar(val message: String) : QuestSideEffect
 }

@@ -33,8 +33,8 @@ dependencies {
     implementation(project(":feature:gallery"))
     implementation(project(":feature:mypage"))
 
-    // Presentation Resources
-    implementation(project(":presentation:resources"))
+    // Shared Presentation Resources
+    implementation(project(":shared:presentation:resources"))
     
     // Navigation Compose (currentBackStackEntryAsState 포함)
     implementation(libs.androidx.navigation.compose)

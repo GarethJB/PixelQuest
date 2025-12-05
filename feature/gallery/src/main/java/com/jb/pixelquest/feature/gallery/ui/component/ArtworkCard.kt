@@ -31,11 +31,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.gallery.model.Artwork
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 작품 카드
- * State Hoisting: 클릭 이벤트만 상위로 전달
+ * ?�품 카드
+ * State Hoisting: ?�릭 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun ArtworkCard(
@@ -55,7 +55,7 @@ fun ArtworkCard(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            // 썸네일 이미지
+            // ?�네???��?지
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -68,7 +68,7 @@ fun ArtworkCard(
                     contentScale = ContentScale.Crop
                 )
 
-                // 좋아요/북마크 버튼 (오버레이)
+                // 좋아??북마??버튼 (?�버?�이)
                 Row(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -96,14 +96,14 @@ fun ArtworkCard(
                 }
             }
 
-            // 정보 영역
+            // ?�보 ?�역
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(12.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // 제목
+                // ?�목
                 Text(
                     text = artwork.title,
                     style = MaterialTheme.typography.titleSmall,
@@ -112,13 +112,13 @@ fun ArtworkCard(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                // 작성자
+                // ?�성??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // 아바타
+                    // ?�바?�?
                     if (artwork.author.avatarUrl != null) {
                         AsyncImage(
                             model = artwork.author.avatarUrl,
@@ -133,7 +133,7 @@ fun ArtworkCard(
                     )
                 }
 
-                // 통계 (좋아요, 조회수)
+                // ?�계 (좋아?? 조회??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)

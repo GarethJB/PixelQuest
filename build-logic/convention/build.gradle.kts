@@ -38,5 +38,9 @@ gradlePlugin {
             id = "kotlin-options-convention"
             implementationClass = "com.jb.pixelquest.build_logic.convention.KotlinOptionsConventionPlugin"
         }
+        register("kotlin-multiplatform-library-convention") {
+            id = "kotlin-multiplatform-library-convention"
+            implementationClass = "com.jb.pixelquest.build_logic.convention.KotlinMultiplatformLibraryConventionPlugin"
+        }
     }
 }

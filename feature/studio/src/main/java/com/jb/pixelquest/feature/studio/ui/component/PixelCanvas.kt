@@ -14,8 +14,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntSize
 
 /**
- * 픽셀 캔버스 컴포넌트
- * State Hoisting: 픽셀 변경, 줌/팬 변경 이벤트만 상위로 전달
+ * ?��? 캔버??컴포?�트
+ * State Hoisting: ?��? 변�? �???변�??�벤?�만 ?�위�??�달
  */
 @Composable
 fun PixelCanvas(
@@ -34,7 +34,7 @@ fun PixelCanvas(
         modifier = modifier
             .fillMaxSize()
             .pointerInput(Unit) {
-                // 탭 제스처 (단일 픽셀 그리기)
+                // ???�스�?(?�일 ?��? 그리�?
                 detectTapGestures { tapOffset ->
                     val pixelPos = screenToPixel(
                         tapOffset = tapOffset,
@@ -50,7 +50,7 @@ fun PixelCanvas(
                 }
             }
             .pointerInput(Unit) {
-                // 드래그 제스처 (연속 그리기)
+                // ?�래�??�스�?(?�속 그리�?
                 detectDragGestures(
                     onDragStart = { offset ->
                         val pixelPos = screenToPixel(
@@ -79,7 +79,7 @@ fun PixelCanvas(
                 }
             }
             .pointerInput(zoom, panOffset) {
-                // 줌/팬 제스처
+                // �????�스�?
                 detectTransformGestures { _, pan, zoomChange, _ ->
                     val newZoom = (zoom * zoomChange).coerceIn(0.5f, 5f)
                     val newPan = panOffset + pan
@@ -91,7 +91,7 @@ fun PixelCanvas(
         // 배경
         drawRect(Color(0xFFF5F5F5))
         
-        // 픽셀 그리기
+        // ?��? 그리�?
         drawPixels(
             pixels = pixels,
             canvasSize = canvasSize,
@@ -99,7 +99,7 @@ fun PixelCanvas(
             panOffset = panOffset
         )
         
-        // 그리드 표시
+        // 그리???�시
         if (showGrid) {
             drawGrid(
                 canvasSize = canvasSize,
@@ -111,7 +111,7 @@ fun PixelCanvas(
 }
 
 /**
- * 픽셀 그리기
+ * ?��? 그리�?
  */
 private fun DrawScope.drawPixels(
     pixels: Array<Array<Color>>,
@@ -137,7 +137,7 @@ private fun DrawScope.drawPixels(
 }
 
 /**
- * 그리드 그리기
+ * 그리??그리�?
  */
 private fun DrawScope.drawGrid(
     canvasSize: IntSize,
@@ -147,7 +147,7 @@ private fun DrawScope.drawGrid(
     val pixelWidth = size.width / canvasSize.width * zoom
     val pixelHeight = size.height / canvasSize.height * zoom
     
-    // 세로선
+    // ?�로??
     for (x in 0..canvasSize.width) {
         val lineX = x * pixelWidth + panOffset.x
         drawLine(
@@ -171,7 +171,7 @@ private fun DrawScope.drawGrid(
 }
 
 /**
- * 화면 좌표를 픽셀 좌표로 변환
+ * ?�면 좌표�??��? 좌표�?변??
  */
 private fun screenToPixel(
     tapOffset: Offset,

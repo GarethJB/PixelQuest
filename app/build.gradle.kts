@@ -39,8 +39,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.appcompat)
 
-    // Presentation Resources
-    implementation(project(":presentation:resources"))
+    // Shared Presentation Resources
+    implementation(project(":shared:presentation:resources"))
 
     // Navigation
     implementation(project(":presentation:navigation"))

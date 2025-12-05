@@ -13,11 +13,11 @@ import com.jb.pixelquest.feature.quest.ui.component.ChallengeQuestList
 import com.jb.pixelquest.feature.quest.ui.component.QuestTabRow
 import com.jb.pixelquest.feature.quest.ui.screen.QuestDetailScreen
 import com.jb.pixelquest.presentation.component.ScreenHeader
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * Quest 메인 화면
- * State Hoisting 패턴: 상태는 상위에서 관리하고, 액션만 전달받음
+ * Quest 메인 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun QuestScreen(
@@ -35,7 +35,7 @@ fun QuestScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // 탭 행
+            // ????
             QuestTabRow(
                 selectedTab = uiState.selectedTab,
                 onTabSelected = { tab ->
@@ -43,7 +43,7 @@ fun QuestScreen(
                 }
             )
 
-            // 퀘스트 리스트
+            // ?�스??리스??
             Box(modifier = Modifier.fillMaxSize()) {
                 when (uiState.selectedTab) {
                     QuestTab.DAILY -> {
@@ -80,7 +80,7 @@ fun QuestScreen(
                     }
                 }
 
-                // 로딩 인디케이터
+                // 로딩 ?�디케?�터
                 if (uiState.isLoading) {
                     CircularProgressIndicator(
                         modifier = Modifier.align(Center)
@@ -90,7 +90,7 @@ fun QuestScreen(
         }
     }
 
-    // 퀘스트 상세 다이얼로그
+    // ?�스???�세 ?�이?�로�?
     if (uiState.showQuestDetail && uiState.selectedQuest != null) {
         QuestDetailScreen(
             quest = uiState.selectedQuest,

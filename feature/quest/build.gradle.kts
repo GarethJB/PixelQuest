@@ -29,11 +29,11 @@ android {
 dependencies {
     implementation(project(":core:common"))
 
-    implementation(project(":domain:model"))
-    implementation(project(":domain:repository"))
-    implementation(project(":domain:usecase"))
+    implementation(project(":shared:domain:model"))
+    implementation(project(":shared:domain:repository"))
+    implementation(project(":shared:domain:usecase"))
 
-    implementation(project(":presentation:resources"))
+    implementation(project(":shared:presentation:resources"))
     implementation(project(":presentation:component"))
     implementation(project(":presentation:theme"))
 

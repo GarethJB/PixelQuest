@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
 /**
- * Quest 화면의 UI 상태
- * State Hoisting 패턴을 위해 모든 상태를 상위로 끌어올림
+ * Quest ?�면??UI ?�태
+ * State Hoisting ?�턴???�해 모든 ?�태�??�위�??�어?�림
  */
 data class QuestUiState(
     val isLoading: Boolean = false,
@@ -20,54 +20,54 @@ data class QuestUiState(
 )
 
 /**
- * 챌린지 퀘스트
+ * 챌린지 ?�스??
  */
 data class ChallengeQuest(
     val id: String,
     val title: String,
     val description: String,
-    val theme: String, // "8비트 로봇", "사이버펑크 거리" 등
+    val theme: String, // "8비트 로봇", "?�이버펑??거리" ??
     val questType: QuestType, // DAILY, WEEKLY
     val difficulty: QuestDifficulty, // EASY, MEDIUM, HARD
     val rewards: List<Reward>,
     val requirements: QuestRequirements,
     val status: QuestStatus, // AVAILABLE, IN_PROGRESS, COMPLETED, LOCKED
-    val deadline: Long?, // 주간 퀘스트의 경우
+    val deadline: Long?, // 주간 ?�스?�의 경우
     val thumbnailPath: String?,
-    val participantCount: Int = 0, // 참여자 수
+    val participantCount: Int = 0, // 참여????
     val startDate: Long? = null
 )
 
 /**
- * 퀘스트 타입
+ * ?�스???�??
  */
 enum class QuestType {
     DAILY, WEEKLY
 }
 
 /**
- * 퀘스트 난이도
+ * ?�스???�이??
  */
 enum class QuestDifficulty {
     EASY, MEDIUM, HARD
 }
 
 /**
- * 퀘스트 상태
+ * ?�스???�태
  */
 enum class QuestStatus {
     AVAILABLE, IN_PROGRESS, COMPLETED, LOCKED
 }
 
 /**
- * 퀘스트 요구사항
+ * ?�스???�구?�항
  */
 data class QuestRequirements(
     val canvasSize: IntSize? = null,
-    val colorLimit: Int? = null, // 색상 제한
+    val colorLimit: Int? = null, // ?�상 ?�한
     val themeKeywords: List<String> = emptyList(),
-    val minPixels: Int? = null, // 최소 픽셀 수
-    val maxPixels: Int? = null // 최대 픽셀 수
+    val minPixels: Int? = null, // 최소 ?��? ??
+    val maxPixels: Int? = null // 최�? ?��? ??
 )
 
 /**
@@ -83,21 +83,21 @@ data class Reward(
 )
 
 /**
- * 보상 타입
+ * 보상 ?�??
  */
 enum class RewardType {
     PALETTE, BRUSH, BADGE, ITEM
 }
 
 /**
- * 보상 희귀도
+ * 보상 ?��???
  */
 enum class RewardRarity {
     COMMON, RARE, EPIC, LEGENDARY
 }
 
 /**
- * Quest 탭
+ * Quest ??
  */
 enum class QuestTab {
     DAILY, WEEKLY, ACTIVE, COMPLETED

@@ -12,11 +12,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.studio.model.Brush
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 브러시 리스트 컴포넌트
- * State Hoisting: 선택 이벤트만 상위로 전달
+ * 브러??리스??컴포?�트
+ * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun BrushList(
@@ -68,7 +68,7 @@ private fun BrushCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // 브러시 미리보기
+            // 브러??미리보기
             brush.previewImagePath?.let { imagePath ->
                 AsyncImage(
                     model = imagePath,
@@ -76,13 +76,13 @@ private fun BrushCard(
                     modifier = Modifier.size(48.dp)
                 )
             } ?: run {
-                // 기본 브러시 아이콘
+                // 기본 브러???�이�?
                 Box(
                     modifier = Modifier.size(48.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "●",
+                        text = "??",
                         style = MaterialTheme.typography.headlineMedium
                     )
                 }

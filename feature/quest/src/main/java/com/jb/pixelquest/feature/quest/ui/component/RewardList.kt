@@ -15,11 +15,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.quest.model.Reward
 import com.jb.pixelquest.feature.quest.model.RewardType
-import com.jb.pixelquest.presentation.resources.R
+import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * 보상 리스트 컴포넌트
- * State Hoisting: 선택 이벤트만 상위로 전달
+ * 보상 리스??컴포?�트
+ * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
  */
 @Composable
 fun RewardList(
@@ -64,7 +64,7 @@ private fun RewardCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // 아이콘
+            // ?�이�?
             Surface(
                 color = MaterialTheme.colorScheme.surfaceVariant,
                 shape = RoundedCornerShape(8.dp),
@@ -89,7 +89,7 @@ private fun RewardCard(
                 }
             }
 
-            // 이름
+            // ?�름
             Text(
                 text = reward.name,
                 style = MaterialTheme.typography.labelMedium,
@@ -97,7 +97,7 @@ private fun RewardCard(
                 maxLines = 2
             )
 
-            // 타입
+            // ?�??
             Text(
                 text = getRewardTypeText(reward.type),
                 style = MaterialTheme.typography.labelSmall,

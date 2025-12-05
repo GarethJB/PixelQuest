@@ -5,67 +5,44 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navDeepLink
-import com.jb.pixelquest.feature.studio.StudioRoute
-import com.jb.pixelquest.feature.quest.QuestRoute
 import com.jb.pixelquest.feature.gallery.GalleryRoute
 import com.jb.pixelquest.feature.mypage.MyPageRoute
+import com.jb.pixelquest.feature.quest.QuestProgressRoute
+import com.jb.pixelquest.feature.quest.QuestRoute
+import com.jb.pixelquest.feature.studio.StudioRoute
 
 /**
- * 앱의 네비게이션 그래프를 설정하는 Composable
+ * 네비게이션 그래프
+ * 모든 화면 Route를 연결하는 네비게이션 설정
  */
 @Composable
 fun NavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = Route.Studio.route
+    startDestination: String = PixelQuestDestination.Gallery.route
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(
-            route = Route.Studio.route,
-            deepLinks = listOf(
-                navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.Studio.route)
-                }
-            )
-        ) {
-            StudioRoute()
-        }
-        
-        composable(
-            route = Route.Quest.route,
-            deepLinks = listOf(
-                navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.Quest.route)
-                }
-            )
-        ) {
-            QuestRoute()
-        }
-        
-        composable(
-            route = Route.Gallery.route,
-            deepLinks = listOf(
-                navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.Gallery.route)
-                }
-            )
-        ) {
+        composable(route = PixelQuestDestination.Gallery.route) {
             GalleryRoute()
         }
         
-        composable(
-            route = Route.MyPage.route,
-            deepLinks = listOf(
-                navDeepLink {
-                    uriPattern = Route.getDeepLinkPattern(Route.MyPage.route)
-                }
-            )
-        ) {
+        composable(route = PixelQuestDestination.Studio.route) {
+            StudioRoute()
+        }
+        
+        composable(route = PixelQuestDestination.Quest.route) {
+            QuestRoute()
+        }
+        
+        composable(route = PixelQuestDestination.QuestProgress.route) {
+            QuestProgressRoute()
+        }
+        
+        composable(route = PixelQuestDestination.MyPage.route) {
             MyPageRoute()
         }
     }

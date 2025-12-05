@@ -13,8 +13,8 @@ import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
 /**
- * Quest 진행 상황 ViewModel
- * Orbit MVI 패턴 사용
+ * Quest 진행 ?�황 ViewModel
+ * Orbit MVI ?�턴 ?�용
  */
 @HiltViewModel
 class QuestProgressViewModel @Inject constructor(
@@ -27,26 +27,26 @@ class QuestProgressViewModel @Inject constructor(
     override val container = container<QuestProgressState, Nothing>(
         QuestProgressState()
     ) {
-        // 초기 데이터 로드
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
     /**
-     * 초기 데이터 로드
+     * 초기 ?�이??로드
      */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCase를 통한 데이터 로드
+        // TODO: UseCase�??�한 ?�이??로드
         // val progress = getQuestProgressUseCase()
         // val statistics = getQuestStatisticsUseCase()
         // val achievements = getAchievementsUseCase()
         // val activities = getRecentActivitiesUseCase()
         // val rewards = getEarnedRewardsUseCase()
 
-        // 임시 데이터 (개발용)
+        // ?�시 ?�이??(개발??
         val mockProgress = UserQuestProgress()
         val mockStatistics = QuestStatistics()
         val mockAchievements = emptyList<Achievement>()
@@ -66,22 +66,22 @@ class QuestProgressViewModel @Inject constructor(
     }
 
     /**
-     * 진행 상황 새로고침
+     * 진행 ?�황 ?�로고침
      */
     fun refreshProgress() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCase를 통한 새로고침
+        // TODO: UseCase�??�한 ?�로고침
         // val progress = getQuestProgressUseCase()
         // val statistics = getQuestStatisticsUseCase()
 
         reduce {
             state.copy(
                 isLoading = false,
-                userProgress = state.userProgress, // TODO: 실제 데이터로 교체
-                statistics = state.statistics // TODO: 실제 데이터로 교체
+                userProgress = state.userProgress, // TODO: ?�제 ?�이?�로 교체
+                statistics = state.statistics // TODO: ?�제 ?�이?�로 교체
             )
         }
     }

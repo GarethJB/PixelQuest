@@ -14,8 +14,8 @@ import com.jb.pixelquest.feature.mypage.ui.component.InventoryItemGrid
 import com.jb.pixelquest.feature.mypage.ui.screen.InventoryItemDetailScreen
 
 /**
- * 인벤토리 화면
- * State Hoisting 패턴: 상태는 상위에서 관리하고, 액션만 전달받음
+ * ?�벤?�리 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun InventoryScreen(
@@ -26,7 +26,7 @@ fun InventoryScreen(
     Column(
         modifier = modifier.fillMaxSize()
     ) {
-        // 카테고리 탭
+        // 카테고리 ??
         InventoryCategoryTabs(
             selectedCategory = inventoryState.selectedCategory,
             onCategorySelected = { category ->
@@ -34,7 +34,7 @@ fun InventoryScreen(
             }
         )
 
-        // 아이템 그리드
+        // ?�이??그리??
         Box(modifier = Modifier.fillMaxSize()) {
             val items = when (inventoryState.selectedCategory) {
                 InventoryCategory.PALETTE -> inventoryState.palettes
@@ -51,7 +51,7 @@ fun InventoryScreen(
                 }
             )
 
-            // 로딩 인디케이터
+            // 로딩 ?�디케?�터
             if (inventoryState.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Center)
@@ -60,7 +60,7 @@ fun InventoryScreen(
         }
     }
 
-    // 아이템 상세 다이얼로그
+    // ?�이???�세 ?�이?�로�?
     if (inventoryState.showItemDetail && inventoryState.selectedItem != null) {
         InventoryItemDetailScreen(
             item = inventoryState.selectedItem,

@@ -1,8 +1,8 @@
 package com.jb.pixelquest.feature.studio.model
 
 /**
- * Studio 화면의 사이드 이펙트
- * 네비게이션, 에러 표시 등 UI 이벤트
+ * Studio ?�면???�이???�펙??
+ * ?�비게이?? ?�러 ?�시 ??UI ?�벤??
  */
 sealed interface StudioSideEffect {
     data class NavigateToEditor(
@@ -15,7 +15,7 @@ sealed interface StudioSideEffect {
 }
 
 /**
- * 에디터 화면의 사이드 이펙트
+ * ?�디???�면???�이???�펙??
  */
 sealed interface EditorSideEffect {
     data class ShowSnackbar(val message: String) : EditorSideEffect

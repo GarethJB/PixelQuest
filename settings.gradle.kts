@@ -22,24 +22,39 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "PixelQuest"
+
+// App
 include(":app")
-include(":data:remote")
-include(":data:model")
-include(":data:store")
-include(":domain:model")
-include(":domain:usecase")
-include(":domain:repository")
-include(":presentation:resources")
+
+// Core
+include(":core:common")
+include(":core:di")
+
+// Shared - Domain
+include(":shared:domain:model")
+include(":shared:domain:repository")
+include(":shared:domain:usecase")
+
+// Shared - Data
+include(":shared:data:remote")
+include(":shared:data:local")
+
+// Shared - Presentation (Resources only - KMP compatible)
+include(":shared:presentation:resources")
+
+// Presentation (Android Compose - Platform specific)
 include(":presentation:theme")
 include(":presentation:component")
 include(":presentation:navigation")
-include(":presentation:viewmodel")
+
+
+// Feature
 include(":feature:studio")
 include(":feature:quest")
 include(":feature:gallery")
 include(":feature:mypage")
-include(":core:common")
-include(":core:di")
+
+// Test
 include(":test:mock")
 include(":test:fixture")
 include(":test:rule")
