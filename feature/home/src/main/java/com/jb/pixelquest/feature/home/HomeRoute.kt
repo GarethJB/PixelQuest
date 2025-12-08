@@ -134,11 +134,10 @@ private fun HomeScreenPreview() {
     HomeScreen(
         uiState = HomeUiState(
             welcomeTitle = "PixelQuest",
-            welcomeMessage = "?��?�?기록?�는 ?�만???�정",
+            welcomeMessage = "?��?�?기록?�는 ?�만???�정",
             highlights = listOf(
-                HomeHighlight("?�늘???�스??, "?�덤 ?�폿 3�?방문"),
-                HomeHighlight("?�든 챌린지", "비�? 캐릭???�집"),
-                HomeHighlight("주간 ??��", "?�위 10% 진입 ?�전")
+                HomeHighlight("?�든 챌린지", "비�? 캐릭???�집"),
+                HomeHighlight("주간 ??��", "?�위 10% 진입 ?�전")
             )
         ),
         onRefreshHighlights = {}

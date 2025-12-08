@@ -8,6 +8,9 @@
     <string name="quest_progress_title">Quest Progress</string>
     <string name="mypage_title">My Page</string>
 
+    <!-- Home -->
+    <string name="home_refresh_highlights">Refresh Highlights</string>
+
     <!-- Common Actions -->
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>

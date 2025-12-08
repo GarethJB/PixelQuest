@@ -5,6 +5,7 @@ package com.jb.pixelquest.presentation.navigation
  * 모든 화면 Route를 enum으로 관리
  */
 sealed class PixelQuestDestination(val route: String) {
+    object Home : PixelQuestDestination("home")
     object Gallery : PixelQuestDestination("gallery")
     object Studio : PixelQuestDestination("studio")
     object Quest : PixelQuestDestination("quest")
