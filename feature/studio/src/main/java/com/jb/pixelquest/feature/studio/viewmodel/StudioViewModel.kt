@@ -155,6 +155,18 @@ class StudioViewModel @Inject constructor(
                     state.copy(error = null)
                 }
             }
+
+            is StudioAction.ShowEditor -> {
+                reduce {
+                    state.copy(showEditor = true)
+                }
+            }
+
+            is StudioAction.HideEditor -> {
+                reduce {
+                    state.copy(showEditor = false)
+                }
+            }
         }
     }
 

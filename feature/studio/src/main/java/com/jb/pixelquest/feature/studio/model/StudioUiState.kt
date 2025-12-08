@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
 /**
- * Studio ?�면??UI ?�태
- * State Hoisting ?�턴???�해 모든 ?�태�??�위�??�어?�림
+ * Studio ?�면??UI ?�태
+ * State Hoisting ?�턴???�해 모든 ?�태�??�위�??�어?�림
  */
 data class StudioUiState(
     val isLoading: Boolean = false,
@@ -16,11 +16,12 @@ data class StudioUiState(
     val selectedCategory: AssetCategory? = null,
     val showNewCanvasDialog: Boolean = false,
     val newCanvasState: NewCanvasState = NewCanvasState(),
-    val error: String? = null
+    val error: String? = null,
+    val showEditor: Boolean = false
 )
 
 /**
- * 최근 ?�업 ??��
+ * 최근 ?�업 ??��
  */
 data class RecentWork(
     val id: String,
@@ -32,7 +33,7 @@ data class RecentWork(
 )
 
 /**
- * ?�플�?
+ * ?�플�?
  */
 data class Template(
     val id: String,
@@ -44,7 +45,7 @@ data class Template(
 )
 
 /**
- * ?�플�?카테고리
+ * ?�플�?카테고리
  */
 enum class TemplateCategory {
     CHARACTER,
@@ -55,7 +56,7 @@ enum class TemplateCategory {
 }
 
 /**
- * ?�레??
+ * ?�레??
  */
 data class Palette(
     val id: String,
@@ -85,7 +86,7 @@ enum class BrushShape {
 }
 
 /**
- * ?�셋 카테고리
+ * ?�셋 카테고리
  */
 enum class AssetCategory {
     TEMPLATE,
