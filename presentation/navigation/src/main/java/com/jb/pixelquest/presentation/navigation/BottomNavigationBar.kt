@@ -42,11 +42,6 @@ fun BottomNavigationBar(
             icon = Icons.Default.Star
         ),
         BottomNavItem(
-            route = PixelQuestDestination.Studio.route,
-            label = stringResource(id = R.string.studio_title),
-            icon = Icons.Default.Star
-        ),
-        BottomNavItem(
             route = PixelQuestDestination.Quest.route,
             label = stringResource(id = R.string.quest_title),
             icon = Icons.Default.Star

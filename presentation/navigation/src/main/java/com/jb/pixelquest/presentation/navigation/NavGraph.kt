@@ -20,7 +20,7 @@ import com.jb.pixelquest.feature.studio.StudioRoute
 fun NavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = PixelQuestDestination.Gallery.route
+    startDestination: String = PixelQuestDestination.Home.route
 ) {
     NavHost(
         navController = navController,
