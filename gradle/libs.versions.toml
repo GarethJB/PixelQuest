@@ -57,6 +57,7 @@ jetbrainsKotlinJvm = "2.0.21"
 
 # Kotlin Multiplatform
 kotlinx-coroutines = "1.7.3"
+compose-multiplatform-resources = "1.1.1"
 
 [libraries]
 # AndroidX Core
@@ -135,6 +136,9 @@ material = { group = "com.google.android.material", name = "material", version.r
 # Kotlin Multiplatform
 kotlinx-coroutines-core-multiplatform = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
+# Compose Multiplatform Resources
+compose-multiplatform-resources = { group = "org.jetbrains.compose", name = "compose-resources", version.ref = "compose-multiplatform-resources" }
+
 [plugins]
 # Android & Kotlin
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -145,6 +149,8 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+# Compose Multiplatform Resources 플러그인은 현재 사용하지 않음 (Android 전용 프로젝트)
+# compose-multiplatform-resources = { id = "org.jetbrains.compose.resources", version.ref = "compose-multiplatform-resources" }
 
 # Hilt
 hilt-android = { id = "dagger.hilt.android.plugin", version.ref = "hilt" }
