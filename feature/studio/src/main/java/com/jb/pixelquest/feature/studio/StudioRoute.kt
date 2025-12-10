@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.jb.pixelquest.feature.studio.model.EditorSideEffect
 import com.jb.pixelquest.feature.studio.model.StudioAction
 import com.jb.pixelquest.feature.studio.model.StudioSideEffect
@@ -19,6 +20,7 @@ import com.jb.pixelquest.feature.studio.viewmodel.StudioViewModel
  */
 @Composable
 fun StudioRoute(
+    navController: NavHostController,
     studioViewModel: StudioViewModel = viewModel(),
     editorViewModel: EditorViewModel = viewModel()
 ) {

@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.jb.pixelquest.feature.home.model.Canvas
 import com.jb.pixelquest.feature.home.model.HomeHighlight
 import com.jb.pixelquest.feature.home.model.HomeUiState
@@ -33,6 +34,7 @@ import com.jb.pixelquest.shared.presentation.resources.R
 
 @Composable
 fun HomeRoute(
+    navController: NavHostController,
     viewModel: HomeViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -40,7 +42,10 @@ fun HomeRoute(
     HomeScreen(
         uiState = uiState,
         onRefreshHighlights = viewModel::refreshHighlights,
-        onCanvasClick = viewModel::onCanvasClick,
+        onCanvasClick = { canvas ->
+            // Studio 화면으로 네비게이션
+            navController.navigate("studio")
+        },
         onDecorateWorkshop = viewModel::onDecorateWorkshop
     )
 }
