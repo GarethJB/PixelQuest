@@ -9,10 +9,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ??ìº”ë²„??ë§Œë“¤ê¸?ë²„íŠ¼
- * State Hoisting: ?´ë¦­ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
- */
 @Composable
 fun NewCanvasButton(
     onClick: () -> Unit,

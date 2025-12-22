@@ -16,10 +16,6 @@ import com.jb.pixelquest.feature.mypage.ui.screen.MyArtworksScreen
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * MyPage ë©”ì¸ ?”ë©´
- * State Hoisting ?¨í„´: ?íƒœ???ìœ„?ì„œ ê´€ë¦¬í•˜ê³? ?¡ì…˜ë§??„ë‹¬ë°›ìŒ
- */
 @Composable
 fun MyPageScreen(
     uiState: MyPageUiState,
@@ -37,7 +33,6 @@ fun MyPageScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // ????
             MyPageTabRow(
                 selectedTab = uiState.selectedTab,
                 onTabSelected = { tab ->
@@ -45,7 +40,6 @@ fun MyPageScreen(
                 }
             )
 
-            // ??³„ ì½˜í…ì¸?
             when (uiState.selectedTab) {
                 MyPageTab.MY_ARTWORKS -> {
                     MyArtworksScreen(

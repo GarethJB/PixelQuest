@@ -18,10 +18,6 @@ import com.jb.pixelquest.shared.presentation.resources.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * ÏµúÍ∑º ?ëÏóÖ ?ÑÏù¥??Ïª¥Ìè¨?åÌä∏
- * State Hoisting: ?¥Î¶≠/??†ú ?¥Î≤§?∏Îßå ?ÅÏúÑÎ°??ÑÎã¨
- */
 @Composable
 fun RecentWorkItem(
     work: RecentWork,
@@ -42,7 +38,6 @@ fun RecentWorkItem(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // ?∏ÎÑ§??
             AsyncImage(
                 model = work.thumbnailPath,
                 contentDescription = work.name,
@@ -52,7 +47,6 @@ fun RecentWorkItem(
                 contentScale = ContentScale.Crop
             )
 
-            // ?ïÎ≥¥
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -75,7 +69,6 @@ fun RecentWorkItem(
                 )
             }
 
-            // ??†ú Î≤ÑÌäº
             IconButton(onClick = onDeleteClick) {
                 Icon(
                     imageVector = Icons.Default.Delete,

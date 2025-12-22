@@ -96,7 +96,6 @@ fun ArtworkCard(
                     .padding(12.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // ?�목
                 Text(
                     text = artwork.title,
                     style = MaterialTheme.typography.titleSmall,
@@ -105,13 +104,11 @@ fun ArtworkCard(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                // ?�성??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // ?�바?�?
                     if (artwork.author.avatarUrl != null) {
                         AsyncImage(
                             model = artwork.author.avatarUrl,
@@ -126,7 +123,6 @@ fun ArtworkCard(
                     )
                 }
 
-                // ?�계 (좋아?? 조회??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)

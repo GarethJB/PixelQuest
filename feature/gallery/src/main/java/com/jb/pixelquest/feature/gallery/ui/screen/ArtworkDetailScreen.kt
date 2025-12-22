@@ -56,7 +56,6 @@ fun ArtworkDetailScreen(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // ?�품 ?��?지
                 AsyncImage(
                     model = artwork.imageUrl,
                     contentDescription = artwork.title,
@@ -66,7 +65,6 @@ fun ArtworkDetailScreen(
                     contentScale = ContentScale.Fit
                 )
 
-                // ?�성???�보
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -98,7 +96,6 @@ fun ArtworkDetailScreen(
                     }
                 }
 
-                // ?�명
                 if (!artwork.description.isNullOrBlank()) {
                     Text(
                         text = artwork.description,
@@ -106,7 +103,6 @@ fun ArtworkDetailScreen(
                     )
                 }
 
-                // ?�계
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -157,7 +153,6 @@ fun ArtworkDetailScreen(
                     }
                 }
 
-                // 캔버???�기
                 Text(
                     text = "${stringResource(id = R.string.artwork_canvas_size)}: ${artwork.canvasSize.width}x${artwork.canvasSize.height}",
                     style = MaterialTheme.typography.bodySmall,

@@ -18,10 +18,6 @@ import com.jb.pixelquest.feature.mypage.ui.component.getRarityColor
 import com.jb.pixelquest.feature.mypage.ui.component.getRarityText
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ?∏Î≤§?†Î¶¨ ?ÑÏù¥???ÅÏÑ∏ ?îÎ©¥
- * State Hoisting: ?ÅÌÉú?Ä ?°ÏÖòÎß??ÑÎã¨Î∞õÏùå
- */
 @Composable
 fun InventoryItemDetailScreen(
     item: InventoryItem,
@@ -44,7 +40,6 @@ fun InventoryItemDetailScreen(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // ?ÑÏù¥ÏΩ?
                 Box(
                     modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.Center
@@ -75,13 +70,11 @@ fun InventoryItemDetailScreen(
                     }
                 }
 
-                // ?§Î™Ö
                 Text(
                     text = item.description,
                     style = MaterialTheme.typography.bodyMedium
                 )
 
-                // ?¨Í???
                 Surface(
                     color = getRarityColor(item.rarity).copy(alpha = 0.2f),
                     shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
@@ -95,7 +88,6 @@ fun InventoryItemDetailScreen(
                     )
                 }
 
-                // ?çÎìù Í≤ΩÎ°ú
                 if (item.obtainedFrom != null) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(4.dp)

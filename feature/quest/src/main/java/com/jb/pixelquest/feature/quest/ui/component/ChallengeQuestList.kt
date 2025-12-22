@@ -11,10 +11,6 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.quest.model.ChallengeQuest
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ì±Œë¦°ì§€ ?˜ìŠ¤??ë¦¬ìŠ¤??
- * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
- */
 @Composable
 fun ChallengeQuestList(
     quests: List<ChallengeQuest>,

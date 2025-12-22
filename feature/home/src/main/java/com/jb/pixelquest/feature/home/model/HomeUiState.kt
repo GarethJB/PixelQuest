@@ -2,9 +2,6 @@ package com.jb.pixelquest.feature.home.model
 
 import androidx.compose.ui.unit.IntSize
 
-/**
- * ? ??? UI ??
- */
 data class HomeUiState(
     val welcomeTitle: String,
     val welcomeMessage: String,
@@ -18,19 +15,13 @@ data class HomeHighlight(
     val description: String
 )
 
-/**
- * ?? ??
- */
 data class Workshop(
     val id: String = "default",
     val name: String = "My Workshop",
-    val decorationLevel: Int = 1, // ??? ?? ? ?? ??
+    val decorationLevel: Int = 1,
     val theme: WorkshopTheme = WorkshopTheme.DEFAULT
 )
 
-/**
- * ?? ??
- */
 enum class WorkshopTheme {
     DEFAULT,
     MODERN,
@@ -38,9 +29,6 @@ enum class WorkshopTheme {
     RUSTIC
 }
 
-/**
- * ??? ?? (??? ???)
- */
 data class Canvas(
     val id: String,
     val name: String,

@@ -1,24 +1,22 @@
 package com.jb.pixelquest.feature.quest.ui.screen
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Modifier
 import com.jb.pixelquest.feature.quest.model.QuestAction
 import com.jb.pixelquest.feature.quest.model.QuestTab
 import com.jb.pixelquest.feature.quest.model.QuestUiState
 import com.jb.pixelquest.feature.quest.ui.component.ChallengeQuestList
 import com.jb.pixelquest.feature.quest.ui.component.QuestTabRow
-import com.jb.pixelquest.feature.quest.ui.screen.QuestDetailScreen
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * Quest ë©”ì¸ ?”ë©´
- * State Hoisting ?¨í„´: ?íƒœ???ìœ„?ì„œ ê´€ë¦¬í•˜ê³? ?¡ì…˜ë§??„ë‹¬ë°›ìŒ
- */
 @Composable
 fun QuestScreen(
     uiState: QuestUiState,
@@ -35,7 +33,6 @@ fun QuestScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // ????
             QuestTabRow(
                 selectedTab = uiState.selectedTab,
                 onTabSelected = { tab ->
@@ -43,7 +40,6 @@ fun QuestScreen(
                 }
             )
 
-            // ?˜ìŠ¤??ë¦¬ìŠ¤??
             Box(modifier = Modifier.fillMaxSize()) {
                 when (uiState.selectedTab) {
                     QuestTab.DAILY -> {
@@ -80,7 +76,6 @@ fun QuestScreen(
                     }
                 }
 
-                // ë¡œë”© ?¸ë””ì¼€?´í„°
                 if (uiState.isLoading) {
                     CircularProgressIndicator(
                         modifier = Modifier.align(Center)
@@ -90,7 +85,6 @@ fun QuestScreen(
         }
     }
 
-    // ?˜ìŠ¤???ì„¸ ?¤ì´?¼ë¡œê·?
     if (uiState.showQuestDetail && uiState.selectedQuest != null) {
         QuestDetailScreen(
             quest = uiState.selectedQuest,

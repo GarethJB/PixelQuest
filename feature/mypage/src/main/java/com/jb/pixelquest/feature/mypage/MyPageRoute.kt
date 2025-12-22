@@ -10,10 +10,6 @@ import com.jb.pixelquest.feature.mypage.ui.screen.MyPageScreen
 import com.jb.pixelquest.feature.mypage.viewmodel.InventoryViewModel
 import com.jb.pixelquest.feature.mypage.viewmodel.MyPageViewModel
 
-/**
- * MyPage Route
- * State Hoisting: ?�태??ViewModel?�서 관리하�? Screen???�달
- */
 @Composable
 fun MyPageRoute(
     navController: NavHostController,
@@ -23,7 +19,6 @@ fun MyPageRoute(
     val uiState by myPageViewModel.container.stateFlow.collectAsStateWithLifecycle()
     val inventoryState by inventoryViewModel.container.stateFlow.collectAsStateWithLifecycle()
 
-    // ?�션???�절??ViewModel�??�우??
     fun handleAction(action: MyPageAction) {
         when (action) {
             is MyPageAction.SelectCategory,

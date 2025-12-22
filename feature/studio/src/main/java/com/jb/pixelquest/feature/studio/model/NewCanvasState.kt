@@ -3,10 +3,6 @@ package com.jb.pixelquest.feature.studio.model
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
-/**
- * ??ìº”ë²„???ì„± ?¤ì´?¼ë¡œê·¸ì˜ ?íƒœ
- * State Hoisting ?¨í„´???„í•´ ?íƒœë¥??ìœ„ë¡??Œì–´?¬ë¦¼
- */
 data class NewCanvasState(
     val selectedSize: CanvasSize = CanvasSize.SIZE_32X32,
     val customWidth: String = "",
@@ -17,9 +13,6 @@ data class NewCanvasState(
     val showTemplateSelector: Boolean = false
 )
 
-/**
- * ìº”ë²„???¬ê¸° ?„ë¦¬??
- */
 enum class CanvasSize(val size: IntSize, val displayName: String) {
     SIZE_16X16(IntSize(16, 16), "16x16"),
     SIZE_32X32(IntSize(32, 32), "32x32"),
