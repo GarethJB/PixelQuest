@@ -12,6 +12,14 @@ pluginManagement {
         gradlePluginPortal()
     }
     includeBuild("build-logic")
+    
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "dagger.hilt.android.plugin") {
+                useModule("com.google.dagger:hilt-android-gradle-plugin:2.48")
+            }
+        }
+    }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)

@@ -14,10 +14,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyPageViewModel @Inject constructor(
-    // TODO: UseCase 주입
-    // private val getMyArtworksUseCase: GetMyArtworksUseCase,
-    // private val deleteArtworkUseCase: DeleteArtworkUseCase,
-    // private val toggleArtworkVisibilityUseCase: ToggleArtworkVisibilityUseCase,
+    private val getMyArtworksUseCase: com.jb.pixelquest.shared.domain.usecase.artwork.GetMyArtworksUseCase,
+    private val deleteArtworkUseCase: com.jb.pixelquest.shared.domain.usecase.artwork.DeleteArtworkUseCase,
+    private val toggleArtworkVisibilityUseCase: com.jb.pixelquest.shared.domain.usecase.artwork.ToggleArtworkVisibilityUseCase,
 ) : ContainerHost<MyPageUiState, MyPageSideEffect>, ViewModel() {
 
     override val container = container<MyPageUiState, MyPageSideEffect>(
@@ -31,18 +30,61 @@ class MyPageViewModel @Inject constructor(
             state.copy(isLoading = true)
         }
 
-        // val artworks = getMyArtworksUseCase()
-
-        val mockArtworks = emptyList<Artwork>()
+        val result = getMyArtworksUseCase()
+        val artworks = result.getOrElse { emptyList() }.map { it.toMyPageArtwork() }
 
         reduce {
             state.copy(
                 isLoading = false,
-                myArtworks = mockArtworks,
-                draftArtworks = mockArtworks.filter { it.isDraft },
-                publishedArtworks = mockArtworks.filter { it.isPublished }
+                myArtworks = artworks,
+                draftArtworks = artworks.filter { it.isDraft },
+                publishedArtworks = artworks.filter { it.isPublished },
+                error = result.exceptionOrNull()?.message
             )
         }
+    }
+    
+    private fun com.jb.pixelquest.shared.domain.model.artwork.Artwork.toMyPageArtwork(): Artwork {
+        return Artwork(
+            id = this.id,
+            title = this.title,
+            description = this.description,
+            imageUrl = this.imageUrl,
+            thumbnailUrl = this.thumbnailUrl,
+            category = when (this.category) {
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.RETRO -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.RETRO
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.FANTASY -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.FANTASY
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.CYBERPUNK -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.CYBERPUNK
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.ANIMAL -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.ANIMAL
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.CHARACTER -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.CHARACTER
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.LANDSCAPE -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.LANDSCAPE
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.OBJECT -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.OBJECT
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.ICON -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.ICON
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.PATTERN -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.PATTERN
+                com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory.ABSTRACT -> com.jb.pixelquest.feature.mypage.model.ArtworkCategory.ABSTRACT
+            },
+            tags = this.tags,
+            likes = this.likes,
+            views = this.views,
+            comments = this.comments,
+            createdAt = this.createdAt,
+            updatedAt = this.updatedAt,
+            canvasSize = androidx.compose.ui.unit.IntSize(
+                this.canvasSize.width,
+                this.canvasSize.height
+            ),
+            palette = this.palette?.map { color ->
+                androidx.compose.ui.graphics.Color(
+                    red = color.red,
+                    green = color.green,
+                    blue = color.blue,
+                    alpha = color.alpha
+                )
+            },
+            questId = this.questId,
+            isPublished = this.isPublished,
+            isDraft = this.isDraft
+        )
     }
 
     fun handleAction(action: MyPageAction) = intent {
@@ -74,55 +116,86 @@ class MyPageViewModel @Inject constructor(
             is MyPageAction.DeleteArtwork -> {
                 val artwork = findArtworkById(action.artworkId)
                 if (artwork != null) {
-                    // deleteArtworkUseCase(action.artworkId)
-
                     reduce {
-                        state.copy(
-                            myArtworks = state.myArtworks.filter { it.id != action.artworkId },
-                            draftArtworks = state.draftArtworks.filter { it.id != action.artworkId },
-                            publishedArtworks = state.publishedArtworks.filter { it.id != action.artworkId },
-                            showArtworkDetail = false,
-                            selectedArtwork = null
-                        )
+                        state.copy(isLoading = true)
                     }
+                    
+                    val result = deleteArtworkUseCase(action.artworkId)
+                    result.onSuccess {
+                        reduce {
+                            state.copy(
+                                isLoading = false,
+                                myArtworks = state.myArtworks.filter { it.id != action.artworkId },
+                                draftArtworks = state.draftArtworks.filter { it.id != action.artworkId },
+                                publishedArtworks = state.publishedArtworks.filter { it.id != action.artworkId },
+                                showArtworkDetail = false,
+                                selectedArtwork = null
+                            )
+                        }
 
-                    postSideEffect(MyPageSideEffect.ShowSnackbar(""))
+                        postSideEffect(MyPageSideEffect.ShowSnackbar("작품을 삭제했습니다"))
+                    }.onFailure { exception ->
+                        reduce {
+                            state.copy(
+                                isLoading = false,
+                                error = exception.message
+                            )
+                        }
+                        postSideEffect(MyPageSideEffect.ShowSnackbar(exception.message ?: "작품 삭제에 실패했습니다"))
+                    }
                 }
             }
 
             is MyPageAction.ToggleArtworkVisibility -> {
                 val artwork = findArtworkById(action.artworkId)
                 if (artwork != null) {
-                    // toggleArtworkVisibilityUseCase(action.artworkId)
-
-                    val updatedArtwork = artwork.copy(isPublished = !artwork.isPublished)
-
                     reduce {
-                        state.copy(
-                            myArtworks = updateArtwork(state.myArtworks, updatedArtwork),
-                            draftArtworks = if (updatedArtwork.isPublished) {
-                                state.draftArtworks.filter { it.id != action.artworkId }
-                            } else {
-                                updateArtwork(state.draftArtworks, updatedArtwork)
-                            },
-                            publishedArtworks = if (updatedArtwork.isPublished) {
-                                updateArtwork(state.publishedArtworks, updatedArtwork)
-                            } else {
-                                state.publishedArtworks.filter { it.id != action.artworkId }
-                            },
-                            selectedArtwork = if (state.selectedArtwork?.id == action.artworkId) {
-                                updatedArtwork
-                            } else {
-                                state.selectedArtwork
-                            }
-                        )
+                        state.copy(isLoading = true)
                     }
-
-                    postSideEffect(
-                        MyPageSideEffect.ShowSnackbar(
-                            if (updatedArtwork.isPublished) "" else ""
+                    
+                    val result = toggleArtworkVisibilityUseCase(action.artworkId)
+                    result.onSuccess { isPublished ->
+                        val updatedArtwork = artwork.copy(
+                            isPublished = isPublished,
+                            isDraft = !isPublished
                         )
-                    )
+
+                        reduce {
+                            state.copy(
+                                isLoading = false,
+                                myArtworks = updateArtwork(state.myArtworks, updatedArtwork),
+                                draftArtworks = if (isPublished) {
+                                    state.draftArtworks.filter { it.id != action.artworkId }
+                                } else {
+                                    updateArtwork(state.draftArtworks, updatedArtwork)
+                                },
+                                publishedArtworks = if (isPublished) {
+                                    updateArtwork(state.publishedArtworks, updatedArtwork)
+                                } else {
+                                    state.publishedArtworks.filter { it.id != action.artworkId }
+                                },
+                                selectedArtwork = if (state.selectedArtwork?.id == action.artworkId) {
+                                    updatedArtwork
+                                } else {
+                                    state.selectedArtwork
+                                }
+                            )
+                        }
+
+                        postSideEffect(
+                            MyPageSideEffect.ShowSnackbar(
+                                if (isPublished) "작품을 공개했습니다" else "작품을 비공개로 전환했습니다"
+                            )
+                        )
+                    }.onFailure { exception ->
+                        reduce {
+                            state.copy(
+                                isLoading = false,
+                                error = exception.message
+                            )
+                        }
+                        postSideEffect(MyPageSideEffect.ShowSnackbar(exception.message ?: "공개 상태 변경에 실패했습니다"))
+                    }
                 }
             }
 
@@ -145,12 +218,16 @@ class MyPageViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
-                // val artworks = getMyArtworksUseCase()
+                val result = getMyArtworksUseCase()
+                val artworks = result.getOrElse { emptyList() }.map { it.toMyPageArtwork() }
 
                 reduce {
                     state.copy(
                         isLoading = false,
-                        myArtworks = emptyList()
+                        myArtworks = artworks,
+                        draftArtworks = artworks.filter { it.isDraft },
+                        publishedArtworks = artworks.filter { it.isPublished },
+                        error = result.exceptionOrNull()?.message
                     )
                 }
                 applySortAndFilter()
