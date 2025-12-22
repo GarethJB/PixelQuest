@@ -1,6 +1,6 @@
-package com.jb.pixelquest.shared.data.remote
+package com.jb.pixelquest.data.remote.android
 
-import com.jb.pixelquest.shared.data.remote.api.PixelQuestApi
+import com.jb.pixelquest.data.remote.android.api.PixelQuestApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,4 +35,3 @@ object RetrofitModule {
     
     val pixelQuestApi: PixelQuestApi = retrofit.create(PixelQuestApi::class.java)
 }
-

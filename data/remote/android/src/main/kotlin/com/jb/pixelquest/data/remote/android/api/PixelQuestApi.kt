@@ -1,4 +1,4 @@
-package com.jb.pixelquest.shared.data.remote.api
+package com.jb.pixelquest.data.remote.android.api
 
 import com.jb.pixelquest.shared.data.remote.dto.ArtworkDto
 import com.jb.pixelquest.shared.data.remote.dto.QuestDto

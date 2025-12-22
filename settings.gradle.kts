@@ -37,7 +37,12 @@ include(":shared:domain:usecase")
 
 // Shared - Data
 include(":shared:data:remote")
-include(":shared:data:local")
+
+// Data - Remote (Platform specific)
+include(":data:remote:android")
+
+// Data - Local (Platform specific)
+include(":data:local:android")
 
 // Shared - Presentation (Resources only - KMP compatible)
 include(":shared:presentation:resources")
