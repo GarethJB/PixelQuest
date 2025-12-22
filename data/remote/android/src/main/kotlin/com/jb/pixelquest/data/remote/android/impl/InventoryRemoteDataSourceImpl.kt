@@ -5,11 +5,12 @@ import com.jb.pixelquest.shared.data.remote.datasource.InventoryRemoteDataSource
 import com.jb.pixelquest.shared.data.remote.mapper.InventoryMapper.toDomain
 import com.jb.pixelquest.shared.domain.model.inventory.InventoryItem
 import com.jb.pixelquest.shared.domain.model.inventory.InventoryItemType
+import javax.inject.Inject
 
 /**
  * 인벤토리 Remote DataSource 구현체
  */
-class InventoryRemoteDataSourceImpl(
+class InventoryRemoteDataSourceImpl @Inject constructor(
     private val api: PixelQuestApi
 ) : InventoryRemoteDataSource {
     override suspend fun getInventoryItems(): Result<List<InventoryItem>> {

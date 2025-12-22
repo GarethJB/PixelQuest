@@ -5,11 +5,12 @@ import com.jb.pixelquest.shared.data.remote.datasource.UserRemoteDataSource
 import com.jb.pixelquest.shared.data.remote.mapper.UserMapper.toDomain
 import com.jb.pixelquest.shared.data.remote.mapper.UserMapper.toDto
 import com.jb.pixelquest.shared.domain.model.user.User
+import javax.inject.Inject
 
 /**
  * 사용자 Remote DataSource 구현체
  */
-class UserRemoteDataSourceImpl(
+class UserRemoteDataSourceImpl @Inject constructor(
     private val api: PixelQuestApi
 ) : UserRemoteDataSource {
     override suspend fun getCurrentUser(): Result<User> {

@@ -8,12 +8,13 @@ import com.jb.pixelquest.shared.domain.model.quest.Quest
 import com.jb.pixelquest.shared.domain.model.quest.QuestStatistics
 import com.jb.pixelquest.shared.domain.model.quest.UserQuestProgress
 import com.jb.pixelquest.shared.domain.repository.quest.QuestRepository
+import javax.inject.Inject
 
 /**
  * 퀘스트 Repository 구현체
  * Remote와 Local DataSource를 조합하여 구현
  */
-class QuestRepositoryImpl(
+class QuestRepositoryImpl @Inject constructor(
     private val remoteDataSource: QuestRemoteDataSource,
     private val localDataSource: QuestLocalDataSource
 ) : QuestRepository {

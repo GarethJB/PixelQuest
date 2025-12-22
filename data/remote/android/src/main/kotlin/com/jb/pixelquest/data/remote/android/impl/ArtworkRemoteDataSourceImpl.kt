@@ -6,11 +6,12 @@ import com.jb.pixelquest.shared.data.remote.mapper.ArtworkMapper.toDomain
 import com.jb.pixelquest.shared.data.remote.mapper.ArtworkMapper.toDto
 import com.jb.pixelquest.shared.domain.model.artwork.Artwork
 import com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory
+import javax.inject.Inject
 
 /**
  * 작품 Remote DataSource 구현체
  */
-class ArtworkRemoteDataSourceImpl(
+class ArtworkRemoteDataSourceImpl @Inject constructor(
     private val api: PixelQuestApi
 ) : ArtworkRemoteDataSource {
     override suspend fun getTrendingArtworks(limit: Int): Result<List<Artwork>> {
