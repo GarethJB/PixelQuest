@@ -32,19 +32,14 @@ fun BottomNavigationBar(
 
     val bottomNavItems = listOf(
         BottomNavItem(
-            route = PixelQuestDestination.Home.route,
-            label = stringResource(id = R.string.home_title),
-            icon = Icons.Default.Home
-        ),
-        BottomNavItem(
             route = PixelQuestDestination.Gallery.route,
             label = stringResource(id = R.string.gallery_title),
-            icon = Icons.Default.Star
+            icon = Icons.Default.Home
         ),
         BottomNavItem(
             route = PixelQuestDestination.Studio.route,
             label = stringResource(id = R.string.studio_title),
-            icon = Icons.Default.Star
+            icon = Icons.Default.Home
         ),
         BottomNavItem(
             route = PixelQuestDestination.Quest.route,

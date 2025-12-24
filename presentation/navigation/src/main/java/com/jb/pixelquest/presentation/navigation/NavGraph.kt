@@ -6,7 +6,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.jb.pixelquest.feature.gallery.GalleryRoute
-import com.jb.pixelquest.feature.home.HomeRoute
 import com.jb.pixelquest.feature.mypage.MyPageRoute
 import com.jb.pixelquest.feature.quest.QuestProgressRoute
 import com.jb.pixelquest.feature.quest.QuestRoute
@@ -27,10 +26,6 @@ fun NavGraph(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(route = PixelQuestDestination.Home.route) {
-            HomeRoute()
-        }
-        
         composable(route = PixelQuestDestination.Gallery.route) {
             GalleryRoute()
         }

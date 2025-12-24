@@ -28,7 +28,6 @@ android {
 
 dependencies {
     // Feature Modules
-    implementation(project(":feature:home"))
     implementation(project(":feature:studio"))
     implementation(project(":feature:quest"))
     implementation(project(":feature:gallery"))

@@ -49,7 +49,6 @@ include(":presentation:navigation")
 
 
 // Feature
-include(":feature:home")
 include(":feature:studio")
 include(":feature:quest")
 include(":feature:gallery")
