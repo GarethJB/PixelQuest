@@ -12,6 +12,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.mypage.model.ArtworkFilterOption
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?‘í’ˆ ?„í„° ì¹?
+ * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun ArtworkFilterChips(
     selectedFilter: ArtworkFilterOption?,
@@ -23,6 +27,7 @@ fun ArtworkFilterChips(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     ) {
+        // ?„ì²´ ?„í„° (? íƒ ?´ì œ)
         item {
             FilterChip(
                 selected = selectedFilter == null,

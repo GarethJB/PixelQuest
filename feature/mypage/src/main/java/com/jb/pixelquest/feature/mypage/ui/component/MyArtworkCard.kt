@@ -18,6 +18,10 @@ import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.mypage.model.Artwork
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?òÏùò ?ëÌíà Ïπ¥Îìú
+ * State Hoisting: ?¥Î¶≠ ?¥Î≤§?∏Îßå ?ÅÏúÑÎ°??ÑÎã¨
+ */
 @Composable
 fun MyArtworkCard(
     artwork: Artwork,
@@ -37,6 +41,7 @@ fun MyArtworkCard(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
+            // ?∏ÎÑ§???¥Î?ÏßÄ
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -49,6 +54,7 @@ fun MyArtworkCard(
                     contentScale = ContentScale.Crop
                 )
 
+                // ?ÅÌÉú Î∞∞Ï? (Ï¥àÏïà/Í≥µÍ∞ú)
                 Row(
                     modifier = Modifier
                         .align(Alignment.TopStart)
@@ -82,6 +88,7 @@ fun MyArtworkCard(
                     }
                 }
 
+                // ?°ÏÖò Î≤ÑÌäº (?§Î≤Ñ?àÏù¥)
                 Row(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -101,12 +108,14 @@ fun MyArtworkCard(
                 }
             }
 
+            // ?ïÎ≥¥ ?ÅÏó≠
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(12.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                // ?úÎ™©
                 Text(
                     text = artwork.title,
                     style = MaterialTheme.typography.titleSmall,
@@ -115,6 +124,7 @@ fun MyArtworkCard(
                     overflow = TextOverflow.Ellipsis
                 )
 
+                // ?µÍ≥Ñ (Ï¢ãÏïÑ?? Ï°∞Ìöå??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -131,6 +141,7 @@ fun MyArtworkCard(
                     )
                 }
 
+                // ?°ÏÖò Î≤ÑÌäº
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)

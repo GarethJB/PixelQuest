@@ -4,6 +4,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
+/**
+ * ?ë””???”ë©´??UI ?íƒœ
+ * State Hoisting ?¨í„´???„í•´ ëª¨ë“  ?íƒœë¥??ìœ„ë¡??Œì–´?¬ë¦¼
+ */
 data class EditorUiState(
     val canvasSize: IntSize,
     val pixels: Array<Array<Color>>,

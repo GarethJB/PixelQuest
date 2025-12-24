@@ -6,6 +6,10 @@ import androidx.compose.ui.res.stringResource
 import com.jb.pixelquest.feature.mypage.model.ArtworkSortOption
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?‘í’ˆ ?•ë ¬ ë©”ë‰´
+ * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun ArtworkSortMenu(
     currentSortOption: ArtworkSortOption,

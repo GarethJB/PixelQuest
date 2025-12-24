@@ -17,6 +17,10 @@ import com.jb.pixelquest.feature.quest.model.Reward
 import com.jb.pixelquest.feature.quest.model.RewardType
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * Î≥¥ÏÉÅ Î¶¨Ïä§??Ïª¥Ìè¨?åÌä∏
+ * State Hoisting: ?†ÌÉù ?¥Î≤§?∏Îßå ?ÅÏúÑÎ°??ÑÎã¨
+ */
 @Composable
 fun RewardList(
     rewards: List<Reward>,
@@ -60,6 +64,7 @@ private fun RewardCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
+            // ?ÑÏù¥ÏΩ?
             Surface(
                 color = MaterialTheme.colorScheme.surfaceVariant,
                 shape = RoundedCornerShape(8.dp),
@@ -84,6 +89,7 @@ private fun RewardCard(
                 }
             }
 
+            // ?¥Î¶Ñ
             Text(
                 text = reward.name,
                 style = MaterialTheme.typography.labelMedium,
@@ -91,6 +97,7 @@ private fun RewardCard(
                 maxLines = 2
             )
 
+            // ?Ä??
             Text(
                 text = getRewardTypeText(reward.type),
                 style = MaterialTheme.typography.labelSmall,

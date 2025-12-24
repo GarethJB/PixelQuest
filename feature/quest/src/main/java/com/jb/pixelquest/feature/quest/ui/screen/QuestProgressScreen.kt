@@ -16,6 +16,10 @@ import com.jb.pixelquest.feature.quest.ui.component.RewardList
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * Quest 진행 ?�황 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
+ */
 @Composable
 fun QuestProgressScreen(
     progressState: QuestProgressState,
@@ -43,14 +47,17 @@ fun QuestProgressScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(16.dp)
             ) {
+                // 진행 ?�황 ?�약
                 item {
                     ProgressOverviewCard(progress = progressState.userProgress)
                 }
 
+                // ?�계
                 item {
                     StatisticsCard(statistics = progressState.statistics)
                 }
 
+                // ?�적
                 if (progressState.achievements.isNotEmpty()) {
                     item {
                         Text(
@@ -71,6 +78,7 @@ fun QuestProgressScreen(
                     }
                 }
 
+                // 최근 ?�동
                 if (progressState.recentActivity.isNotEmpty()) {
                     item {
                         Text(
@@ -91,6 +99,7 @@ fun QuestProgressScreen(
                     }
                 }
 
+                // ?�득??보상
                 if (progressState.earnedRewards.isNotEmpty()) {
                     item {
                         Text(
@@ -134,6 +143,7 @@ private fun ProgressOverviewCard(
                 fontWeight = FontWeight.Bold
             )
 
+            // ?�벨 �?경험�?
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -157,6 +167,7 @@ private fun ProgressOverviewCard(
                 )
             }
 
+            // ?�계 그리??
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -330,6 +341,7 @@ private fun AchievementCard(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // ?�이�?
             Surface(
                 color = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(8.dp),
@@ -340,6 +352,7 @@ private fun AchievementCard(
                     contentAlignment = Alignment.Center
                 ) {
                     if (achievement.iconPath.isNotEmpty()) {
+                        // TODO: AsyncImage�?교체
                         Text(
                             text = achievement.name.take(1),
                             style = MaterialTheme.typography.titleMedium
@@ -348,6 +361,7 @@ private fun AchievementCard(
                 }
             }
 
+            // ?�보
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -452,6 +466,7 @@ private fun EmptyStateCard(
 }
 
 private fun formatTimestamp(timestamp: Long): String {
+    // TODO: ?�짜 ?�맷??로직 구현
     return "방금 ??"
 }
 

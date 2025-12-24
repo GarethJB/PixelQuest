@@ -12,6 +12,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.mypage.model.Artwork
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?˜ì˜ ?‘í’ˆ ê·¸ë¦¬??
+ * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun MyArtworkGrid(
     artworks: List<Artwork>,

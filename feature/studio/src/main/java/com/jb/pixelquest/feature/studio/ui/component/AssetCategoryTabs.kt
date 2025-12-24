@@ -8,6 +8,10 @@ import androidx.compose.ui.res.stringResource
 import com.jb.pixelquest.feature.studio.model.AssetCategory
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?ì…‹ ì¹´í…Œê³ ë¦¬ ??ì»´í¬?ŒíŠ¸
+ * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun AssetCategoryTabs(
     selectedCategory: AssetCategory?,

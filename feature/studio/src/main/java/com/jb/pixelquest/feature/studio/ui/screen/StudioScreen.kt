@@ -14,6 +14,10 @@ import com.jb.pixelquest.feature.studio.ui.dialog.NewCanvasDialog
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * Studio 메인 ?�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
+ */
 @Composable
 fun StudioScreen(
     uiState: StudioUiState,
@@ -33,6 +37,7 @@ fun StudioScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
+            // ??캔버??만들�?버튼
             item {
                 NewCanvasButton(
                     onClick = { onAction(StudioAction.ShowNewCanvasDialog) },
@@ -40,6 +45,7 @@ fun StudioScreen(
                 )
             }
 
+            // 최근 ?�업 ?�션
             if (uiState.recentWorks.isNotEmpty()) {
                 item {
                     RecentWorkSection(
@@ -58,6 +64,7 @@ fun StudioScreen(
                 }
             }
 
+            // ?�플�??�셋 ?�션
             item {
                 AssetCategoryTabs(
                     selectedCategory = uiState.selectedCategory,
@@ -83,7 +90,7 @@ fun StudioScreen(
                         PaletteList(
                             palettes = uiState.palettes,
                             onPaletteSelected = { palette ->
-
+                                // ?�레???�택 ?�션 (?�디?�로 ?�달)
                             }
                         )
                     }
@@ -93,12 +100,13 @@ fun StudioScreen(
                         BrushList(
                             brushes = uiState.brushes,
                             onBrushSelected = { brush ->
-
+                                // 브러???�택 ?�션 (?�디?�로 ?�달)
                             }
                         )
                     }
                 }
                 null -> {
+                    // 기본: ?�플�??�시
                     item {
                         TemplateList(
                             templates = uiState.templates,
@@ -112,6 +120,7 @@ fun StudioScreen(
         }
     }
 
+    // ??캔버???�이?�로�?
     if (uiState.showNewCanvasDialog) {
         NewCanvasDialog(
             state = uiState.newCanvasState,

@@ -12,6 +12,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.mypage.model.InventoryItem
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?¸ë²¤? ë¦¬ ?„ì´??ê·¸ë¦¬??
+ * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun InventoryItemGrid(
     items: List<InventoryItem>,

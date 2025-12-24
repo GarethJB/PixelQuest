@@ -1,14 +1,10 @@
 package com.jb.pixelquest.feature.gallery.ui.component
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -16,6 +12,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.gallery.model.ArtworkCategory
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * 카테고리 ?�터 �?
+ * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
+ */
 @Composable
 fun CategoryFilterChips(
     selectedCategory: ArtworkCategory?,

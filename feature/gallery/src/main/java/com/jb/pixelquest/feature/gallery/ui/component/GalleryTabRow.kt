@@ -1,10 +1,7 @@
 package com.jb.pixelquest.feature.gallery.ui.component
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ScrollableTabRow
-import androidx.compose.material3.Tab
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -12,6 +9,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.gallery.model.GalleryTab
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * Gallery ????
+ * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
+ */
 @Composable
 fun GalleryTabRow(
     selectedTab: GalleryTab,

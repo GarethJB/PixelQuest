@@ -15,6 +15,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.Palette
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?‰ìƒ ?”ë ˆ??ì»´í¬?ŒíŠ¸
+ * State Hoisting: ?‰ìƒ ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun ColorPalette(
     selectedColor: Color,
@@ -31,6 +35,7 @@ fun ColorPalette(
             style = MaterialTheme.typography.titleSmall
         )
 
+        // ê¸°ë³¸ ?‰ìƒ ?”ë ˆ??
         val defaultColors = listOf(
             Color.Black,
             Color.White,
@@ -63,6 +68,7 @@ fun ColorPalette(
             }
         }
 
+        // ? íƒ???”ë ˆ?¸ì˜ ?‰ìƒ??
         selectedPalette?.let { palette ->
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),

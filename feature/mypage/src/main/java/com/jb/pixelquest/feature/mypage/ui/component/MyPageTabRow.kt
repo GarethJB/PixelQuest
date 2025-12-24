@@ -9,6 +9,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.mypage.model.MyPageTab
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * MyPage ????
+ * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun MyPageTabRow(
     selectedTab: MyPageTab,

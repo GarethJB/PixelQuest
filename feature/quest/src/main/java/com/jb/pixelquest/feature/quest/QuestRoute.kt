@@ -10,6 +10,10 @@ import com.jb.pixelquest.feature.quest.ui.screen.QuestScreen
 import com.jb.pixelquest.feature.quest.viewmodel.QuestProgressViewModel
 import com.jb.pixelquest.feature.quest.viewmodel.QuestViewModel
 
+/**
+ * Quest Route
+ * State Hoisting: ?�태??ViewModel?�서 관리하�? Screen???�달
+ */
 @Composable
 fun QuestRoute(
     navController: NavHostController,
@@ -23,6 +27,10 @@ fun QuestRoute(
     )
 }
 
+/**
+ * Quest Progress Route
+ * 진행 ?�황 ?�면
+ */
 @Composable
 fun QuestProgressRoute(
     navController: NavHostController,

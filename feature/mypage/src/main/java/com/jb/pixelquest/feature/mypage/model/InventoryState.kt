@@ -1,5 +1,8 @@
 package com.jb.pixelquest.feature.mypage.model
 
+/**
+ * ?∏Î≤§?†Î¶¨ ?ÅÌÉú
+ */
 data class InventoryState(
     val isLoading: Boolean = false,
     val selectedCategory: InventoryCategory? = null,
@@ -12,6 +15,9 @@ data class InventoryState(
     val error: String? = null
 )
 
+/**
+ * ?∏Î≤§?†Î¶¨ ?ÑÏù¥??
+ */
 data class InventoryItem(
     val id: String,
     val name: String,
@@ -21,23 +27,32 @@ data class InventoryItem(
     val thumbnailUrl: String?,
     val rarity: ItemRarity,
     val obtainedDate: Long,
-    val obtainedFrom: String?,
-    val isEquipped: Boolean = false,
-    val isNew: Boolean = false,
-    val metadata: Map<String, Any>? = null
+    val obtainedFrom: String?, // "?òÏä§???ÑÎ£å", "?ÅÏ†ê Íµ¨Îß§" ??
+    val isEquipped: Boolean = false, // ?•Ï∞© ?¨Î?
+    val isNew: Boolean = false, // ?àÎ°ú ?çÎìù???ÑÏù¥??
+    val metadata: Map<String, Any>? = null // ?Ä?ÖÎ≥Ñ Ï∂îÍ? ?ïÎ≥¥
 )
 
+/**
+ * ?∏Î≤§?†Î¶¨ Ïπ¥ÌÖåÍ≥†Î¶¨
+ */
 enum class InventoryCategory {
-    PALETTE,
-    BRUSH,
-    BADGE,
-    PROFILE_DECORATION
+    PALETTE, // ?îÎ†à??
+    BRUSH, // Î∏åÎü¨??
+    BADGE, // Î±ÉÏ?
+    PROFILE_DECORATION // ?ÑÎ°ú???•Ïãù
 }
 
+/**
+ * ?∏Î≤§?†Î¶¨ ?ÑÏù¥???Ä??
+ */
 enum class InventoryItemType {
     PALETTE, BRUSH, BADGE, PROFILE_FRAME, PROFILE_BACKGROUND, PROFILE_ICON
 }
 
+/**
+ * ?ÑÏù¥???¨Í???
+ */
 enum class ItemRarity {
     COMMON, RARE, EPIC, LEGENDARY
 }

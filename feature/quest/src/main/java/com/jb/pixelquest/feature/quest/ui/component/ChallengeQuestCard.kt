@@ -19,6 +19,10 @@ import com.jb.pixelquest.feature.quest.model.QuestDifficulty
 import com.jb.pixelquest.feature.quest.model.QuestStatus
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * Ï±åÎ¶∞ÏßÄ ?òÏä§??Ïπ¥Îìú
+ * State Hoisting: ?¥Î¶≠ ?¥Î≤§?∏Îßå ?ÅÏúÑÎ°??ÑÎã¨
+ */
 @Composable
 fun ChallengeQuestCard(
     quest: ChallengeQuest,
@@ -38,11 +42,13 @@ fun ChallengeQuestCard(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            // ?§Îçî: ?∏ÎÑ§?? ?úÎ™©, ?ÅÌÉú
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                // ?∏ÎÑ§??
                 if (quest.thumbnailPath != null) {
                     AsyncImage(
                         model = quest.thumbnailPath,
@@ -60,6 +66,7 @@ fun ChallengeQuestCard(
                     )
                 }
 
+                // ?úÎ™© Î∞??ÅÌÉú
                 Column(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -77,14 +84,17 @@ fun ChallengeQuestCard(
                     )
                 }
 
+                // ?ÅÌÉú Î∞∞Ï?
                 QuestStatusBadge(status = quest.status)
             }
 
+            // ?åÎßà Î∞??úÏù¥??
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                // ?åÎßà
                 Surface(
                     color = MaterialTheme.colorScheme.primaryContainer,
                     shape = RoundedCornerShape(8.dp)
@@ -97,19 +107,22 @@ fun ChallengeQuestCard(
                     )
                 }
 
+                // ?úÏù¥??
                 DifficultyBadge(difficulty = quest.difficulty)
 
                 Spacer(modifier = Modifier.weight(1f))
 
+                // Ï∞∏Ïó¨????
                 if (quest.participantCount > 0) {
                     Text(
-                        text = "${quest.participantCount}",
+                        text = "${quest.participantCount}Î™?Ï∞∏Ïó¨",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
 
+            // Î≥¥ÏÉÅ ÎØ∏Î¶¨Î≥¥Í∏∞
             if (quest.rewards.isNotEmpty()) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),

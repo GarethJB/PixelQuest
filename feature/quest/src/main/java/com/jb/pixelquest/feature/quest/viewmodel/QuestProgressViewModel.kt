@@ -12,6 +12,10 @@ import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
+/**
+ * Quest 진행 ?�황 ViewModel
+ * Orbit MVI ?�턴 ?�용
+ */
 @HiltViewModel
 class QuestProgressViewModel @Inject constructor(
     // TODO: UseCase 주입
@@ -23,20 +27,26 @@ class QuestProgressViewModel @Inject constructor(
     override val container = container<QuestProgressState, Nothing>(
         QuestProgressState()
     ) {
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
+    /**
+     * 초기 ?�이??로드
+     */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
+        // TODO: UseCase�??�한 ?�이??로드
         // val progress = getQuestProgressUseCase()
         // val statistics = getQuestStatisticsUseCase()
         // val achievements = getAchievementsUseCase()
         // val activities = getRecentActivitiesUseCase()
         // val rewards = getEarnedRewardsUseCase()
 
+        // ?�시 ?�이??(개발??
         val mockProgress = UserQuestProgress()
         val mockStatistics = QuestStatistics()
         val mockAchievements = emptyList<Achievement>()
@@ -55,19 +65,23 @@ class QuestProgressViewModel @Inject constructor(
         }
     }
 
+    /**
+     * 진행 ?�황 ?�로고침
+     */
     fun refreshProgress() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
+        // TODO: UseCase�??�한 ?�로고침
         // val progress = getQuestProgressUseCase()
         // val statistics = getQuestStatisticsUseCase()
 
         reduce {
             state.copy(
                 isLoading = false,
-                userProgress = state.userProgress,
-                statistics = state.statistics
+                userProgress = state.userProgress, // TODO: ?�제 ?�이?�로 교체
+                statistics = state.statistics // TODO: ?�제 ?�이?�로 교체
             )
         }
     }

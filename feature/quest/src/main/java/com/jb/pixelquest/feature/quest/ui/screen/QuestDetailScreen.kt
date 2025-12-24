@@ -17,6 +17,10 @@ import com.jb.pixelquest.feature.quest.ui.component.QuestStatusBadge
 import com.jb.pixelquest.feature.quest.ui.component.RewardList
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?�스???�세 ?�면
+ * State Hoisting: ?�태?� ?�션�??�달받음
+ */
 @Composable
 fun QuestDetailScreen(
     quest: ChallengeQuest,
@@ -39,6 +43,7 @@ fun QuestDetailScreen(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                // ?�네??
                 if (quest.thumbnailPath != null) {
                     AsyncImage(
                         model = quest.thumbnailPath,
@@ -49,11 +54,13 @@ fun QuestDetailScreen(
                     )
                 }
 
+                // ?�명
                 Text(
                     text = quest.description,
                     style = MaterialTheme.typography.bodyLarge
                 )
 
+                // ?�태 �??�이??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -62,6 +69,7 @@ fun QuestDetailScreen(
                     DifficultyBadge(difficulty = quest.difficulty)
                 }
 
+                // ?�마
                 Column(
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
@@ -76,6 +84,7 @@ fun QuestDetailScreen(
                     )
                 }
 
+                // ?�구?�항
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
@@ -87,21 +96,21 @@ fun QuestDetailScreen(
                     
                     if (quest.requirements.canvasSize != null) {
                         Text(
-                            text = ": ${quest.requirements.canvasSize.width}x${quest.requirements.canvasSize.height}",
+                            text = "캔버???�기: ${quest.requirements.canvasSize.width}x${quest.requirements.canvasSize.height}",
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
                     
                     if (quest.requirements.colorLimit != null) {
                         Text(
-                            text = ": ${quest.requirements.colorLimit}",
+                            text = "?�상 ?�한: ${quest.requirements.colorLimit}???�하",
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
                     
                     if (quest.requirements.themeKeywords.isNotEmpty()) {
                         Text(
-                            text = " ${quest.requirements.themeKeywords.joinToString(", ")}",
+                            text = "?�워?? ${quest.requirements.themeKeywords.joinToString(", ")}",
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
@@ -121,7 +130,7 @@ fun QuestDetailScreen(
                     }
                 }
 
-                // 참여
+                // 참여????
                 if (quest.participantCount > 0) {
                     Text(
                         text = "${stringResource(id = R.string.quest_participants)}: ${quest.participantCount}�?",

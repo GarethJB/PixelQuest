@@ -16,6 +16,10 @@ import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
+/**
+ * Studio ?�면 ViewModel
+ * Orbit MVI ?�턴 ?�용
+ */
 @HiltViewModel
 class StudioViewModel @Inject constructor(
     // TODO: UseCase 주입
@@ -29,19 +33,25 @@ class StudioViewModel @Inject constructor(
     override val container = container<StudioUiState, StudioSideEffect>(
         StudioUiState()
     ) {
+        // 초기 ?�이??로드
         loadInitialData()
     }
 
+    /**
+     * 초기 ?�이??로드
+     */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
+        // TODO: UseCase�??�한 ?�이??로드
         // val recentWorks = getRecentWorksUseCase()
         // val templates = getTemplatesUseCase()
         // val palettes = getPalettesUseCase()
         // val brushes = getBrushesUseCase()
 
+        // ?�시 ?�이??(개발??
         val mockRecentWorks = emptyList<RecentWork>()
         val mockTemplates = emptyList<Template>()
         val mockPalettes = emptyList<Palette>()
@@ -58,9 +68,13 @@ class StudioViewModel @Inject constructor(
         }
     }
 
+    /**
+     * ?�션 처리
+     */
     fun handleAction(action: StudioAction) = intent {
         when (action) {
             is StudioAction.SelectRecentWork -> {
+                // ?�디?�로 ?�동 (기존 캔버??로드)
                 postSideEffect(
                     StudioSideEffect.NavigateToEditor(
                         canvasId = action.work.id,
@@ -72,6 +86,7 @@ class StudioViewModel @Inject constructor(
             }
 
             is StudioAction.DeleteRecentWork -> {
+                // TODO: UseCase�??�한 ??��
                 // deleteRecentWorkUseCase(action.workId)
                 
                 reduce {
@@ -79,10 +94,11 @@ class StudioViewModel @Inject constructor(
                         recentWorks = state.recentWorks.filter { it.id != action.workId }
                     )
                 }
-                postSideEffect(StudioSideEffect.ShowSnackbar(""))
+                postSideEffect(StudioSideEffect.ShowSnackbar("?�업????��?�었?�니??"))
             }
 
             is StudioAction.SelectTemplate -> {
+                // ?�플�??�택 ???�디?�로 ?�동
                 postSideEffect(
                     StudioSideEffect.NavigateToEditor(
                         canvasId = null,
@@ -116,12 +132,13 @@ class StudioViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
+                // TODO: UseCase�??�한 최근 ?�업 ?�로고침
                 // val recentWorks = getRecentWorksUseCase()
 
                 reduce {
                     state.copy(
                         isLoading = false,
-                        recentWorks = emptyList()
+                        recentWorks = emptyList() // TODO: ?�제 ?�이?�로 교체
                     )
                 }
             }
@@ -153,6 +170,10 @@ class StudioViewModel @Inject constructor(
         }
     }
 
+    /**
+     * ??캔버???�션 처리
+     * NewCanvasState�?StudioViewModel?�서 ?�합 관�?
+     */
     fun handleNewCanvasAction(action: NewCanvasAction) = intent {
         when (action) {
             is NewCanvasAction.SelectSize -> {
@@ -228,6 +249,7 @@ class StudioViewModel @Inject constructor(
             }
 
             is NewCanvasAction.CreateCanvas -> {
+                // 캔버???�기 계산
                 val canvasSize = when (state.newCanvasState.selectedSize) {
                     CanvasSize.CUSTOM -> {
                         val width = state.newCanvasState.customWidth.toIntOrNull() ?: 32
@@ -240,12 +262,14 @@ class StudioViewModel @Inject constructor(
                     else -> state.newCanvasState.selectedSize.size
                 }
 
+                // TODO: UseCase�??�한 캔버???�성
                 // val canvas = createCanvasUseCase(
                 //     size = canvasSize,
                 //     backgroundColor = state.newCanvasState.backgroundColor,
                 //     template = state.newCanvasState.selectedTemplate
                 // )
 
+                // ?�디?�로 ?�동 (?�비게이???�라미터�??�태 ?�달)
                 postSideEffect(
                     StudioSideEffect.NavigateToEditor(
                         canvasId = null,
@@ -255,6 +279,7 @@ class StudioViewModel @Inject constructor(
                     )
                 )
 
+                // ?�이?�로�??�기 �??�태 초기??
                 reduce {
                     state.copy(
                         showNewCanvasDialog = false,
@@ -264,6 +289,7 @@ class StudioViewModel @Inject constructor(
             }
 
             is NewCanvasAction.Cancel -> {
+                // ?�이?�로�??�기 �??�태 초기??
                 reduce {
                     state.copy(
                         showNewCanvasDialog = false,

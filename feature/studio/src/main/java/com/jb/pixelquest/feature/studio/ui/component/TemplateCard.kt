@@ -12,6 +12,10 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.studio.model.Template
 
+/**
+ * ?œí”Œë¦?ì¹´ë“œ ì»´í¬?ŒíŠ¸
+ * State Hoisting: ?´ë¦­ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun TemplateCard(
     template: Template,
@@ -27,6 +31,7 @@ fun TemplateCard(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
+            // ?¸ë„¤??
             AsyncImage(
                 model = template.thumbnailPath,
                 contentDescription = template.name,
@@ -36,6 +41,7 @@ fun TemplateCard(
                 contentScale = ContentScale.Crop
             )
 
+            // ?•ë³´
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -57,3 +63,4 @@ fun TemplateCard(
         }
     }
 }
+

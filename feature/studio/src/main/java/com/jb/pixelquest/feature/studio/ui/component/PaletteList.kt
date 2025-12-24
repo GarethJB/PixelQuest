@@ -15,6 +15,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.Palette
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?”ë ˆ??ë¦¬ìŠ¤??ì»´í¬?ŒíŠ¸
+ * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
+ */
 @Composable
 fun PaletteList(
     palettes: List<Palette>,
@@ -68,7 +72,8 @@ private fun PaletteCard(
                 text = palette.name,
                 style = MaterialTheme.typography.titleSmall
             )
-
+            
+            // ?‰ìƒ ë¯¸ë¦¬ë³´ê¸°
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {

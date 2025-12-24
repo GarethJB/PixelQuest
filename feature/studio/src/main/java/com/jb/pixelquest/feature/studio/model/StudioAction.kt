@@ -3,6 +3,10 @@ package com.jb.pixelquest.feature.studio.model
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntSize
 
+/**
+ * Studio ?�면???�용???�션
+ * State Hoisting ?�턴???�해 ?�션??명시?�으�??�의
+ */
 sealed interface StudioAction {
     data class SelectRecentWork(val work: RecentWork) : StudioAction
     data class DeleteRecentWork(val workId: String) : StudioAction
@@ -17,6 +21,9 @@ sealed interface StudioAction {
     object HideEditor : StudioAction
 }
 
+/**
+ * ?�디???�면???�용???�션
+ */
 sealed interface EditorAction {
     data class PixelChanged(val x: Int, val y: Int, val color: Color) : EditorAction
     data class SetSelectedColor(val color: Color) : EditorAction
@@ -33,6 +40,9 @@ sealed interface EditorAction {
     object LoadCanvas : EditorAction
 }
 
+/**
+ * ??캔버???�이?�로그의 ?�용???�션
+ */
 sealed interface NewCanvasAction {
     data class SelectSize(val size: CanvasSize) : NewCanvasAction
     data class SetCustomWidth(val width: String) : NewCanvasAction

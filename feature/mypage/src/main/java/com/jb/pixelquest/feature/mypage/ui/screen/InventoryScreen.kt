@@ -13,6 +13,10 @@ import com.jb.pixelquest.feature.mypage.ui.component.InventoryCategoryTabs
 import com.jb.pixelquest.feature.mypage.ui.component.InventoryItemGrid
 import com.jb.pixelquest.feature.mypage.ui.screen.InventoryItemDetailScreen
 
+/**
+ * ?∏Î≤§?†Î¶¨ ?îÎ©¥
+ * State Hoisting ?®ÌÑ¥: ?ÅÌÉú???ÅÏúÑ?êÏÑú Í¥ÄÎ¶¨ÌïòÍ≥? ?°ÏÖòÎß??ÑÎã¨Î∞õÏùå
+ */
 @Composable
 fun InventoryScreen(
     inventoryState: InventoryState,
@@ -22,6 +26,7 @@ fun InventoryScreen(
     Column(
         modifier = modifier.fillMaxSize()
     ) {
+        // Ïπ¥ÌÖåÍ≥†Î¶¨ ??
         InventoryCategoryTabs(
             selectedCategory = inventoryState.selectedCategory,
             onCategorySelected = { category ->
@@ -29,6 +34,7 @@ fun InventoryScreen(
             }
         )
 
+        // ?ÑÏù¥??Í∑∏Î¶¨??
         Box(modifier = Modifier.fillMaxSize()) {
             val items = when (inventoryState.selectedCategory) {
                 InventoryCategory.PALETTE -> inventoryState.palettes
@@ -45,6 +51,7 @@ fun InventoryScreen(
                 }
             )
 
+            // Î°úÎî© ?∏ÎîîÏºÄ?¥ÌÑ∞
             if (inventoryState.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Center)
@@ -53,6 +60,7 @@ fun InventoryScreen(
         }
     }
 
+    // ?ÑÏù¥???ÅÏÑ∏ ?§Ïù¥?ºÎ°úÍ∑?
     if (inventoryState.showItemDetail && inventoryState.selectedItem != null) {
         InventoryItemDetailScreen(
             item = inventoryState.selectedItem,

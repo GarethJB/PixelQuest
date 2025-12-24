@@ -7,6 +7,10 @@ import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
+/**
+ * Quest ?”ë©´ ViewModel
+ * Orbit MVI ?¨í„´ ?¬ìš©
+ */
 @HiltViewModel
 class QuestViewModel @Inject constructor(
     // TODO: UseCase ì£¼ì…
@@ -19,19 +23,25 @@ class QuestViewModel @Inject constructor(
     override val container = container<QuestUiState, QuestSideEffect>(
         QuestUiState()
     ) {
+        // ì´ˆê¸° ?°ì´??ë¡œë“œ
         loadInitialData()
     }
 
+    /**
+     * ì´ˆê¸° ?°ì´??ë¡œë“œ
+     */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
+        // TODO: UseCaseë¥??µí•œ ?°ì´??ë¡œë“œ
         // val dailyQuests = getDailyQuestsUseCase()
         // val weeklyQuests = getWeeklyQuestsUseCase()
         // val activeQuests = getActiveQuestsUseCase()
         // val completedQuests = getCompletedQuestsUseCase()
 
+        // ?„ì‹œ ?°ì´??(ê°œë°œ??
         val mockDailyQuests = emptyList<ChallengeQuest>()
         val mockWeeklyQuests = emptyList<ChallengeQuest>()
         val mockActiveQuests = emptyList<ChallengeQuest>()
@@ -48,6 +58,9 @@ class QuestViewModel @Inject constructor(
         }
     }
 
+    /**
+     * ?¡ì…˜ ì²˜ë¦¬
+     */
     fun handleAction(action: QuestAction) = intent {
         when (action) {
             is QuestAction.SelectTab -> {
@@ -77,8 +90,10 @@ class QuestViewModel @Inject constructor(
             is QuestAction.StartQuest -> {
                 val quest = findQuestById(action.questId)
                 if (quest != null && quest.status == QuestStatus.AVAILABLE) {
+                    // TODO: UseCaseë¥??µí•œ ?˜ìŠ¤???œì‘
                     // startQuestUseCase(action.questId)
 
+                    // Studio ?ë””?°ë¡œ ?´ë™
                     postSideEffect(
                         QuestSideEffect.NavigateToStudio(
                             questId = quest.id,
@@ -87,6 +102,7 @@ class QuestViewModel @Inject constructor(
                         )
                     )
 
+                    // ?íƒœ ?…ë°?´íŠ¸
                     reduce {
                         state.copy(
                             activeQuests = state.activeQuests + quest.copy(status = QuestStatus.IN_PROGRESS),
@@ -101,8 +117,10 @@ class QuestViewModel @Inject constructor(
             is QuestAction.CompleteQuest -> {
                 val quest = findQuestById(action.questId)
                 if (quest != null && quest.status == QuestStatus.IN_PROGRESS) {
+                    // TODO: UseCaseë¥??µí•œ ?˜ìŠ¤???„ë£Œ
                     // completeQuestUseCase(action.questId, action.artworkId)
 
+                    // ?íƒœ ?…ë°?´íŠ¸
                     reduce {
                         state.copy(
                             activeQuests = state.activeQuests.filter { it.id != action.questId },
@@ -113,7 +131,7 @@ class QuestViewModel @Inject constructor(
                         )
                     }
 
-                    postSideEffect(QuestSideEffect.ShowSnackbar(""))
+                    postSideEffect(QuestSideEffect.ShowSnackbar("?˜ìŠ¤?¸ë? ?„ë£Œ?ˆìŠµ?ˆë‹¤!"))
                 }
             }
 
@@ -122,22 +140,24 @@ class QuestViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
+                // TODO: UseCaseë¥??µí•œ ?ˆë¡œê³ ì¹¨
                 // val dailyQuests = getDailyQuestsUseCase()
                 // val weeklyQuests = getWeeklyQuestsUseCase()
 
                 reduce {
                     state.copy(
                         isLoading = false,
-                        dailyQuests = emptyList(),
-                        weeklyQuests = emptyList()
+                        dailyQuests = emptyList(), // TODO: ?¤ì œ ?°ì´?°ë¡œ êµì²´
+                        weeklyQuests = emptyList() // TODO: ?¤ì œ ?°ì´?°ë¡œ êµì²´
                     )
                 }
             }
 
             is QuestAction.ClaimReward -> {
+                // TODO: UseCaseë¥??µí•œ ë³´ìƒ ?˜ë ¹
                 // claimRewardUseCase(action.rewardId)
 
-                postSideEffect(QuestSideEffect.ShowSnackbar(""))
+                postSideEffect(QuestSideEffect.ShowSnackbar("ë³´ìƒ???˜ë ¹?ˆìŠµ?ˆë‹¤!"))
             }
 
             is QuestAction.ShowError -> {
@@ -154,15 +174,18 @@ class QuestViewModel @Inject constructor(
             }
 
             is QuestAction.LoadProgress -> {
-
+                // QuestProgressViewModel?ì„œ ì²˜ë¦¬
             }
 
             is QuestAction.RefreshProgress -> {
-
+                // QuestProgressViewModel?ì„œ ì²˜ë¦¬
             }
         }
     }
 
+    /**
+     * ?˜ìŠ¤??IDë¡??˜ìŠ¤??ì°¾ê¸°
+     */
     private fun findQuestById(questId: String): ChallengeQuest? {
         val state = container.stateFlow.value
         return state.dailyQuests.find { it.id == questId }
@@ -171,6 +194,9 @@ class QuestViewModel @Inject constructor(
             ?: state.completedQuests.find { it.id == questId }
     }
 
+    /**
+     * ?˜ìŠ¤???íƒœ ?…ë°?´íŠ¸
+     */
     private fun updateQuestStatus(
         quests: List<ChallengeQuest>,
         questId: String,

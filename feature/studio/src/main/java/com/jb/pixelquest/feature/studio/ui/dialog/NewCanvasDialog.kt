@@ -16,6 +16,10 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.*
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ??Ï∫îÎ≤Ñ???ùÏÑ± ?§Ïù¥?ºÎ°úÍ∑?
+ * State Hoisting: ?ÅÌÉú???ÅÏúÑ?êÏÑú Í¥ÄÎ¶¨ÌïòÍ≥? ?°ÏÖòÎß??ÑÎã¨Î∞õÏùå
+ */
 @Composable
 fun NewCanvasDialog(
     state: NewCanvasState,
@@ -34,6 +38,7 @@ fun NewCanvasDialog(
                     .fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                // Ï∫îÎ≤Ñ???¨Í∏∞ ?†ÌÉù
                 CanvasSizeSelector(
                     selectedSize = state.selectedSize,
                     customWidth = state.customWidth,
@@ -49,6 +54,7 @@ fun NewCanvasDialog(
                     }
                 )
 
+                // Î∞∞Í≤Ω???†ÌÉù
                 BackgroundColorSelector(
                     selectedColor = state.backgroundColor,
                     onColorSelected = { color ->
@@ -56,6 +62,7 @@ fun NewCanvasDialog(
                     }
                 )
 
+                // ?úÌîåÎ¶??†ÌÉù (?†ÌÉù?¨Ìï≠)
                 if (state.selectedTemplate != null) {
                     Text(
                         text = "Selected: ${state.selectedTemplate.name}",
@@ -96,6 +103,7 @@ private fun CanvasSizeSelector(
             style = MaterialTheme.typography.titleSmall
         )
 
+        // ?ÑÎ¶¨???¨Í∏∞ ?†ÌÉù
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth()
@@ -111,6 +119,7 @@ private fun CanvasSizeSelector(
             }
         }
 
+        // Ïª§Ïä§?Ä ?¨Í∏∞ ?ÖÎ†•
         if (selectedSize == CanvasSize.CUSTOM) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)

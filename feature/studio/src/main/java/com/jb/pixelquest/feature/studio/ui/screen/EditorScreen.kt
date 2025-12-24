@@ -11,6 +11,10 @@ import com.jb.pixelquest.feature.studio.ui.component.*
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?ï¿½ë””???ï¿½ë©´
+ * State Hoisting ?ï¿½í„´: ?ï¿½íƒœ???ï¿½ìœ„?ï¿½ì„œ ê´€ë¦¬í•˜ï¿? ?ï¿½ì…˜ï¿??ï¿½ë‹¬ë°›ì�Œ
+ */
 @Composable
 fun EditorScreen(
     uiState: EditorUiState,
@@ -38,6 +42,7 @@ fun EditorScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
+            // ìº”ë²„???ï¿½ì—­
             PixelCanvas(
                 canvasSize = uiState.canvasSize,
                 pixels = uiState.pixels,
@@ -59,6 +64,7 @@ fun EditorScreen(
                     .weight(1f)
             )
 
+            // ?ï¿½ìƒ� ?ï¿½ë ˆ??
             ColorPalette(
                 selectedColor = uiState.selectedColor,
                 selectedPalette = uiState.selectedPalette,

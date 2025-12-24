@@ -17,6 +17,10 @@ import com.jb.pixelquest.feature.mypage.model.InventoryItem
 import com.jb.pixelquest.feature.mypage.model.ItemRarity
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?�벤?�리 ?�이??카드
+ * State Hoisting: ?�릭 ?�벤?�만 ?�위�??�달
+ */
 @Composable
 fun InventoryItemCard(
     item: InventoryItem,
@@ -37,6 +41,7 @@ fun InventoryItemCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
+            // ?�이�?
             Box {
                 Surface(
                     color = MaterialTheme.colorScheme.surfaceVariant,
@@ -63,6 +68,7 @@ fun InventoryItemCard(
                     }
                 }
 
+                // ?�착 배�?
                 if (item.isEquipped) {
                     Surface(
                         color = MaterialTheme.colorScheme.primary,
@@ -84,6 +90,7 @@ fun InventoryItemCard(
                     }
                 }
 
+                // ???�이??배�?
                 if (item.isNew) {
                     Surface(
                         color = MaterialTheme.colorScheme.error,
@@ -106,6 +113,7 @@ fun InventoryItemCard(
                 }
             }
 
+            // ?�름
             Text(
                 text = item.name,
                 style = MaterialTheme.typography.labelMedium,
@@ -114,6 +122,7 @@ fun InventoryItemCard(
                 overflow = TextOverflow.Ellipsis
             )
 
+            // ?��???
             Surface(
                 color = getRarityColor(item.rarity).copy(alpha = 0.2f),
                 shape = RoundedCornerShape(8.dp)
