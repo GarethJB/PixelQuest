@@ -28,7 +28,5 @@ android {
 
 dependencies {
     implementation(project(":shared:domain:model"))
-    // Gson for JSON serialization in Room TypeConverters
-    implementation(libs.gson)
 }
 
