@@ -28,27 +28,27 @@ fun NavGraph(
         modifier = modifier
     ) {
         composable(route = PixelQuestDestination.Home.route) {
-            HomeRoute(navController = navController)
+            HomeRoute()
         }
         
         composable(route = PixelQuestDestination.Gallery.route) {
-            GalleryRoute(navController = navController)
+            GalleryRoute()
         }
         
         composable(route = PixelQuestDestination.Studio.route) {
-            StudioRoute(navController = navController)
+            StudioRoute()
         }
         
         composable(route = PixelQuestDestination.Quest.route) {
-            QuestRoute(navController = navController)
+            QuestRoute()
         }
         
         composable(route = PixelQuestDestination.QuestProgress.route) {
-            QuestProgressRoute(navController = navController)
+            QuestProgressRoute()
         }
         
         composable(route = PixelQuestDestination.MyPage.route) {
-            MyPageRoute(navController = navController)
+            MyPageRoute()
         }
     }
 }

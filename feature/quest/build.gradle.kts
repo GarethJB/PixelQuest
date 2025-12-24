@@ -37,9 +37,6 @@ dependencies {
     implementation(project(":presentation:component"))
     implementation(project(":presentation:theme"))
 
-    // Navigation Compose
-    implementation(libs.androidx.navigation.compose)
-
     implementation(libs.kotlinx.coroutines.core)
 }
 

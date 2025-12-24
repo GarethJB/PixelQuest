@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import com.jb.pixelquest.feature.mypage.model.MyPageAction
 import com.jb.pixelquest.feature.mypage.ui.screen.MyPageScreen
 import com.jb.pixelquest.feature.mypage.viewmodel.InventoryViewModel
@@ -12,18 +11,17 @@ import com.jb.pixelquest.feature.mypage.viewmodel.MyPageViewModel
 
 /**
  * MyPage Route
- * State Hoisting: ?�태??ViewModel?�서 관리하�? Screen???�달
+ * State Hoisting: ?�태??ViewModel?�서 관리하�? Screen???�달
  */
 @Composable
 fun MyPageRoute(
-    navController: NavHostController,
     myPageViewModel: MyPageViewModel = viewModel(),
     inventoryViewModel: InventoryViewModel = viewModel()
 ) {
     val uiState by myPageViewModel.container.stateFlow.collectAsStateWithLifecycle()
     val inventoryState by inventoryViewModel.container.stateFlow.collectAsStateWithLifecycle()
 
-    // ?�션???�절??ViewModel�??�우??
+    // ?�션???�절??ViewModel�??�우??
     fun handleAction(action: MyPageAction) {
         when (action) {
             is MyPageAction.SelectCategory,
