@@ -7,12 +7,11 @@ import com.jb.pixelquest.shared.data.remote.mapper.StudioMapper.toDto
 import com.jb.pixelquest.shared.domain.model.studio.Brush
 import com.jb.pixelquest.shared.domain.model.studio.Canvas
 import com.jb.pixelquest.shared.domain.model.studio.Palette
-import javax.inject.Inject
 
 /**
  * 스튜디오 Remote DataSource 구현체
  */
-class StudioRemoteDataSourceImpl @Inject constructor(
+class StudioRemoteDataSourceImpl(
     private val api: PixelQuestApi
 ) : StudioRemoteDataSource {
     override suspend fun getCanvases(): Result<List<Canvas>> {

@@ -1,17 +1,26 @@
 package com.jb.pixelquest.data.remote.android.di
 
+import com.jb.pixelquest.data.local.android.datasource.ArtworkLocalDataSource
+import com.jb.pixelquest.data.local.android.datasource.CanvasLocalDataSource
+import com.jb.pixelquest.data.local.android.datasource.QuestLocalDataSource
+import com.jb.pixelquest.data.local.android.datasource.UserLocalDataSource
 import com.jb.pixelquest.data.remote.android.repository.ArtworkRepositoryImpl
 import com.jb.pixelquest.data.remote.android.repository.InventoryRepositoryImpl
 import com.jb.pixelquest.data.remote.android.repository.QuestRepositoryImpl
 import com.jb.pixelquest.data.remote.android.repository.StudioRepositoryImpl
 import com.jb.pixelquest.data.remote.android.repository.UserRepositoryImpl
+import com.jb.pixelquest.shared.data.remote.datasource.ArtworkRemoteDataSource
+import com.jb.pixelquest.shared.data.remote.datasource.InventoryRemoteDataSource
+import com.jb.pixelquest.shared.data.remote.datasource.QuestRemoteDataSource
+import com.jb.pixelquest.shared.data.remote.datasource.StudioRemoteDataSource
+import com.jb.pixelquest.shared.data.remote.datasource.UserRemoteDataSource
 import com.jb.pixelquest.shared.domain.repository.artwork.ArtworkRepository
 import com.jb.pixelquest.shared.domain.repository.inventory.InventoryRepository
 import com.jb.pixelquest.shared.domain.repository.quest.QuestRepository
 import com.jb.pixelquest.shared.domain.repository.studio.StudioRepository
 import com.jb.pixelquest.shared.domain.repository.user.UserRepository
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -21,36 +30,50 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
+object RepositoryModule {
     
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindQuestRepository(
-        questRepositoryImpl: QuestRepositoryImpl
-    ): QuestRepository
+    fun provideQuestRepository(
+        remoteDataSource: QuestRemoteDataSource,
+        localDataSource: QuestLocalDataSource
+    ): QuestRepository {
+        return QuestRepositoryImpl(remoteDataSource, localDataSource)
+    }
     
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindArtworkRepository(
-        artworkRepositoryImpl: ArtworkRepositoryImpl
-    ): ArtworkRepository
+    fun provideArtworkRepository(
+        remoteDataSource: ArtworkRemoteDataSource,
+        localDataSource: ArtworkLocalDataSource
+    ): ArtworkRepository {
+        return ArtworkRepositoryImpl(remoteDataSource, localDataSource)
+    }
     
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindStudioRepository(
-        studioRepositoryImpl: StudioRepositoryImpl
-    ): StudioRepository
+    fun provideStudioRepository(
+        remoteDataSource: StudioRemoteDataSource,
+        localDataSource: CanvasLocalDataSource
+    ): StudioRepository {
+        return StudioRepositoryImpl(remoteDataSource, localDataSource)
+    }
     
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindUserRepository(
-        userRepositoryImpl: UserRepositoryImpl
-    ): UserRepository
+    fun provideUserRepository(
+        remoteDataSource: UserRemoteDataSource,
+        localDataSource: UserLocalDataSource
+    ): UserRepository {
+        return UserRepositoryImpl(remoteDataSource, localDataSource)
+    }
     
-    @Binds
+    @Provides
     @Singleton
-    abstract fun bindInventoryRepository(
-        inventoryRepositoryImpl: InventoryRepositoryImpl
-    ): InventoryRepository
+    fun provideInventoryRepository(
+        remoteDataSource: InventoryRemoteDataSource
+    ): InventoryRepository {
+        return InventoryRepositoryImpl(remoteDataSource)
+    }
 }
 

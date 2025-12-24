@@ -6,13 +6,12 @@ import com.jb.pixelquest.shared.domain.model.studio.Brush
 import com.jb.pixelquest.shared.domain.model.studio.Canvas
 import com.jb.pixelquest.shared.domain.model.studio.Palette
 import com.jb.pixelquest.shared.domain.repository.studio.StudioRepository
-import javax.inject.Inject
 
 /**
  * 스튜디오 Repository 구현체
  * Remote와 Local DataSource를 조합하여 구현
  */
-class StudioRepositoryImpl @Inject constructor(
+class StudioRepositoryImpl(
     private val remoteDataSource: StudioRemoteDataSource,
     private val localDataSource: CanvasLocalDataSource
 ) : StudioRepository {

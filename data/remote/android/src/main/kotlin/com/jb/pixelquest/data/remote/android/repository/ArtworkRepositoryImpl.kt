@@ -5,13 +5,12 @@ import com.jb.pixelquest.shared.data.remote.datasource.ArtworkRemoteDataSource
 import com.jb.pixelquest.shared.domain.model.artwork.Artwork
 import com.jb.pixelquest.shared.domain.model.artwork.ArtworkCategory
 import com.jb.pixelquest.shared.domain.repository.artwork.ArtworkRepository
-import javax.inject.Inject
 
 /**
  * 작품 Repository 구현체
  * Remote와 Local DataSource를 조합하여 구현
  */
-class ArtworkRepositoryImpl @Inject constructor(
+class ArtworkRepositoryImpl(
     private val remoteDataSource: ArtworkRemoteDataSource,
     private val localDataSource: ArtworkLocalDataSource
 ) : ArtworkRepository {

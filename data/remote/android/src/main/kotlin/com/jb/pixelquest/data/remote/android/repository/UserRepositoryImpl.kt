@@ -4,13 +4,12 @@ import com.jb.pixelquest.data.local.android.datasource.UserLocalDataSource
 import com.jb.pixelquest.shared.data.remote.datasource.UserRemoteDataSource
 import com.jb.pixelquest.shared.domain.model.user.User
 import com.jb.pixelquest.shared.domain.repository.user.UserRepository
-import javax.inject.Inject
 
 /**
  * 사용자 Repository 구현체
  * Remote와 Local DataSource를 조합하여 구현
  */
-class UserRepositoryImpl @Inject constructor(
+class UserRepositoryImpl(
     private val remoteDataSource: UserRemoteDataSource,
     private val localDataSource: UserLocalDataSource
 ) : UserRepository {

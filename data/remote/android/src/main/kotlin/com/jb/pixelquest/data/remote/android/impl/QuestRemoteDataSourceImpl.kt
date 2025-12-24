@@ -8,12 +8,11 @@ import com.jb.pixelquest.shared.domain.model.quest.Activity
 import com.jb.pixelquest.shared.domain.model.quest.Quest
 import com.jb.pixelquest.shared.domain.model.quest.QuestStatistics
 import com.jb.pixelquest.shared.domain.model.quest.UserQuestProgress
-import javax.inject.Inject
 
 /**
  * 퀘스트 Remote DataSource 구현체
  */
-class QuestRemoteDataSourceImpl @Inject constructor(
+class QuestRemoteDataSourceImpl(
     private val api: PixelQuestApi
 ) : QuestRemoteDataSource {
     override suspend fun getDailyQuests(): Result<List<Quest>> {

@@ -4,13 +4,12 @@ import com.jb.pixelquest.shared.data.remote.datasource.InventoryRemoteDataSource
 import com.jb.pixelquest.shared.domain.model.inventory.InventoryItem
 import com.jb.pixelquest.shared.domain.model.inventory.InventoryItemType
 import com.jb.pixelquest.shared.domain.repository.inventory.InventoryRepository
-import javax.inject.Inject
 
 /**
  * 인벤토리 Repository 구현체
  * Remote DataSource를 사용하여 구현
  */
-class InventoryRepositoryImpl @Inject constructor(
+class InventoryRepositoryImpl(
     private val remoteDataSource: InventoryRemoteDataSource
 ) : InventoryRepository {
     
