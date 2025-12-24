@@ -2,13 +2,11 @@ plugins {
     id("com.android.library")
     id("android-library-convention")
     id("kotlin-options-convention")
-    id("org.jetbrains.kotlin.kapt")
     id("data-layer-dependency")
-    id("database-dependency")
 }
 
 android {
-    namespace = "com.jb.pixelquest.data.local.android"
+    namespace = "com.jb.pixelquest.shared.data.local"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
