@@ -1,7 +1,6 @@
 package com.jb.pixelquest.feature.home
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -21,14 +21,10 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.jb.pixelquest.feature.home.model.Canvas
 import com.jb.pixelquest.feature.home.model.HomeHighlight
 import com.jb.pixelquest.feature.home.model.HomeUiState
-import com.jb.pixelquest.feature.home.ui.WorkshopView
 import com.jb.pixelquest.shared.presentation.resources.R
 
 @Composable
@@ -39,18 +35,14 @@ fun HomeRoute(
 
     HomeScreen(
         uiState = uiState,
-        onRefreshHighlights = viewModel::refreshHighlights,
-        onCanvasClick = viewModel::onCanvasClick,
-        onDecorateWorkshop = viewModel::onDecorateWorkshop
+        onRefreshHighlights = viewModel::refreshHighlights
     )
 }
 
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
-    onRefreshHighlights: () -> Unit = {},
-    onCanvasClick: (Canvas) -> Unit = {},
-    onDecorateWorkshop: () -> Unit = {}
+    onRefreshHighlights: () -> Unit,
 ) {
     val spacingMedium = dimensionResource(id = R.dimen.spacing_medium)
     val spacingLarge = dimensionResource(id = R.dimen.spacing_large)
@@ -69,7 +61,7 @@ fun HomeScreen(
             ) {
                 Text(
                     text = uiState.welcomeTitle,
-                    style = MaterialTheme.typography.headlineMedium,
+                    style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
@@ -80,48 +72,27 @@ fun HomeScreen(
             }
         }
     ) { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(
-                    top = padding.calculateTopPadding(),
-                    bottom = padding.calculateBottomPadding()
-                )
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(
+                start = spacingLarge,
+                top = padding.calculateTopPadding(),
+                end = spacingLarge,
+                bottom = spacingLarge + padding.calculateBottomPadding()
+            ),
+            verticalArrangement = Arrangement.spacedBy(spacingMedium)
         ) {
-            // 공방 뷰 (화면 가득 채움)
-            WorkshopView(
-                workshop = uiState.workshop,
-                canvases = uiState.canvases,
-                modifier = Modifier.fillMaxSize(),
-                onDecorateClick = onDecorateWorkshop,
-                onCanvasClick = onCanvasClick
-            )
-
-            // 하이라이트 섹션 (Workshop 위에 오버레이로 작게 배치)
-            if (uiState.highlights.isNotEmpty()) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            start = spacingLarge,
-                            top = spacingLarge,
-                            end = spacingLarge
-                        ),
-                    contentAlignment = androidx.compose.ui.Alignment.TopStart
+            item {
+                FilledTonalButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onRefreshHighlights
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(0.5f)
-                    ) {
-                        LazyColumn(
-                            verticalArrangement = Arrangement.spacedBy(spacingMedium),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            items(uiState.highlights) { highlight ->
-                                HighlightCard(highlight = highlight)
-                            }
-                        }
-                    }
+                    Text(text = stringResource(id = R.string.home_refresh_highlights))
                 }
+            }
+
+            items(uiState.highlights) { highlight ->
+                HighlightCard(highlight = highlight)
             }
         }
     }
@@ -134,9 +105,8 @@ private fun HighlightCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.9f)
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
     ) {
         Column(
             modifier = Modifier.padding(
@@ -146,12 +116,12 @@ private fun HighlightCard(
         ) {
             Text(
                 text = highlight.title,
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
             Text(
                 text = highlight.description,
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(top = dimensionResource(id = R.dimen.spacing_small))
             )
         }
@@ -170,9 +140,7 @@ private fun HomeScreenPreview() {
                 HomeHighlight("주간 ??��", "?�위 10% 진입 ?�전")
             )
         ),
-        onRefreshHighlights = {},
-        onCanvasClick = {},
-        onDecorateWorkshop = {}
+        onRefreshHighlights = {}
     )
 }
 
