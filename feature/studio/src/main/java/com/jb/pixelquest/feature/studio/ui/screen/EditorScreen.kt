@@ -12,14 +12,13 @@ import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
 /**
- * ?ï¿½ë””???ï¿½ë©´
- * State Hoisting ?ï¿½í„´: ?ï¿½íƒœ???ï¿½ìœ„?ï¿½ì„œ ê´€ë¦¬í•˜ï¿? ?ï¿½ì…˜ï¿??ï¿½ë‹¬ë°›ì�Œ
+ * ?�디???�면
+ * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
  */
 @Composable
 fun EditorScreen(
     uiState: EditorUiState,
     onAction: (EditorAction) -> Unit,
-    onBack: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -28,7 +27,6 @@ fun EditorScreen(
                 showGrid = uiState.showGrid,
                 canUndo = uiState.canUndo,
                 canRedo = uiState.canRedo,
-                onBack = onBack,
                 onToggleGrid = { onAction(EditorAction.ToggleGrid) },
                 onClear = { onAction(EditorAction.ClearCanvas) },
                 onUndo = { onAction(EditorAction.Undo) },
@@ -42,7 +40,7 @@ fun EditorScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // ìº”ë²„???ï¿½ì—­
+            // 캔버???�역
             PixelCanvas(
                 canvasSize = uiState.canvasSize,
                 pixels = uiState.pixels,
@@ -64,7 +62,7 @@ fun EditorScreen(
                     .weight(1f)
             )
 
-            // ?ï¿½ìƒ� ?ï¿½ë ˆ??
+            // ?�상 ?�레??
             ColorPalette(
                 selectedColor = uiState.selectedColor,
                 selectedPalette = uiState.selectedPalette,
@@ -84,7 +82,6 @@ private fun EditorToolbar(
     showGrid: Boolean,
     canUndo: Boolean,
     canRedo: Boolean,
-    onBack: () -> Unit,
     onToggleGrid: () -> Unit,
     onClear: () -> Unit,
     onUndo: () -> Unit,
@@ -100,9 +97,6 @@ private fun EditorToolbar(
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            IconButton(onClick = onBack) {
-                Text("←")
-            }
             IconButton(onClick = onToggleGrid) {
                 Text(if (showGrid) stringResource(id = R.string.grid) else "Grid OFF")
             }

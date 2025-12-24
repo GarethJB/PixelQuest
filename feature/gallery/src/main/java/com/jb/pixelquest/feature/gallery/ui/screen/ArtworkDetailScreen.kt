@@ -32,6 +32,10 @@ import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.gallery.model.Artwork
 import com.jb.pixelquest.shared.presentation.resources.R
 
+/**
+ * ?�품 ?�세 ?�면
+ * State Hoisting: ?�태?�??�션�??�달받음
+ */
 @Composable
 fun ArtworkDetailScreen(
     artwork: Artwork,
@@ -128,6 +132,7 @@ fun ArtworkDetailScreen(
                     )
                 }
 
+                // 카테고리 �??�그
                 if (artwork.tags.isNotEmpty()) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
