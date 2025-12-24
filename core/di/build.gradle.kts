@@ -13,8 +13,4 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    
-    // Domain
-    implementation(project(":shared:domain:repository"))
-    implementation(project(":shared:domain:usecase"))
 }

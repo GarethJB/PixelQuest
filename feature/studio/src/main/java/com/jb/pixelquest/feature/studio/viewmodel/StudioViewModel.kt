@@ -18,11 +18,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StudioViewModel @Inject constructor(
-    private val getCanvasesUseCase: com.jb.pixelquest.shared.domain.usecase.studio.GetCanvasesUseCase,
-    private val getPalettesUseCase: com.jb.pixelquest.shared.domain.usecase.studio.GetPalettesUseCase,
-    private val getBrushesUseCase: com.jb.pixelquest.shared.domain.usecase.studio.GetBrushesUseCase,
-    private val createCanvasUseCase: com.jb.pixelquest.shared.domain.usecase.studio.CreateCanvasUseCase,
-    private val deleteCanvasUseCase: com.jb.pixelquest.shared.domain.usecase.studio.DeleteCanvasUseCase,
+    // TODO: UseCase 주입
+    // private val getRecentWorksUseCase: GetRecentWorksUseCase,
+    // private val getTemplatesUseCase: GetTemplatesUseCase,
+    // private val getPalettesUseCase: GetPalettesUseCase,
+    // private val getBrushesUseCase: GetBrushesUseCase,
+    // private val deleteRecentWorkUseCase: DeleteRecentWorkUseCase,
 ) : ContainerHost<StudioUiState, StudioSideEffect>, ViewModel() {
 
     override val container = container<StudioUiState, StudioSideEffect>(
@@ -36,71 +37,25 @@ class StudioViewModel @Inject constructor(
             state.copy(isLoading = true)
         }
 
-        val canvasesResult = getCanvasesUseCase()
-        val palettesResult = getPalettesUseCase()
-        val brushesResult = getBrushesUseCase()
+        // val recentWorks = getRecentWorksUseCase()
+        // val templates = getTemplatesUseCase()
+        // val palettes = getPalettesUseCase()
+        // val brushes = getBrushesUseCase()
 
-        val recentWorks = canvasesResult.getOrElse { emptyList() }.map { it.toRecentWork() }
-        val palettes = palettesResult.getOrElse { emptyList() }.map { it.toPalette() }
-        val brushes = brushesResult.getOrElse { emptyList() }.map { it.toBrush() }
-        val mockTemplates = emptyList<Template>() // TODO: Template UseCase 추가 필요
+        val mockRecentWorks = emptyList<RecentWork>()
+        val mockTemplates = emptyList<Template>()
+        val mockPalettes = emptyList<Palette>()
+        val mockBrushes = emptyList<Brush>()
 
         reduce {
             state.copy(
                 isLoading = false,
-                recentWorks = recentWorks,
+                recentWorks = mockRecentWorks,
                 templates = mockTemplates,
-                palettes = palettes,
-                brushes = brushes,
-                error = canvasesResult.exceptionOrNull()?.message
-                    ?: palettesResult.exceptionOrNull()?.message
-                    ?: brushesResult.exceptionOrNull()?.message
+                palettes = mockPalettes,
+                brushes = mockBrushes
             )
         }
-    }
-    
-    private fun com.jb.pixelquest.shared.domain.model.studio.Canvas.toRecentWork(): RecentWork {
-        return RecentWork(
-            id = this.id,
-            name = this.name,
-            thumbnailPath = this.thumbnailPath,
-            lastModified = this.lastModified,
-            filePath = this.filePath ?: "",
-            canvasSize = androidx.compose.ui.unit.IntSize(
-                this.canvasSize.width,
-                this.canvasSize.height
-            )
-        )
-    }
-    
-    private fun com.jb.pixelquest.shared.domain.model.studio.Palette.toPalette(): Palette {
-        return Palette(
-            id = this.id,
-            name = this.name,
-            colors = this.colors.map { color ->
-                androidx.compose.ui.graphics.Color(
-                    red = color.red,
-                    green = color.green,
-                    blue = color.blue,
-                    alpha = color.alpha
-                )
-            },
-            isDefault = this.isDefault
-        )
-    }
-    
-    private fun com.jb.pixelquest.shared.domain.model.studio.Brush.toBrush(): Brush {
-        return Brush(
-            id = this.id,
-            name = this.name,
-            size = this.size,
-            shape = when (this.shape) {
-                com.jb.pixelquest.shared.domain.model.studio.BrushShape.CIRCLE -> com.jb.pixelquest.feature.studio.model.BrushShape.CIRCLE
-                com.jb.pixelquest.shared.domain.model.studio.BrushShape.SQUARE -> com.jb.pixelquest.feature.studio.model.BrushShape.SQUARE
-                com.jb.pixelquest.shared.domain.model.studio.BrushShape.DIAMOND -> com.jb.pixelquest.feature.studio.model.BrushShape.DIAMOND
-            },
-            previewImagePath = this.previewImagePath
-        )
     }
 
     fun handleAction(action: StudioAction) = intent {
@@ -117,17 +72,14 @@ class StudioViewModel @Inject constructor(
             }
 
             is StudioAction.DeleteRecentWork -> {
-                val result = deleteCanvasUseCase(action.workId)
-                result.onSuccess {
-                    reduce {
-                        state.copy(
-                            recentWorks = state.recentWorks.filter { it.id != action.workId }
-                        )
-                    }
-                    postSideEffect(StudioSideEffect.ShowSnackbar("작업을 삭제했습니다"))
-                }.onFailure { exception ->
-                    postSideEffect(StudioSideEffect.ShowSnackbar(exception.message ?: "작업 삭제에 실패했습니다"))
+                // deleteRecentWorkUseCase(action.workId)
+                
+                reduce {
+                    state.copy(
+                        recentWorks = state.recentWorks.filter { it.id != action.workId }
+                    )
                 }
+                postSideEffect(StudioSideEffect.ShowSnackbar(""))
             }
 
             is StudioAction.SelectTemplate -> {
@@ -164,14 +116,12 @@ class StudioViewModel @Inject constructor(
                     state.copy(isLoading = true)
                 }
 
-                val result = getCanvasesUseCase()
-                val recentWorks = result.getOrElse { emptyList() }.map { it.toRecentWork() }
+                // val recentWorks = getRecentWorksUseCase()
 
                 reduce {
                     state.copy(
                         isLoading = false,
-                        recentWorks = recentWorks,
-                        error = result.exceptionOrNull()?.message
+                        recentWorks = emptyList()
                     )
                 }
             }
