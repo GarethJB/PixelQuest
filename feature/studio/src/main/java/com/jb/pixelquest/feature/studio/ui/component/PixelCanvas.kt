@@ -13,10 +13,6 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntSize
 
-/**
- * ?½ì? ìº”ë²„??ì»´í¬?ŒíŠ¸
- * State Hoisting: ?½ì? ë³€ê²? ì¤???ë³€ê²??´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
- */
 @Composable
 fun PixelCanvas(
     canvasSize: IntSize,
@@ -34,7 +30,6 @@ fun PixelCanvas(
         modifier = modifier
             .fillMaxSize()
             .pointerInput(Unit) {
-                // ???œìŠ¤ì²?(?¨ì¼ ?½ì? ê·¸ë¦¬ê¸?
                 detectTapGestures { tapOffset ->
                     val pixelPos = screenToPixel(
                         tapOffset = tapOffset,
@@ -50,7 +45,6 @@ fun PixelCanvas(
                 }
             }
             .pointerInput(Unit) {
-                // ?œëž˜ê·??œìŠ¤ì²?(?°ì† ê·¸ë¦¬ê¸?
                 detectDragGestures(
                     onDragStart = { offset ->
                         val pixelPos = screenToPixel(
@@ -79,7 +73,6 @@ fun PixelCanvas(
                 }
             }
             .pointerInput(zoom, panOffset) {
-                // ì¤????œìŠ¤ì²?
                 detectTransformGestures { _, pan, zoomChange, _ ->
                     val newZoom = (zoom * zoomChange).coerceIn(0.5f, 5f)
                     val newPan = panOffset + pan
@@ -90,16 +83,14 @@ fun PixelCanvas(
     ) {
         // ë°°ê²½
         drawRect(Color(0xFFF5F5F5))
-        
-        // ?½ì? ê·¸ë¦¬ê¸?
+
         drawPixels(
             pixels = pixels,
             canvasSize = canvasSize,
             zoom = zoom,
             panOffset = panOffset
         )
-        
-        // ê·¸ë¦¬???œì‹œ
+
         if (showGrid) {
             drawGrid(
                 canvasSize = canvasSize,
@@ -110,9 +101,6 @@ fun PixelCanvas(
     }
 }
 
-/**
- * ?½ì? ê·¸ë¦¬ê¸?
- */
 private fun DrawScope.drawPixels(
     pixels: Array<Array<Color>>,
     canvasSize: IntSize,
@@ -136,9 +124,6 @@ private fun DrawScope.drawPixels(
     }
 }
 
-/**
- * ê·¸ë¦¬??ê·¸ë¦¬ê¸?
- */
 private fun DrawScope.drawGrid(
     canvasSize: IntSize,
     zoom: Float,
@@ -146,8 +131,7 @@ private fun DrawScope.drawGrid(
 ) {
     val pixelWidth = size.width / canvasSize.width * zoom
     val pixelHeight = size.height / canvasSize.height * zoom
-    
-    // ?¸ë¡œ??
+
     for (x in 0..canvasSize.width) {
         val lineX = x * pixelWidth + panOffset.x
         drawLine(
@@ -157,8 +141,7 @@ private fun DrawScope.drawGrid(
             strokeWidth = 1f
         )
     }
-    
-    // ê°€ë¡œì„ 
+
     for (y in 0..canvasSize.height) {
         val lineY = y * pixelHeight + panOffset.y
         drawLine(
@@ -170,9 +153,6 @@ private fun DrawScope.drawGrid(
     }
 }
 
-/**
- * ?”ë©´ ì¢Œí‘œë¥??½ì? ì¢Œí‘œë¡?ë³€??
- */
 private fun screenToPixel(
     tapOffset: Offset,
     canvasSize: IntSize,

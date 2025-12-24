@@ -13,10 +13,6 @@ import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-/**
- * ?ë””???”ë©´ ViewModel
- * Orbit MVI ?¨í„´ ?¬ìš©
- */
 @HiltViewModel
 class EditorViewModel @Inject constructor(
     // TODO: UseCase ì£¼ì…
@@ -24,7 +20,6 @@ class EditorViewModel @Inject constructor(
     // private val loadCanvasUseCase: LoadCanvasUseCase,
 ) : ContainerHost<EditorUiState, EditorSideEffect>, ViewModel() {
 
-    // Undo/Redoë¥??„í•œ ?ˆìŠ¤? ë¦¬
     private val undoHistory = mutableListOf<Array<Array<Color>>>()
     private val redoHistory = mutableListOf<Array<Array<Color>>>()
     private var currentHistoryIndex = -1
@@ -41,23 +36,18 @@ class EditorViewModel @Inject constructor(
             canRedo = false
         )
     ) {
-        // ì´ˆê¸° ?ˆìŠ¤? ë¦¬ ?€??
         val initialPixels = state.pixels.deepCopy()
         undoHistory.add(initialPixels)
         currentHistoryIndex = 0
     }
 
-    /**
-     * ?¡ì…˜ ì²˜ë¦¬
-     */
     fun handleAction(action: EditorAction) = intent {
         when (action) {
             is EditorAction.PixelChanged -> {
                 val newPixels = state.pixels.copyOf()
                 if (action.y in newPixels.indices && action.x in newPixels[action.y].indices) {
                     newPixels[action.y][action.x] = action.color
-                    
-                    // ?ˆìŠ¤? ë¦¬ ?€??
+
                     saveToHistory(state.pixels)
                     
                     reduce {
@@ -110,8 +100,7 @@ class EditorViewModel @Inject constructor(
                 val clearedPixels = Array(state.canvasSize.height) {
                     Array(state.canvasSize.width) { Color.White }
                 }
-                
-                // ?ˆìŠ¤? ë¦¬ ?€??
+
                 saveToHistory(state.pixels)
                 
                 reduce {
@@ -166,14 +155,13 @@ class EditorViewModel @Inject constructor(
                     state.copy(isDrawing = true)
                 }
 
-                // TODO: UseCaseë¥??µí•œ ?€??
                 // saveCanvasUseCase(state.pixels, state.canvasSize)
 
                 reduce {
                     state.copy(isDrawing = false)
                 }
                 
-                postSideEffect(EditorSideEffect.ShowSnackbar("ìº”ë²„?¤ê? ?€?¥ë˜?ˆìŠµ?ˆë‹¤"))
+                postSideEffect(EditorSideEffect.ShowSnackbar(""))
             }
 
             is EditorAction.LoadCanvas -> {
@@ -181,7 +169,6 @@ class EditorViewModel @Inject constructor(
                     state.copy(isDrawing = true)
                 }
 
-                // TODO: UseCaseë¥??µí•œ ë¡œë“œ
                 // val canvas = loadCanvasUseCase()
                 // val loadedPixels = canvas.pixels
 
@@ -193,22 +180,17 @@ class EditorViewModel @Inject constructor(
         }
     }
 
-    /**
-     * ìº”ë²„??ì´ˆê¸°??(??ìº”ë²„???ëŠ” ê¸°ì¡´ ìº”ë²„??ë¡œë“œ)
-     */
     fun initializeCanvas(
         canvasSize: IntSize,
         backgroundColor: Color = Color.White,
         template: Template? = null
     ) = intent {
         val initialPixels = if (template != null) {
-            // TODO: ?œí”Œë¦?ë¡œë“œ
             Array(canvasSize.height) { Array(canvasSize.width) { backgroundColor } }
         } else {
             Array(canvasSize.height) { Array(canvasSize.width) { backgroundColor } }
         }
 
-        // ?ˆìŠ¤? ë¦¬ ì´ˆê¸°??
         undoHistory.clear()
         redoHistory.clear()
         currentHistoryIndex = -1
@@ -227,11 +209,7 @@ class EditorViewModel @Inject constructor(
         }
     }
 
-    /**
-     * ?ˆìŠ¤? ë¦¬???„ì¬ ?íƒœ ?€??
-     */
     private fun saveToHistory(pixels: Array<Array<Color>>) {
-        // ?„ì¬ ?íƒœ ?´í›„???ˆìŠ¤? ë¦¬ ?œê±° (?ˆë¡œ???‘ì—… ?œì‘)
         if (currentHistoryIndex < undoHistory.size - 1) {
             undoHistory.removeAll { true }
             redoHistory.clear()
@@ -242,7 +220,6 @@ class EditorViewModel @Inject constructor(
         currentHistoryIndex++
         redoHistory.clear()
 
-        // ?ˆìŠ¤? ë¦¬ ?¬ê¸° ?œí•œ (ë©”ëª¨ë¦?ê´€ë¦?
         if (undoHistory.size > 50) {
 //            undoHistory.removeFirst()
             currentHistoryIndex--
@@ -250,9 +227,6 @@ class EditorViewModel @Inject constructor(
     }
 
 
-    /**
-     * Array ê¹Šì? ë³µì‚¬ ?¬í¼
-     */
     private fun Array<Array<Color>>.deepCopy(): Array<Array<Color>> {
         return Array(this.size) { i ->
             Array(this[i].size) { j ->

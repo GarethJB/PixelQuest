@@ -10,10 +10,6 @@ import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-/**
- * ?¸ë²¤? ë¦¬ ViewModel
- * Orbit MVI ?¨í„´ ?¬ìš©
- */
 @HiltViewModel
 class InventoryViewModel @Inject constructor(
     // TODO: UseCase ì£¼ì…
@@ -25,25 +21,19 @@ class InventoryViewModel @Inject constructor(
     override val container = container<InventoryState, Nothing>(
         InventoryState()
     ) {
-        // ì´ˆê¸° ?°ì´??ë¡œë“œ
         loadInitialData()
     }
 
-    /**
-     * ì´ˆê¸° ?°ì´??ë¡œë“œ
-     */
     private fun loadInitialData() = intent {
         reduce {
             state.copy(isLoading = true)
         }
 
-        // TODO: UseCaseë¥??µí•œ ?°ì´??ë¡œë“œ
         // val palettes = getInventoryItemsUseCase(InventoryCategory.PALETTE)
         // val brushes = getInventoryItemsUseCase(InventoryCategory.BRUSH)
         // val badges = getInventoryItemsUseCase(InventoryCategory.BADGE)
         // val decorations = getInventoryItemsUseCase(InventoryCategory.PROFILE_DECORATION)
 
-        // ?„ì‹œ ?°ì´??(ê°œë°œ??
         val mockPalettes = emptyList<InventoryItem>()
         val mockBrushes = emptyList<InventoryItem>()
         val mockBadges = emptyList<InventoryItem>()
@@ -60,9 +50,6 @@ class InventoryViewModel @Inject constructor(
         }
     }
 
-    /**
-     * ?¡ì…˜ ì²˜ë¦¬
-     */
     fun handleAction(action: MyPageAction) = intent {
         when (action) {
             is MyPageAction.SelectCategory -> {
@@ -92,10 +79,8 @@ class InventoryViewModel @Inject constructor(
             is MyPageAction.EquipItem -> {
                 val item = findItemById(action.itemId)
                 if (item != null && !item.isEquipped) {
-                    // TODO: UseCaseë¥??µí•œ ?„ì´???¥ì°©
                     // equipItemUseCase(action.itemId)
 
-                    // ê°™ì? ?€?…ì˜ ?¤ë¥¸ ?„ì´???´ì œ
                     val updatedItems = getItemsByCategory(item.type).map { i ->
                         if (i.id == action.itemId) {
                             i.copy(isEquipped = true)
@@ -119,7 +104,6 @@ class InventoryViewModel @Inject constructor(
             is MyPageAction.UnequipItem -> {
                 val item = findItemById(action.itemId)
                 if (item != null && item.isEquipped) {
-                    // TODO: UseCaseë¥??µí•œ ?„ì´???´ì œ
                     // unequipItemUseCase(action.itemId)
 
                     val updatedItems = getItemsByCategory(item.type).map { i ->
@@ -141,14 +125,11 @@ class InventoryViewModel @Inject constructor(
             }
 
             else -> {
-                // ?¤ë¥¸ ?¡ì…˜?€ ë¬´ì‹œ
+
             }
         }
     }
 
-    /**
-     * ?„ì´??IDë¡??„ì´??ì°¾ê¸°
-     */
     private fun findItemById(itemId: String): InventoryItem? {
         val state = container.stateFlow.value
         return state.palettes.find { it.id == itemId }
@@ -158,9 +139,6 @@ class InventoryViewModel @Inject constructor(
             ?: state.selectedItem?.takeIf { it.id == itemId }
     }
 
-    /**
-     * ì¹´í…Œê³ ë¦¬ë³??„ì´??ê°€?¸ì˜¤ê¸?
-     */
     private fun getItemsByCategory(type: InventoryItemType): List<InventoryItem> {
         val state = container.stateFlow.value
         return when (type) {
@@ -173,9 +151,6 @@ class InventoryViewModel @Inject constructor(
         }
     }
 
-    /**
-     * ì¹´í…Œê³ ë¦¬ë³??„ì´???…ë°?´íŠ¸
-     */
     private fun updateItemsByCategory(
         type: InventoryItemType,
         updatedItems: List<InventoryItem>

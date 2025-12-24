@@ -14,10 +14,6 @@ import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.studio.model.Brush
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * 브러??리스??컴포?�트
- * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
- */
 @Composable
 fun BrushList(
     brushes: List<Brush>,
@@ -68,7 +64,6 @@ private fun BrushCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // 브러??미리보기
             brush.previewImagePath?.let { imagePath ->
                 AsyncImage(
                     model = imagePath,
@@ -76,7 +71,6 @@ private fun BrushCard(
                     modifier = Modifier.size(48.dp)
                 )
             } ?: run {
-                // 기본 브러???�이�?
                 Box(
                     modifier = Modifier.size(48.dp),
                     contentAlignment = Alignment.Center

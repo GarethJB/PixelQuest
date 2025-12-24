@@ -9,10 +9,6 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.quest.model.QuestTab
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * Quest ????
- * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
- */
 @Composable
 fun QuestTabRow(
     selectedTab: QuestTab,

@@ -9,10 +9,6 @@ import com.jb.pixelquest.feature.mypage.ui.screen.MyPageScreen
 import com.jb.pixelquest.feature.mypage.viewmodel.InventoryViewModel
 import com.jb.pixelquest.feature.mypage.viewmodel.MyPageViewModel
 
-/**
- * MyPage Route
- * State Hoisting: ?íƒœ??ViewModel?ì„œ ê´€ë¦¬í•˜ê³? Screen???„ë‹¬
- */
 @Composable
 fun MyPageRoute(
     myPageViewModel: MyPageViewModel = viewModel(),
@@ -21,7 +17,6 @@ fun MyPageRoute(
     val uiState by myPageViewModel.container.stateFlow.collectAsStateWithLifecycle()
     val inventoryState by inventoryViewModel.container.stateFlow.collectAsStateWithLifecycle()
 
-    // ?¡ì…˜???ì ˆ??ViewModelë¡??¼ìš°??
     fun handleAction(action: MyPageAction) {
         when (action) {
             is MyPageAction.SelectCategory,

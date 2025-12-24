@@ -150,6 +150,11 @@ class PresentationLayerDependencyPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("hilt-android").get())
                 add("ksp", libs.findLibrary("hilt-compiler").get())
                 
+                // Hilt Navigation Compose (hiltViewModel() 사용을 위해 필요)
+                if (target.path.contains(":feature:")) {
+                    add("implementation", libs.findLibrary("hilt-navigation-compose").get())
+                }
+                
                 // Testing
                 add("testImplementation", libs.findLibrary("junit").get())
                 add("androidTestImplementation", libs.findLibrary("androidx-junit").get())

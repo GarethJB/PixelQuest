@@ -1,25 +1,40 @@
 package com.jb.pixelquest.feature.quest.ui.screen
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.jb.pixelquest.feature.quest.model.*
+import com.jb.pixelquest.feature.quest.model.Achievement
+import com.jb.pixelquest.feature.quest.model.Activity
+import com.jb.pixelquest.feature.quest.model.QuestProgressState
+import com.jb.pixelquest.feature.quest.model.QuestStatistics
+import com.jb.pixelquest.feature.quest.model.UserQuestProgress
 import com.jb.pixelquest.feature.quest.ui.component.RewardList
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * Quest 진행 ?�황 ?�면
- * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
- */
 @Composable
 fun QuestProgressScreen(
     progressState: QuestProgressState,
@@ -47,17 +62,14 @@ fun QuestProgressScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(16.dp)
             ) {
-                // 진행 ?�황 ?�약
                 item {
                     ProgressOverviewCard(progress = progressState.userProgress)
                 }
 
-                // ?�계
                 item {
                     StatisticsCard(statistics = progressState.statistics)
                 }
 
-                // ?�적
                 if (progressState.achievements.isNotEmpty()) {
                     item {
                         Text(
@@ -78,7 +90,6 @@ fun QuestProgressScreen(
                     }
                 }
 
-                // 최근 ?�동
                 if (progressState.recentActivity.isNotEmpty()) {
                     item {
                         Text(
@@ -99,7 +110,6 @@ fun QuestProgressScreen(
                     }
                 }
 
-                // ?�득??보상
                 if (progressState.earnedRewards.isNotEmpty()) {
                     item {
                         Text(
@@ -143,7 +153,6 @@ private fun ProgressOverviewCard(
                 fontWeight = FontWeight.Bold
             )
 
-            // ?�벨 �?경험�?
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -167,7 +176,6 @@ private fun ProgressOverviewCard(
                 )
             }
 
-            // ?�계 그리??
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -341,7 +349,6 @@ private fun AchievementCard(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // ?�이�?
             Surface(
                 color = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(8.dp),
@@ -352,7 +359,6 @@ private fun AchievementCard(
                     contentAlignment = Alignment.Center
                 ) {
                     if (achievement.iconPath.isNotEmpty()) {
-                        // TODO: AsyncImage�?교체
                         Text(
                             text = achievement.name.take(1),
                             style = MaterialTheme.typography.titleMedium
@@ -361,7 +367,6 @@ private fun AchievementCard(
                 }
             }
 
-            // ?�보
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -466,7 +471,6 @@ private fun EmptyStateCard(
 }
 
 private fun formatTimestamp(timestamp: Long): String {
-    // TODO: ?�짜 ?�맷??로직 구현
-    return "방금 ??"
+    return ""
 }
 

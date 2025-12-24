@@ -9,10 +9,6 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.gallery.model.GalleryTab
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * Gallery ????
- * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
- */
 @Composable
 fun GalleryTabRow(
     selectedTab: GalleryTab,

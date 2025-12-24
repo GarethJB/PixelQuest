@@ -11,10 +11,6 @@ import com.jb.pixelquest.feature.studio.ui.component.*
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ?�디???�면
- * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
- */
 @Composable
 fun EditorScreen(
     uiState: EditorUiState,
@@ -40,7 +36,6 @@ fun EditorScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // 캔버???�역
             PixelCanvas(
                 canvasSize = uiState.canvasSize,
                 pixels = uiState.pixels,
@@ -62,7 +57,6 @@ fun EditorScreen(
                     .weight(1f)
             )
 
-            // ?�상 ?�레??
             ColorPalette(
                 selectedColor = uiState.selectedColor,
                 selectedPalette = uiState.selectedPalette,

@@ -2,19 +2,14 @@ package com.jb.pixelquest.feature.gallery
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.jb.pixelquest.feature.gallery.model.GalleryAction
 import com.jb.pixelquest.feature.gallery.ui.screen.GalleryScreen
 import com.jb.pixelquest.feature.gallery.viewmodel.GalleryViewModel
 
-/**
- * Gallery Route
- * State Hoisting: ?ÅÌÉú??ViewModel?êÏÑú Í¥ÄÎ¶¨ÌïòÍ≥? Screen???ÑÎã¨
- */
 @Composable
 fun GalleryRoute(
-    viewModel: GalleryViewModel = viewModel()
+    viewModel: GalleryViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.container.stateFlow.collectAsStateWithLifecycle()
 

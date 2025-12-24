@@ -12,10 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.gallery.model.Artwork
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ?�품 그리??
- * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
- */
 @Composable
 fun ArtworkGrid(
     artworks: List<Artwork>,

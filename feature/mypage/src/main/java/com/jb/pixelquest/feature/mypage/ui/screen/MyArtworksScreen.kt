@@ -18,10 +18,6 @@ import com.jb.pixelquest.feature.mypage.ui.component.ArtworkSortMenu
 import com.jb.pixelquest.feature.mypage.ui.component.MyArtworkGrid
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ?˜ì˜ ?‘í’ˆ ?”ë©´
- * State Hoisting ?¨í„´: ?íƒœ???ìœ„?ì„œ ê´€ë¦¬í•˜ê³? ?¡ì…˜ë§??„ë‹¬ë°›ìŒ
- */
 @Composable
 fun MyArtworksScreen(
     uiState: MyPageUiState,
@@ -33,7 +29,6 @@ fun MyArtworksScreen(
     Column(
         modifier = modifier.fillMaxSize()
     ) {
-        // ?•ë ¬ ë°??„í„° ?¤ë”
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -64,7 +59,6 @@ fun MyArtworksScreen(
             }
         }
 
-        // ?„í„° ì¹?
         ArtworkFilterChips(
             selectedFilter = uiState.filterOption,
             onFilterSelected = { filter ->
@@ -72,7 +66,6 @@ fun MyArtworksScreen(
             }
         )
 
-        // ?‘í’ˆ ê·¸ë¦¬??
         Box(modifier = Modifier.fillMaxSize()) {
             MyArtworkGrid(
                 artworks = uiState.myArtworks,
@@ -80,7 +73,7 @@ fun MyArtworksScreen(
                     onAction(MyPageAction.SelectArtwork(artwork))
                 },
                 onEditClick = { artworkId ->
-                    // TODO: Studioë¡??´ë™
+
                 },
                 onDeleteClick = { artworkId ->
                     onAction(MyPageAction.DeleteArtwork(artworkId))
@@ -90,7 +83,6 @@ fun MyArtworksScreen(
                 }
             )
 
-            // ë¡œë”© ?¸ë””ì¼€?´í„°
             if (uiState.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)

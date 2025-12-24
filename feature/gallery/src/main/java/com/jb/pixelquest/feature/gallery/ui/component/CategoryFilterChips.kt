@@ -12,10 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.gallery.model.ArtworkCategory
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * 카테고리 ?�터 �?
- * State Hoisting: ?�택 ?�벤?�만 ?�위�??�달
- */
 @Composable
 fun CategoryFilterChips(
     selectedCategory: ArtworkCategory?,

@@ -11,10 +11,6 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.RecentWork
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ìµœê·¼ ?‘ì—… ?¹ì…˜
- * State Hoisting: ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
- */
 @Composable
 fun RecentWorkSection(
     recentWorks: List<RecentWork>,

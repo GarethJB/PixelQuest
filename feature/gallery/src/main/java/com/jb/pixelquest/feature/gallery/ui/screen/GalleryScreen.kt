@@ -14,10 +14,6 @@ import com.jb.pixelquest.feature.gallery.ui.component.GalleryTabRow
 import com.jb.pixelquest.presentation.component.ScreenHeader
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * Gallery 메인 ?�면
- * State Hoisting ?�턴: ?�태???�위?�서 관리하�? ?�션�??�달받음
- */
 @Composable
 fun GalleryScreen(
     uiState: GalleryUiState,
@@ -34,7 +30,6 @@ fun GalleryScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // ????
             GalleryTabRow(
                 selectedTab = uiState.selectedTab,
                 onTabSelected = { tab ->
@@ -42,7 +37,6 @@ fun GalleryScreen(
                 }
             )
 
-            // 카테고리 ?�터 (카테고리 ??�� ?�만 ?�시)
             if (uiState.selectedTab == GalleryTab.CATEGORY) {
                 CategoryFilterChips(
                     selectedCategory = uiState.selectedCategory,
@@ -55,7 +49,6 @@ fun GalleryScreen(
                 )
             }
 
-            // ?�품 그리??
             Box(modifier = Modifier.fillMaxSize()) {
                 val artworks = when (uiState.selectedTab) {
                     GalleryTab.TRENDING -> uiState.trendingArtworks
@@ -76,7 +69,6 @@ fun GalleryScreen(
                     }
                 )
 
-                // 로딩 ?�디케?�터
                 if (uiState.isLoading) {
                     CircularProgressIndicator(
                         modifier = Modifier.align(Center)
@@ -86,7 +78,6 @@ fun GalleryScreen(
         }
     }
 
-    // ?�품 ?�세 ?�이?�로�?
     if (uiState.showArtworkDetail && uiState.selectedArtwork != null) {
         ArtworkDetailScreen(
             artwork = uiState.selectedArtwork,

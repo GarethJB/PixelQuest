@@ -12,10 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.jb.pixelquest.feature.studio.model.Template
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ?œí”Œë¦?ë¦¬ìŠ¤??ì»´í¬?ŒíŠ¸
- * State Hoisting: ? íƒ ?´ë²¤?¸ë§Œ ?ìœ„ë¡??„ë‹¬
- */
 @Composable
 fun TemplateList(
     templates: List<Template>,
@@ -36,7 +32,7 @@ fun TemplateList(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             contentPadding = PaddingValues(4.dp),
-            modifier = Modifier.heightIn(max = 400.dp) // ìµœë? ?’ì´ ?œí•œ
+            modifier = Modifier.heightIn(max = 400.dp)
         ) {
             items(
                 items = templates,

@@ -1,11 +1,23 @@
 package com.jb.pixelquest.feature.quest.ui.component
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,10 +29,6 @@ import com.jb.pixelquest.feature.quest.model.Reward
 import com.jb.pixelquest.feature.quest.model.RewardType
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * Î≥¥ÏÉÅ Î¶¨Ïä§??Ïª¥Ìè¨?åÌä∏
- * State Hoisting: ?†ÌÉù ?¥Î≤§?∏Îßå ?ÅÏúÑÎ°??ÑÎã¨
- */
 @Composable
 fun RewardList(
     rewards: List<Reward>,
@@ -64,7 +72,6 @@ private fun RewardCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // ?ÑÏù¥ÏΩ?
             Surface(
                 color = MaterialTheme.colorScheme.surfaceVariant,
                 shape = RoundedCornerShape(8.dp),
@@ -89,7 +96,6 @@ private fun RewardCard(
                 }
             }
 
-            // ?¥Î¶Ñ
             Text(
                 text = reward.name,
                 style = MaterialTheme.typography.labelMedium,
@@ -97,7 +103,6 @@ private fun RewardCard(
                 maxLines = 2
             )
 
-            // ?Ä??
             Text(
                 text = getRewardTypeText(reward.type),
                 style = MaterialTheme.typography.labelSmall,

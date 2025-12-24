@@ -33,10 +33,6 @@ import coil.compose.AsyncImage
 import com.jb.pixelquest.feature.gallery.model.Artwork
 import com.jb.pixelquest.shared.presentation.resources.R
 
-/**
- * ?�품 카드
- * State Hoisting: ?�릭 ?�벤?�만 ?�위�??�달
- */
 @Composable
 fun ArtworkCard(
     artwork: Artwork,
@@ -55,7 +51,6 @@ fun ArtworkCard(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            // ?�네???��?지
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -68,7 +63,6 @@ fun ArtworkCard(
                     contentScale = ContentScale.Crop
                 )
 
-                // 좋아??북마??버튼 (?�버?�이)
                 Row(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -96,14 +90,12 @@ fun ArtworkCard(
                 }
             }
 
-            // ?�보 ?�역
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(12.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // ?�목
                 Text(
                     text = artwork.title,
                     style = MaterialTheme.typography.titleSmall,
@@ -112,13 +104,11 @@ fun ArtworkCard(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                // ?�성??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // ?�바?�?
                     if (artwork.author.avatarUrl != null) {
                         AsyncImage(
                             model = artwork.author.avatarUrl,
@@ -133,7 +123,6 @@ fun ArtworkCard(
                     )
                 }
 
-                // ?�계 (좋아?? 조회??
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
